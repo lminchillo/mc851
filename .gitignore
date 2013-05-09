@@ -1,0 +1,5 @@
+/bin
+/gen
+.metadada
+*.DS_Store
+*.sw[pcd]
