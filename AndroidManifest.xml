@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="lais.mc851.MainActivity"
+            android:name="lais.mc851.StartScreen"
             android:screenOrientation="portrait" >
         </activity>
     </application>

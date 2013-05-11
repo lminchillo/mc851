@@ -3,6 +3,7 @@ package lais.mc851;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.app.Activity;
+import android.content.Intent;
 
 public class Splashscreen extends Activity
 {
@@ -23,9 +24,9 @@ public class Splashscreen extends Activity
 			@Override
 			public void onFinish()
 			{
-				//startActivity(new Intent(getApplicationContext(),StartScreen.class));
+				startActivity(new Intent(getApplicationContext(),StartScreen.class));
 				finish();
 			}
-		};
+		}.start();
 	}
 }

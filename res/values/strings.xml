@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	
+
     <!-- General app strings -->
     <string name="app_name">MC851Project</string>
+    
+    <!-- StartScreen strings -->
+    <string name="startscreen_take_bus">Pegar ônibus!</string>
+    <string name="startscreen_saved_routes">Rotas salvas</string>
+    <string name="startscreen_saved_adresses">Endereços salvos</string>
+    <string name="startscreen_my_cupons">Meus cupons</string>
+    <string name="startscreen_config">Configurações</string>
 
 </resources>
