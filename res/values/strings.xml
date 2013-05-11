@@ -3,12 +3,16 @@
 
     <!-- General app strings -->
     <string name="app_name">MC851Project</string>
-    
+
     <!-- StartScreen strings -->
     <string name="startscreen_take_bus">Pegar ônibus!</string>
     <string name="startscreen_saved_routes">Rotas salvas</string>
     <string name="startscreen_saved_adresses">Endereços salvos</string>
-    <string name="startscreen_my_cupons">Meus cupons</string>
+    <string name="startscreen_my_coupons">Meus cupons</string>
     <string name="startscreen_config">Configurações</string>
+    
+    <!-- Settings strings -->
+    <string name="settings_notifications">Enviar notificações de novos cupons</string>
+    <string name="settings_sounds">Tocar som ao chegar no destino</string>
 
 </resources>

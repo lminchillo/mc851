@@ -26,6 +26,10 @@
             android:name="lais.mc851.StartScreen"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="lais.mc851.Settings"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
