@@ -10,9 +10,15 @@
     <string name="startscreen_saved_adresses">Endereços salvos</string>
     <string name="startscreen_my_coupons">Meus cupons</string>
     <string name="startscreen_config">Configurações</string>
-    
+
     <!-- Settings strings -->
     <string name="settings_notifications">Enviar notificações de novos cupons</string>
     <string name="settings_sounds">Tocar som ao chegar no destino</string>
+
+    <!-- Addresses strings -->
+    <string name="addresses_new_address">Novo endereço</string>
+    <string name="addresses_no_addresses">Não há endereços salvos!\nAdicione um novo endereço usando o botão abaixo</string>
+    
+    <!-- AddressEdit strings -->
 
 </resources>

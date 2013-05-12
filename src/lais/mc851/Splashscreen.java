@@ -1,9 +1,11 @@
 package lais.mc851;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class Splashscreen extends Activity
 {
@@ -13,20 +15,25 @@ public class Splashscreen extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splashscreen);
 		
-		new CountDownTimer(2000,1999)
+		new AsyncTask<Void, Void, Void>()
 		{
 			@Override
-			public void onTick(long millisUntilFinished)
+			protected Void doInBackground(Void... params)
 			{
+				//Initialize AddressManager
+				SharedPreferences pref = getSharedPreferences("SETTINGS_PREFS", 0);
+				Editor e = pref.edit();
+				new AddressManager(pref,e);
 				
+				return null;
 			}
 			
 			@Override
-			public void onFinish()
+			protected void onPostExecute(Void result)
 			{
 				startActivity(new Intent(getApplicationContext(),StartScreen.class));
 				finish();
 			}
-		}.start();
+		}.execute();
 	}
 }
