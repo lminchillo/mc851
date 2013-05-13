@@ -34,7 +34,7 @@ public class Addresses extends Activity
 		else
 		{
 			//TODO
-			Toast.makeText(getApplicationContext(), "Initialize listview" , Toast.LENGTH_SHORT);
+			Toast.makeText(getApplicationContext(), "Initialize listview" , Toast.LENGTH_SHORT).show();
 		}
 		
 		Button addAddress = (Button) findViewById(R.id.addresses_button);
@@ -48,7 +48,7 @@ public class Addresses extends Activity
 				//startActivity(intent);
 
 				//TODO
-				Toast.makeText(getApplicationContext(), "Add new address" , Toast.LENGTH_SHORT);
+				Toast.makeText(getApplicationContext(), "Add new address" , Toast.LENGTH_SHORT).show();
 			}
 		});
 	}
