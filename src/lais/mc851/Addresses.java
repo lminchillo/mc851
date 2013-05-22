@@ -76,7 +76,8 @@ public class Addresses extends Activity
 			public void onClick(View v)
 			{
 				Intent intent = new Intent(getApplicationContext(),AddressEdit.class);
-				//intent.putExtra("addressName","");
+				intent.putExtra("addressName","");
+				intent.putExtra("addressValue","");
 				startActivity(intent);
 				finish();
 			}
@@ -94,7 +95,7 @@ public class Addresses extends Activity
 		}
 		
 		@Override
-		public View getView (int position, View convertView, ViewGroup parent) 
+		public View getView (final int position, View convertView, ViewGroup parent) 
 		{
 			convertView = inflater.inflate(R.layout.listview_item_simple, null);
 			
@@ -103,6 +104,20 @@ public class Addresses extends Activity
 			
 			TextView tv = (TextView) convertView.findViewById(R.id.listview_item_simple_text);
 			tv.setText(" \n"+address+"\n ");
+			
+			convertView.setOnClickListener(new OnClickListener()
+			{
+				@Override
+				public void onClick(View v)
+				{
+					Intent intent = new Intent(getApplicationContext(),AddressEdit.class);
+					String aux = addressList.get(position);
+					intent.putExtra("addressName",aux.substring(0, aux.indexOf("\n")));
+					intent.putExtra("addressValue",aux);
+					startActivity(intent);
+					finish();
+				}
+			});
 			
 			return convertView;
 		}

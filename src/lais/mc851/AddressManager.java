@@ -31,22 +31,16 @@ public class AddressManager
 		return res;
 	}
 	
-	private static String findPosition()
+	private static String findEmptyPosition()
 	{
 		String res = null;
 		String aux = " ";
-		for (int i=1; !aux.equals("end"); i++)
+		for (int i=1; !aux.equals("end") && !aux.equals("next"); i++)
 		{
 			aux = pref.getString("savedAddress"+i, "end");
-			if (aux.equals("end"))
+			if (aux.equals("end") || aux.equals("next"))
 			{
 				res = "savedAddress"+i;
-				int j=1;
-				while (pref.getString("savedAddress"+(i-j), "end").equals("next"))
-				{
-					j++;
-					res = "savedAddress"+(i-j);
-				}
 			}
 		}
 		return res;
@@ -56,18 +50,19 @@ public class AddressManager
 	{
 		if (findKey(addressName) == null)
 		{
-			editor.putString(findPosition(), address);
+			editor.putString(findEmptyPosition(), address);
 			editor.commit();
 			return true;
 		}
 		return false;
 	}
 	
-	public static boolean removeAddress(String addressName, String address)
+	public static boolean removeAddress(String addressName)
 	{
-		if (findKey(addressName) != null)
+		String key = findKey(addressName);
+		if (key != null)
 		{
-			editor.putString(findKey(address), "next");
+			editor.putString(key, "next");
 			editor.commit();
 			return true;
 		}

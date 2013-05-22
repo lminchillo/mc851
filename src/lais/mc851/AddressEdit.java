@@ -35,12 +35,17 @@ public class AddressEdit extends Activity
 	String addressValueTemp = null;
 	String addressValue = null;
 	
+	boolean savedAddress = false;
+	String savedAddressName = null;
+	String savedAddressValue = null;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_address_edit);
 		
+		getSavedAddress();
 		initializeButtons();
 	}
 	
@@ -50,6 +55,25 @@ public class AddressEdit extends Activity
 		startActivity(new Intent(getApplicationContext(),Addresses.class));
 		finish();
 		super.onBackPressed();
+	}
+	
+	private void getSavedAddress()
+	{
+		Bundle b = getIntent().getExtras();
+		if (!b.getString("addressName", "").equals("") && !b.getString("addressValue", "").equals(""))
+		{
+			savedAddress = true;
+			savedAddressName = b.getString("addressName", "");
+			savedAddressValue = b.getString("addressValue", "");
+			
+			addressNameEdit = (EditText) findViewById(R.id.address_edit_name_edit);
+			addressNameEdit.setText(savedAddressName);
+			addressView = (TextView) findViewById(R.id.address_edit_address_text);
+			addressView.setText(getStreetAddress(savedAddressValue));
+			
+			addressName = savedAddressName;
+			addressValue = savedAddressValue;
+		}
 	}
 	
 	private void initializeButtons()
@@ -80,18 +104,56 @@ public class AddressEdit extends Activity
 			{
 				if (saveChanges())
 				{
-					addressValue = addressName+"\n"+addressStreetValue+"\n"+addressLatLng;
-					if (AddressManager.addAddress(addressName, addressValue))
+					if (!savedAddress)
 					{
-						Toast.makeText(getApplicationContext(), "Endereço salvo", Toast.LENGTH_SHORT).show();
-						startActivity(new Intent(getApplicationContext(),Addresses.class));
-						finish();
+						addressValue = addressName+"\n"+addressStreetValue+"\n"+addressLatLng;
+						if (AddressManager.addAddress(addressName, addressValue))
+						{
+							Toast.makeText(getApplicationContext(), "Endereço salvo", Toast.LENGTH_SHORT).show();
+							startActivity(new Intent(getApplicationContext(),Addresses.class));
+							finish();
+						}
+						else
+						{
+							Toast.makeText(getApplicationContext(), "Erro - o nome pode já ter sido usado", Toast.LENGTH_SHORT).show();
+						}
 					}
 					else
 					{
-						Toast.makeText(getApplicationContext(), "Erro - o nome pode já ter sido usado", Toast.LENGTH_SHORT).show();
+						addressValue = addressName+"\n"+addressStreetValue+"\n"+addressLatLng;
+						if (AddressManager.removeAddress(addressName))
+						{
+							if (AddressManager.addAddress(addressName, addressValue))
+							{
+								Toast.makeText(getApplicationContext(), "Endereço salvo", Toast.LENGTH_SHORT).show();
+								startActivity(new Intent(getApplicationContext(),Addresses.class));
+								finish();
+							}
+							else
+							{
+								Toast.makeText(getApplicationContext(), "Erro ao atualizar o endereço", Toast.LENGTH_SHORT).show();
+							}
+						}
+						else
+						{
+							Toast.makeText(getApplicationContext(), "Erro ao atualizar o endereço", Toast.LENGTH_SHORT).show();
+						}
 					}
 				}
+				else
+				{
+					Toast.makeText(getApplicationContext(), "Erro - verifique o nome ou endereço digitados", Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
+		cancel = (Button) findViewById(R.id.address_edit_cancel);
+		cancel.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				startActivity(new Intent(getApplicationContext(),Addresses.class));
+				finish();
 			}
 		});
 	}
@@ -126,10 +188,34 @@ public class AddressEdit extends Activity
 		}
     }
 	
+	private String getStreetAddress(String address)
+	{
+		if (address.contains("\n"))
+		{
+			String res = address.substring(address.indexOf("\n")+1);
+			if (address.contains("\n"))
+			{
+				res = res.substring(0,res.indexOf("\n"));
+				return res;
+			}
+			else return address;
+		}
+		else return address;
+	}
+	
 	private void showDialog()
 	{
 		LayoutInflater factory = LayoutInflater.from(this);
 	    final View textEntryView = factory.inflate(R.layout.alert_dialog_simple_edittext, null);
+	    final EditText editText = (EditText) textEntryView.findViewById(R.id.alert_dialog_edittext);
+	    if (savedAddress)
+	    {
+	    	editText.setText(getStreetAddress(savedAddressValue));
+	    }
+	    else if (addressValueTemp != null)
+	    {
+	    	editText.setText(getStreetAddress(addressValueTemp));
+	    }
 		Dialog dialog = new AlertDialog.Builder(AddressEdit.this)
 	        //.setIconAttribute(android.R.attr.alertDialogIcon)
 	        .setTitle(getResources().getString(R.string.address_edit_address_new))
@@ -138,8 +224,8 @@ public class AddressEdit extends Activity
 	        {
 	            public void onClick(DialogInterface dialog, int whichButton)
 	            {
-	                EditText et = (EditText) textEntryView.findViewById(R.id.alert_dialog_edittext);
-	                addressValueTemp = et.getText().toString().trim();
+	                
+	                addressValueTemp = editText.getText().toString().trim();
 	                getLocation(addressValueTemp);
 	            }
 	        })
