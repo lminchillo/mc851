@@ -136,13 +136,40 @@ public class AddressEdit extends Activity
 						}
 						else
 						{
-							Toast.makeText(getApplicationContext(), "Erro ao atualizar o endereço", Toast.LENGTH_SHORT).show();
+							if (AddressManager.addAddress(addressName, addressValue))
+							{
+								Toast.makeText(getApplicationContext(), "Endereço salvo", Toast.LENGTH_SHORT).show();
+								startActivity(new Intent(getApplicationContext(),Addresses.class));
+								finish();
+							}
+							else
+							{
+								Toast.makeText(getApplicationContext(), "Erro ao atualizar o endereço", Toast.LENGTH_SHORT).show();
+							}
 						}
 					}
 				}
 				else
 				{
 					Toast.makeText(getApplicationContext(), "Erro - verifique o nome ou endereço digitados", Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
+		delete = (Button) findViewById(R.id.address_edit_delete);
+		delete.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				if (AddressManager.removeAddress(addressName))
+				{
+					Toast.makeText(getApplicationContext(), "Endereço deletado", Toast.LENGTH_SHORT).show();
+					startActivity(new Intent(getApplicationContext(),Addresses.class));
+					finish();
+				}
+				else
+				{
+					Toast.makeText(getApplicationContext(), "Erro ao deletar o endereço", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
