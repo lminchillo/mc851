@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 
 public class AddressEdit extends Activity
 {
@@ -35,12 +36,20 @@ public class AddressEdit extends Activity
 	String addressValue = null;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
+	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_address_edit);
 		
 		initializeButtons();
+	}
+	
+	@Override
+	public void onBackPressed()
+	{
+		startActivity(new Intent(getApplicationContext(),Addresses.class));
+		finish();
+		super.onBackPressed();
 	}
 	
 	private void initializeButtons()
@@ -75,6 +84,7 @@ public class AddressEdit extends Activity
 					if (AddressManager.addAddress(addressName, addressValue))
 					{
 						Toast.makeText(getApplicationContext(), "Endereço salvo", Toast.LENGTH_SHORT).show();
+						startActivity(new Intent(getApplicationContext(),Addresses.class));
 						finish();
 					}
 					else

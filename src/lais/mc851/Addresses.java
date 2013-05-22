@@ -11,13 +11,21 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Addresses extends Activity
 {
-	ArrayList<String> arrayList = null;
+	private ListView addressListView = null;
+	private ArrayList<String> addressList = null;
+	private MyArrayAdapter adapter = null;
+
+	@Override
+	protected void onResume()
+	{
+		initializeListView();
+		super.onResume();
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -25,18 +33,42 @@ public class Addresses extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_addresses);
 		
-		arrayList = AddressManager.getAddressList();
-		if (arrayList ==  null || arrayList.size()==0)
+		initialize();
+		initializeButtons();
+	}
+	
+	private void initialize()
+	{
+		if (addressListView == null)
 		{
-			TextView tv = (TextView) findViewById(R.id.addresses_no_saved_address);
-			tv.setVisibility(View.VISIBLE);
+			addressListView = (ListView) findViewById(R.id.addresses_listview);
+		}
+		
+		TextView noAddresses = (TextView) findViewById(R.id.addresses_no_saved_address);
+		addressList = AddressManager.getAddressList();
+		if (addressList ==  null || addressList.size()==0)
+		{
+			noAddresses.setVisibility(View.VISIBLE);
 		}
 		else
 		{
-			//TODO
-			Toast.makeText(getApplicationContext(), "Initialize listview" , Toast.LENGTH_SHORT).show();
+			noAddresses.setVisibility(View.INVISIBLE);
+			initializeListView();
 		}
-		
+	}
+	
+	private void initializeListView()
+	{
+		if (adapter == null)
+		{
+			adapter = new MyArrayAdapter(getApplicationContext(), R.layout.listview_item_simple, addressList);
+			addressListView.setAdapter(adapter);
+		}
+		adapter.notifyDataSetChanged();
+	}
+	
+	private void initializeButtons()
+	{
 		Button addAddress = (Button) findViewById(R.id.addresses_button);
 		addAddress.setOnClickListener(new OnClickListener()
 		{
@@ -44,8 +76,9 @@ public class Addresses extends Activity
 			public void onClick(View v)
 			{
 				Intent intent = new Intent(getApplicationContext(),AddressEdit.class);
-				intent.putExtra("addressName","");
+				//intent.putExtra("addressName","");
 				startActivity(intent);
+				finish();
 			}
 		});
 	}
@@ -64,17 +97,12 @@ public class Addresses extends Activity
 		public View getView (int position, View convertView, ViewGroup parent) 
 		{
 			convertView = inflater.inflate(R.layout.listview_item_simple, null);
+			
+			String address = addressList.get(position);
+			address = address.substring(0, address.indexOf("\n", address.indexOf("\n")+1));
+			
 			TextView tv = (TextView) convertView.findViewById(R.id.listview_item_simple_text);
-			tv.setText(" \n\t"+arrayList.get(position)+"\n ");
-			ImageView img = (ImageView) convertView.findViewById(R.id.listview_item_simple_img);
-			if (position==0)
-			{
-				img.getLayoutParams().height = (int) (getWindowManager().getDefaultDisplay().getHeight() * 0.40);
-			}
-			else
-			{
-				img.getLayoutParams().height = (int) (getWindowManager().getDefaultDisplay().getHeight() * 0.14);
-			}
+			tv.setText(" \n"+address+"\n ");
 			
 			return convertView;
 		}
