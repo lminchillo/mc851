@@ -20,5 +20,17 @@
     <string name="addresses_no_addresses">Não há endereços salvos!\nAdicione um novo endereço usando o botão abaixo</string>
     
     <!-- AddressEdit strings -->
+    <string name="address_edit_name">Nome:</string>
+    <string name="address_edit_name_new">Digite o nome&#8230;</string>
+    <string name="address_edit_address">Endereço:</string>
+    <string name="address_edit_address_new">Digite o endereço</string>
+    <string name="address_edit_none">&lt;Nenhum&gt;</string>
+    <string name="address_edit_gps">GPS</string>
+    <string name="address_edit_type">Digitar</string>
+    <string name="address_edit_save">Salvar alterações</string>
+    <string name="address_edit_cancel">Cancelar</string>
+    <string name="address_edit_delete">Deletar</string>
+    
+    <!--  -->
 
 </resources>

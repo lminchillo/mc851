@@ -38,6 +38,10 @@
             android:name="lais.mc851.AddressEdit"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="lais.mc851.Coupons"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

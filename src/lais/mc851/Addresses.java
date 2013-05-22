@@ -43,12 +43,9 @@ public class Addresses extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				//Intent intent = new Intent(getApplicationContext(),AddressEdit.class);
-				//intent.putExtra("addressName","");
-				//startActivity(intent);
-
-				//TODO
-				Toast.makeText(getApplicationContext(), "Add new address" , Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(getApplicationContext(),AddressEdit.class);
+				intent.putExtra("addressName","");
+				startActivity(intent);
 			}
 		});
 	}
