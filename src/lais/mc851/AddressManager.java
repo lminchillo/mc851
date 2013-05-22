@@ -28,7 +28,6 @@ public class AddressManager
 				res.add(aux);
 			}
 		}
-		System.out.println(res.toString());
 		return res;
 	}
 	
@@ -82,14 +81,9 @@ public class AddressManager
 		for (int i=1; (!aux.equals("end") && !aux.equals(addressName)); i++)
 		{
 			aux = pref.getString("savedAddress"+i, "end");
-			if (!aux.equals("end"))
+			if (!aux.equals("end") && aux.contains("\n"))
 			{
-				System.out.println("1 aux: "+aux);
-				if (aux.contains("\n"))
-				{
-					aux = aux.substring(0, aux.indexOf("\n"));
-					System.out.println("2 aux: "+aux);
-				}
+				aux = aux.substring(0, aux.indexOf("\n"));
 			}
 			if (aux.equals(addressName))
 			{
