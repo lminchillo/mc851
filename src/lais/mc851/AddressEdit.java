@@ -161,15 +161,22 @@ public class AddressEdit extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				if (AddressManager.removeAddress(addressName))
+				if (savedAddress)
 				{
-					Toast.makeText(getApplicationContext(), "Endereço deletado", Toast.LENGTH_SHORT).show();
-					startActivity(new Intent(getApplicationContext(),Addresses.class));
-					finish();
+					if (AddressManager.removeAddress(addressName))
+					{
+						Toast.makeText(getApplicationContext(), "Endereço deletado", Toast.LENGTH_SHORT).show();
+						startActivity(new Intent(getApplicationContext(),Addresses.class));
+						finish();
+					}
+					else
+					{
+						Toast.makeText(getApplicationContext(), "Erro ao deletar o endereço", Toast.LENGTH_SHORT).show();
+					}
 				}
 				else
 				{
-					Toast.makeText(getApplicationContext(), "Erro ao deletar o endereço", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "Esse endereço não foi salvo ainda", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
