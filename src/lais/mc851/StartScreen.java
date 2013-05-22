@@ -45,7 +45,7 @@ public class StartScreen extends Activity
 				//if (position==1) startActivity(new Intent(getApplicationContext(),GetRoute.class));
 				//if (position==2) startActivity(new Intent(getApplicationContext(),Routes.class));
 				if (position==3) startActivity(new Intent(getApplicationContext(),Addresses.class));
-				//if (position==4) startActivity(new Intent(getApplicationContext(),Coupons.class));
+				else if (position==4) startActivity(new Intent(getApplicationContext(),Coupons.class));
 				else if (position==5) startActivity(new Intent(getApplicationContext(),Settings.class));
 			}
 		});
