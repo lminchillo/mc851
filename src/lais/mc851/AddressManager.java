@@ -42,35 +42,60 @@ public class AddressManager
 			if (aux.equals("end"))
 			{
 				res = "savedAddress"+i;
+				int j=1;
+				while (pref.getString("savedAddress"+(i-j), "end").equals("next"))
+				{
+					j++;
+					res = "savedAddress"+(i-j);
+				}
 			}
 		}
 		return res;
 	}
 	
-	public static void addAddress(String address)
+	public static boolean addAddress(String addressName, String address)
 	{
-		editor.putString(findPosition(), address);
-		editor.commit();
+		if (findKey(addressName) == null)
+		{
+			editor.putString(findPosition(), address);
+			editor.commit();
+			return true;
+		}
+		return false;
 	}
 	
-	private static String findKey(String address)
+	public static boolean removeAddress(String addressName, String address)
+	{
+		if (findKey(addressName) != null)
+		{
+			editor.putString(findKey(address), "next");
+			editor.commit();
+			return true;
+		}
+		return false;
+	}
+	
+	private static String findKey(String addressName)
 	{
 		String res = null;
 		String aux = " ";
-		for (int i=1; (!aux.equals("end") && !aux.equals(address)); i++)
+		for (int i=1; (!aux.equals("end") && !aux.equals(addressName)); i++)
 		{
 			aux = pref.getString("savedAddress"+i, "end");
-			if (aux.equals(address))
+			if (!aux.equals("end"))
+			{
+				System.out.println("1 aux: "+aux);
+				if (aux.contains("\n"))
+				{
+					aux = aux.substring(0, aux.indexOf("\n"));
+					System.out.println("2 aux: "+aux);
+				}
+			}
+			if (aux.equals(addressName))
 			{
 				res = "savedAddress"+i;
 			}
 		}
 		return res;
-	}
-	
-	public static void removeAddress(String address)
-	{
-		editor.putString(findKey(address), "next");
-		editor.commit();
 	}
 }

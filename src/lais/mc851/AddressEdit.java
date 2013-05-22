@@ -29,9 +29,10 @@ public class AddressEdit extends Activity
 	TextView addressView = null;
 	
 	String addressName = null;
-	String addressValue = null;
+	String addressStreetValue = null;
 	String addressLatLng = null;
 	String addressValueTemp = null;
+	String addressValue = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -70,7 +71,16 @@ public class AddressEdit extends Activity
 			{
 				if (saveChanges())
 				{
-					Toast.makeText(getApplicationContext(), "All ready", Toast.LENGTH_SHORT).show();
+					addressValue = addressName+"\n"+addressStreetValue+"\n"+addressLatLng;
+					if (AddressManager.addAddress(addressName, addressValue))
+					{
+						Toast.makeText(getApplicationContext(), "Endereço salvo", Toast.LENGTH_SHORT).show();
+						finish();
+					}
+					else
+					{
+						Toast.makeText(getApplicationContext(), "Erro - o nome pode já ter sido usado", Toast.LENGTH_SHORT).show();
+					}
 				}
 			}
 		});
@@ -94,9 +104,9 @@ public class AddressEdit extends Activity
     			latlng += a.get(i).getLatitude() + "," + a.get(i).getLongitude();
     		}
     		value = value.replaceFirst(" - ", "");
-    		addressValue = value;
+    		addressStreetValue = value;
     		addressView = (TextView) findViewById(R.id.address_edit_address_text);
-    		addressView.setText(addressValue);
+    		addressView.setText(addressStreetValue);
     		System.out.println(addressView.getText());
     		addressLatLng = latlng;
 		}
@@ -145,11 +155,11 @@ public class AddressEdit extends Activity
 			return false;
 		}
 		
-		if (addressValue == null)
+		if (addressStreetValue == null)
 		{
 			return false;
 		}
-		else if (addressValue.equals("") || addressValue.length()<1)
+		else if (addressStreetValue.equals("") || addressStreetValue.length()<1)
 		{
 			return false;
 		}
