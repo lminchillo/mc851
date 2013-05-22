@@ -3,6 +3,8 @@ package lais.mc851;
 import java.util.List;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,7 +86,8 @@ public class AddressEdit extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				// TODO Auto-generated method stub
+				getAddress(getLastBestLocation());
+				System.out.println("Location: "+addressStreetValue);
 			}
 		});
 		type = (Button) findViewById(R.id.address_edit_type);
@@ -206,14 +209,68 @@ public class AddressEdit extends Activity
         		{
         			 value += " - "+a.get(i).getAddressLine(j);
         		}
-    			System.out.println("=Address= Lat "+a.get(i).getLatitude()+", Lng "+a.get(i).getLongitude());
     			latlng += a.get(i).getLatitude() + "," + a.get(i).getLongitude();
     		}
     		value = value.replaceFirst(" - ", "");
     		addressStreetValue = value;
     		addressView = (TextView) findViewById(R.id.address_edit_address_text);
     		addressView.setText(addressStreetValue);
-    		System.out.println(addressView.getText());
+    		addressLatLng = latlng;
+		}
+    	catch (Exception e)
+    	{
+			e.printStackTrace();
+		}
+    }
+	
+	private Location getLastBestLocation()
+    {
+        LocationManager mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+                
+		Location locationGPS = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        Location locationNet = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+ 
+        long GPSLocationTime = 0;
+        if (null != locationGPS)
+        {
+        	GPSLocationTime = locationGPS.getTime();
+        }
+ 
+        long NetLocationTime = 0;
+ 
+        if (null != locationNet)
+        {
+            NetLocationTime = locationNet.getTime();
+        }
+ 
+        if ( 0 < GPSLocationTime - NetLocationTime )
+        {
+            return locationGPS;
+        }
+        else
+        {
+            return locationNet;
+        }
+    }
+	
+	private void getAddress(Location l)
+    {
+    	try
+    	{
+    		Geocoder g = new Geocoder(getApplicationContext());
+    		Address a = g.getFromLocation(l.getLatitude(), l.getLongitude(), 1).get(0);
+    		
+    		String value = "";
+    		String latlng = "";
+    		for (int i = 0; i<a.getMaxAddressLineIndex(); i++)
+    		{
+    			 value += " - " + a.getAddressLine(i);
+    		}
+			latlng += a.getLatitude() + "," + a.getLongitude();
+    		value = value.replaceFirst(" - ", "");
+    		addressStreetValue = value;
+    		addressView = (TextView) findViewById(R.id.address_edit_address_text);
+    		addressView.setText(addressStreetValue);
     		addressLatLng = latlng;
 		}
     	catch (Exception e)
@@ -250,6 +307,11 @@ public class AddressEdit extends Activity
 	    {
 	    	editText.setText(getStreetAddress(addressValueTemp));
 	    }
+	    else if (addressValue != null)
+	    {
+	    	editText.setText(addressValue);
+	    }
+	    
 		Dialog dialog = new AlertDialog.Builder(AddressEdit.this)
 	        //.setIconAttribute(android.R.attr.alertDialogIcon)
 	        .setTitle(getResources().getString(R.string.address_edit_address_new))
