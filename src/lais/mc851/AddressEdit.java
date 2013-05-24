@@ -54,9 +54,9 @@ public class AddressEdit extends Activity
 	@Override
 	public void onBackPressed()
 	{
+		System.gc();
 		startActivity(new Intent(getApplicationContext(),Addresses.class));
 		finish();
-		super.onBackPressed();
 	}
 	
 	private void getSavedAddress()
@@ -75,6 +75,10 @@ public class AddressEdit extends Activity
 			
 			addressName = savedAddressName;
 			addressValue = savedAddressValue;
+			addressStreetValue = getStreetAddress(addressValue);
+			//System.out.println("street value saved: "+addressStreetValue);
+			addressLatLng = getLatLng(addressValue);
+			//System.out.println("latlng value saved: "+addressLatLng);
 		}
 	}
 	
@@ -124,7 +128,7 @@ public class AddressEdit extends Activity
 					else
 					{
 						addressValue = addressName+"\n"+addressStreetValue+"\n"+addressLatLng;
-						if (AddressManager.removeAddress(addressName))
+						if (AddressManager.removeAddress(savedAddressName))
 						{
 							if (AddressManager.addAddress(addressName, addressValue))
 							{
@@ -139,16 +143,7 @@ public class AddressEdit extends Activity
 						}
 						else
 						{
-							if (AddressManager.addAddress(addressName, addressValue))
-							{
-								Toast.makeText(getApplicationContext(), "Endereço salvo", Toast.LENGTH_SHORT).show();
-								startActivity(new Intent(getApplicationContext(),Addresses.class));
-								finish();
-							}
-							else
-							{
-								Toast.makeText(getApplicationContext(), "Erro ao atualizar o endereço", Toast.LENGTH_SHORT).show();
-							}
+							Toast.makeText(getApplicationContext(), "Erro ao atualizar o endereço", Toast.LENGTH_SHORT).show();
 						}
 					}
 				}
@@ -164,22 +159,29 @@ public class AddressEdit extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				if (savedAddress)
+				if (saveChanges())
 				{
-					if (AddressManager.removeAddress(addressName))
+					if (savedAddress)
 					{
-						Toast.makeText(getApplicationContext(), "Endereço deletado", Toast.LENGTH_SHORT).show();
-						startActivity(new Intent(getApplicationContext(),Addresses.class));
-						finish();
+						if (AddressManager.removeAddress(savedAddressName))
+						{
+							Toast.makeText(getApplicationContext(), "Endereço deletado", Toast.LENGTH_SHORT).show();
+							startActivity(new Intent(getApplicationContext(),Addresses.class));
+							finish();
+						}
+						else
+						{
+							Toast.makeText(getApplicationContext(), "Erro ao deletar o endereço", Toast.LENGTH_SHORT).show();
+						}
 					}
 					else
 					{
-						Toast.makeText(getApplicationContext(), "Erro ao deletar o endereço", Toast.LENGTH_SHORT).show();
+						Toast.makeText(getApplicationContext(), "Esse endereço não foi salvo ainda", Toast.LENGTH_SHORT).show();
 					}
 				}
 				else
 				{
-					Toast.makeText(getApplicationContext(), "Esse endereço não foi salvo ainda", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "Erro - verifique o nome ou endereço digitados", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
@@ -287,6 +289,21 @@ public class AddressEdit extends Activity
 			if (address.contains("\n"))
 			{
 				res = res.substring(0,res.indexOf("\n"));
+				return res;
+			}
+			else return address;
+		}
+		else return address;
+	}
+	
+	private String getLatLng(String address)
+	{
+		if (address.contains("\n"))
+		{
+			String res = address.substring(address.indexOf("\n")+1);
+			if (address.contains("\n"))
+			{
+				res = res.substring(res.indexOf("\n")+1);
 				return res;
 			}
 			else return address;

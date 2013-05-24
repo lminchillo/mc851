@@ -20,10 +20,15 @@ public class Splashscreen extends Activity
 			@Override
 			protected Void doInBackground(Void... params)
 			{
-				//Initialize AddressManager
+				//Initialize SharedPreferences and Editor
 				SharedPreferences pref = getSharedPreferences("SETTINGS_PREFS", 0);
 				Editor e = pref.edit();
+				
+				//Initialize AddressManager
 				new AddressManager(pref,e);
+				
+				//Initialize CouponManager
+				new CouponManager();
 				
 				return null;
 			}
