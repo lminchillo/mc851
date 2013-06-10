@@ -30,6 +30,9 @@ public class Splashscreen extends Activity
 				//Initialize CouponManager
 				new CouponManager();
 				
+				//Initialize RouteManager
+				new RouteManager(pref, e);
+				
 				return null;
 			}
 			
