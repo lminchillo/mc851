@@ -38,7 +38,7 @@ Tela que mostra a rota (mapa, cupons, etc).
 
     ---
 
-* RouteManagerExternal ( -> Laís)
+* RouteGetter ( -> Laís)
 
 Classe controladora de rotas. Faz acesso ao site da Emdec. Funções do tipo getBusLines() e getFunctionInitialize(), entre outras.
 
@@ -173,6 +173,6 @@ Classe controladora de endereços. Funções do tipo getAllAddresses(), getAddre
 
 Classe controladora de rotas. Funções do tipo getAllRoutes(), getRoute(String name), deleteRoute(String name), entre outras.
 
-    Criado: não
-    Push: restrito
+    Criado: sim
+    Push: livre
     Layout: N/A
