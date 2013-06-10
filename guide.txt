@@ -5,7 +5,7 @@ No final, inicializa Startscreen e finaliza.
 
     Criado: sim
     Push: livre
-    Layout: N/A
+    Layout: livre
 
     ---
 
@@ -56,6 +56,16 @@ Tela que mostra a rota (mapa, cupons, etc).
     Criado: não
     Push: restrito
     Layout: não
+
+    ---
+
+* RouteManager
+
+Classe controladora de rotas. Faz acesso ao site da Emdec. Funções do tipo getBusLines() e getFunctionInitialize(), entre outras.
+
+    Criado: não
+    Push: restrito
+    Layout: N/A
 
     ---
 
