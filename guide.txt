@@ -1,4 +1,4 @@
-* Splashscreen
+* Splashscreen (Pronto)
     
 Inicializa todas as classes, serviços, etc. (Em background)
 No final, inicializa Startscreen e finaliza.
@@ -9,7 +9,7 @@ No final, inicializa Startscreen e finaliza.
 
     ---
 
-* Startscreen
+* Startscreen (Pronto)
 
 Menu inicial que leva a varias atividades.
 
@@ -89,7 +89,7 @@ Tela que mostra detalhes de uma rota. Pode haver a opção de editar a rota ou n
 
     ---
 
-* RouteManager
+* RouteManager ( -> Laís)
 
 Classe controladora de rotas. Funções do tipo getAllRoutes(), getRoute(String name), deleteRoute(String name), entre outras.
 
@@ -99,7 +99,7 @@ Classe controladora de rotas. Funções do tipo getAllRoutes(), getRoute(String 
 
     ---
 
-* Addresses
+* Addresses (Pronto)
 
 Tela que mostra uma lista com todos os endereços salvos. Ao clicar em um item, leva a AddressEdit com esse item aberto.
 
@@ -109,7 +109,7 @@ Tela que mostra uma lista com todos os endereços salvos. Ao clicar em um item, 
 
     ---
 
-* AddressEdit
+* AddressEdit (Pronto)
 
 Mostra detalhes de um endereço, ou uma tela para criar um novo endereço.
 
@@ -119,7 +119,7 @@ Mostra detalhes de um endereço, ou uma tela para criar um novo endereço.
 
     ---
 
-* AddressManager
+* AddressManager (Pronto)
 
 Classe controladora de endereços. Funções do tipo getAllAddresses(), getAddress(String name), deleteAddress(String name), entre outras.
 
