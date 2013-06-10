@@ -1,0 +1,178 @@
+* Splashscreen
+    
+Inicializa todas as classes, serviços, etc. (Em background)
+No final, inicializa Startscreen e finaliza.
+
+    Criado: sim
+    Push: livre
+    Layout: livre
+
+    ---
+
+* Startscreen
+
+Menu inicial que leva a varias atividades.
+
+    Criado: sim
+    Push: livre
+    Layout: livre
+
+    ---
+
+* GetRoute
+
+Tela inicial de rotas. Oferece opção de uma rota nova ou salva.
+
+    Criado: não
+    Push: restrito
+    Layout: não
+
+    ---
+
+* GetRouteNew
+
+Tela para uma nova rota. Leva à tela que mostra a rota.
+
+    Criado: não
+    Push: restrito
+    Layout: não
+
+    ---
+
+* GetRouteSaved
+
+Tela para uma rota salva. Leva à tela que mostra a rota.
+
+    Criado: não
+    Push: restrito
+    Layout: não
+
+    ---
+
+* Route
+
+Tela que mostra a rota (mapa, cupons, etc).
+
+    Criado: não
+    Push: restrito
+    Layout: não
+
+    ---
+
+* RouteManager
+
+Classe controladora de rotas. Faz acesso ao site da Emdec. Funções do tipo getBusLines() e getFunctionInitialize(), entre outras.
+
+    Criado: não
+    Push: restrito
+    Layout: N/A
+
+    ---
+
+* Routes
+
+Tela que mostra uma lista com todas as rotas salvas. Ao clicar em um item, leva a RouteEdit com esse item aberto.
+
+    Criado: não
+    Push: restrito
+    Layout: não
+
+    ---
+
+* RouteEdit
+
+Tela que mostra detalhes de uma rota. Pode haver a opção de editar a rota ou não (requer internet - não foi decidido ainda).
+
+    Criado: não
+    Push: restrito
+    Layout: não
+
+    ---
+
+* RouteManager
+
+Classe controladora de rotas. Funções do tipo getAllRoutes(), getRoute(String name), deleteRoute(String name), entre outras.
+
+    Criado: não
+    Push: restrito
+    Layout: N/A
+
+    ---
+
+* Addresses
+
+Tela que mostra uma lista com todos os endereços salvos. Ao clicar em um item, leva a AddressEdit com esse item aberto.
+
+    Criado: sim
+    Push: livre
+    Layout: livre
+
+    ---
+
+* AddressEdit
+
+Mostra detalhes de um endereço, ou uma tela para criar um novo endereço.
+
+    Criado: sim
+    Push: livre
+    Layout: livre
+
+    ---
+
+* AddressManager
+
+Classe controladora de endereços. Funções do tipo getAllAddresses(), getAddress(String name), deleteAddress(String name), entre outras.
+
+    Criado: sim
+    Push: livre
+    Layout: N/A
+
+    ---
+
+* Coupons
+
+Tela que mostra uma lista com todos os cupons salvos. Ao clicar em um item, leva a CuponView com esse item aberto.
+
+    Criado: sim
+    Push: restrito
+    Layout: não
+
+    ---
+
+* CouponManager
+
+Classe controladora de cupons. Funções do tipo updateDatabase(), getCoupon(String name), entre outras.
+
+    Criado: sim
+    Push: restrito
+    Layout: N/A
+
+    ---
+
+* CouponService
+
+Serviço para update de cupons. Chama a função updateDatabase() - ou similar - de CouponManager.
+
+    Criado: sim
+    Push: restrito
+    Layout: N/A
+
+    ---
+
+* CouponView
+
+Tela que mostra detalhes de um cupom salvo.
+
+    Criado: não
+    Push: restrito
+    Layout: não
+
+    ---
+
+* Settings
+
+Tela que mostra opções.
+
+    Criado: sim
+    Push: livre
+    Layout: livre
