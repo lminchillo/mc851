@@ -43,7 +43,7 @@ public class RouteManager
 			aux = pref.getString(tag+i, tagEnd);
 			if (aux.equals(tagEnd) || aux.equals(tagNext))
 			{
-				res = "savedAddress"+i;
+				res = tag+i;
 			}
 		}
 		return res;
