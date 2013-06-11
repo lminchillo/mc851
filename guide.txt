@@ -68,7 +68,7 @@ Tela que mostra detalhes de uma rota. Pode haver a opção de editar a rota ou n
 
     ---
 
-* Coupons
+* Coupons ( -> Celso)
 
 Tela que mostra uma lista com todos os cupons salvos. Ao clicar em um item, leva a CuponView com esse item aberto.
 
@@ -78,7 +78,7 @@ Tela que mostra uma lista com todos os cupons salvos. Ao clicar em um item, leva
 
     ---
 
-* CouponManager
+* CouponManager ( -> Alexandre)
 
 Classe controladora de cupons. Funções do tipo updateDatabase(), getCoupon(String name), entre outras.
 
@@ -88,7 +88,7 @@ Classe controladora de cupons. Funções do tipo updateDatabase(), getCoupon(Str
 
     ---
 
-* CouponService
+* CouponService ( -> Alexandre)
 
 Serviço para update de cupons. Chama a função updateDatabase() - ou similar - de CouponManager.
 
@@ -98,7 +98,7 @@ Serviço para update de cupons. Chama a função updateDatabase() - ou similar -
 
     ---
 
-* CouponView
+* CouponView ( -> Celso)
 
 Tela que mostra detalhes de um cupom salvo.
 
@@ -108,7 +108,7 @@ Tela que mostra detalhes de um cupom salvo.
 
     ---
 
-* Settings
+* Settings (Pronto)
 
 Tela que mostra opções.
 
