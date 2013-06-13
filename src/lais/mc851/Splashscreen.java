@@ -33,6 +33,9 @@ public class Splashscreen extends Activity
 				//Initialize RouteManager
 				new RouteManager(pref, e);
 				
+				//Initialize RouteGetter
+				new RouteGetter();
+				
 				return null;
 			}
 			

@@ -6,12 +6,15 @@ import org.jsoup.nodes.Element;
 
 public class RouteGetter
 {
+	private static boolean timedOut = false;
+	
 	public RouteGetter()
 	{
-		String[] origin = {"Rua Alcides Soares Cunha","240","Cidade Universitaria"};
-		String[] destination = {"Rua Luiz Vicentim","100","Barao Geraldo"};
-		
-		System.out.println(getData(origin, destination)[1]);
+		//String[] origin = {"Rua Alcides Soares Cunha","240","Cidade Universitaria"};
+		//String[] destination = {"Rua Luiz Vicentim","100","Barao Geraldo"};
+		//
+		//String [] aux = getData(origin, destination);
+		//System.out.println(aux[0]);
 	}
 	
 	public static String[] getData(String[] origin, String[] destination)
@@ -26,11 +29,19 @@ public class RouteGetter
 		destination[0] = connectionAux[1][1];
 		destination[2] = connectionAux[1][2];
 		url = setSecondUrl(connectionAux[0][0], connectionAux[1][0], origin, destination);
-		url = connectToSecondUrl(url);
+		String[] aux = connectToSecondUrl(url);
+		url = aux[1];
+		busInfo = aux[0];
 		initializeInfo = connectToThirdUrl(url);
 		
 		data[0] = busInfo;
 		data[1] = initializeInfo;
+		if (timedOut)
+		{
+			timedOut = false;
+			data[0] = "timedOut";
+			data[1] = "timedOut";
+		}
 		return data;
 	}
 	
@@ -67,7 +78,6 @@ public class RouteGetter
 		try
 		{
 			Document doc = Jsoup.connect(url).get();
-			System.out.println("111111111111111111111111111111111111111111111111111111\n"+doc);
 			
 			for (Element e:doc.getElementsByTag("input"))
 			{
@@ -105,7 +115,8 @@ public class RouteGetter
 		catch (Exception e)
 		{
 			e.printStackTrace();
-			System.out.println("Parser: erro ao pegar dados da primeira url");
+			System.out.println("Parser: erro ao pegar dados da primeira url - "+e.getMessage());
+			timedOut = true;
 		}
 		
 		return data;
@@ -137,14 +148,32 @@ public class RouteGetter
 		return res;
 	}
 	
-	private static String connectToSecondUrl(String url)
+	private static String[] connectToSecondUrl(String url)
 	{
-		String data="";
+		String[] data = {"",""};
 		
 		try
 		{
 			Document doc = Jsoup.connect(url).post();
-			System.out.println("222222222222222222222222222222222222222222222222222222\n"+doc);
+			
+			Element e = doc.getElementById("listLabel");
+			for (Element e2:e.getElementsByTag("div"))
+			{
+				if (e2.className().equals("bgBranco pd5") || e2.className().equals("pd5"))
+				{
+					String aux = e2.getElementsByTag("label").first().getElementsByTag("strong").first().text().trim();
+					aux += (e2.getElementsByTag("label").first().getElementsByTag("a").first().text().trim());
+					if (aux.contains("REF.:")) aux = aux.substring(0, aux.indexOf("REF.:"));
+					if (aux.contains("ALTURA")) aux = aux.replace("ALTURA","");
+					while (aux.contains((char)160+"")) aux = aux.replace((char)160+""," ");
+					while (aux.contains("\t")) aux = aux.replace("\t"," ");
+					while (aux.contains("  ")) aux = aux.replace("  "," ");
+					
+					data[0] += "\n" + aux;
+				}
+			}
+			
+			data[0] = data[0].substring(1);
 			
 			if (doc.html().contains("$(\"#mapFrame\").attr(\"src\", "))
 			{
@@ -157,7 +186,7 @@ public class RouteGetter
 				link = link.replace(" ", "%20");
 				link = "http://www.emdec.com.br/ABusInf/" + link;
 
-				data = link;
+				data[1] = link;
 			}
 			else
 			{
@@ -167,7 +196,8 @@ public class RouteGetter
 		catch (Exception e)
 		{
 			e.printStackTrace();
-			System.out.println("Parser: erro ao procurar link para função initialize");
+			System.out.println("Parser: erro ao procurar link para função initialize - "+e.getMessage());
+			timedOut = true;
 		}
 		
 		return data;
@@ -179,15 +209,14 @@ public class RouteGetter
 		
 		try
 		{
-			Document doc = Jsoup.connect(url).get();
-			System.out.println("333333333333333333333333333333333333333333333333333333\n"+doc);
-			
+			Document doc = Jsoup.connect(url).get();			
 			initialize = doc.html();
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
-			System.out.println("Parser: erro ao pegar função initialize");
+			System.out.println("Parser: erro ao pegar função initialize - "+e.getMessage());
+			timedOut = true;
 		}
 		
 		return initialize;
