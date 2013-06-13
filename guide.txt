@@ -38,16 +38,6 @@ Tela que mostra a rota (mapa, cupons, etc).
 
     ---
 
-* RouteGetter ( -> Laís)
-
-Classe controladora de rotas. Faz acesso ao site da Emdec. Funções do tipo getBusLines() e getFunctionInitialize(), entre outras.
-
-    Criado: não
-    Push: restrito
-    Layout: N/A
-
-    ---
-
 * Routes
 
 Tela que mostra uma lista com todas as rotas salvas. Ao clicar em um item, leva a RouteEdit com esse item aberto.
@@ -175,4 +165,14 @@ Classe controladora de rotas. Funções do tipo getAllRoutes(), getRoute(String 
 
     Criado: sim
     Push: livre
+    Layout: N/A
+
+    ---
+
+* RouteGetter (Pronto)
+
+Classe controladora de rotas. Faz acesso ao site da Emdec. Funções do tipo getBusLines() e getFunctionInitialize(), entre outras.
+
+    Criado: não
+    Push: restrito
     Layout: N/A
