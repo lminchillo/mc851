@@ -1,14 +1,89 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
     tools:context=".StartScreen" >
 
-    <ListView
-        android:id="@+id/startscreen_listview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    <!-- Colocar logotipo ou algo assim -->
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/app_name"
+        android:textColor="#ffeeeeee"
+        android:textSize="40sp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/startscreen_buttonTakeBus"
+            style="@style/ButtonStyleGreen"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:layout_weight="2"
+            android:onClick="onClickTakeBus"
+            android:text="@string/startscreen_takeBus"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/startscreen_buttonSavedRoutes"
+            style="@style/ButtonStyleBlue"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:onClick="onClickSavedRoutes"
+            android:text="@string/startscreen_savedRoutes"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/startscreen_buttonSavedAddresses"
+            style="@style/ButtonStyleBlue"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:onClick="onClickSavedAddresses"
+            android:text="@string/startscreen_savedAddresses"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/startscreen_buttonMyCoupons"
+            style="@style/ButtonStyleBlue"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:onClick="onClickMyCoupons"
+            android:text="@string/startscreen_myCoupons"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/startscreen_buttonSettings"
+            style="@style/ButtonStyleBlue"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:onClick="onClickConfig"
+            android:text="@string/startscreen_config"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+</LinearLayout>
