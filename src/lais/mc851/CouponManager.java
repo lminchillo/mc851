@@ -1,50 +1,72 @@
 package lais.mc851;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Node;
+import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
-public class CouponManager
-{
-	private static final String url = "http://www.students.ic.unicamp.br/~ra102986/MC851/";
+public class CouponManager {
+	public static final String COUPON_KEY = "COUPONS_PREFS_HTML";
 	
-	public CouponManager()
-	{
-		viewCoupons();
+	public CouponManager() {}
+	
+	public static void updateCoupons(Document d) {
+		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(QualBusao.getAppContext());
+		pref.edit().putString(COUPON_KEY, d.html()).commit();
 	}
 	
-	public static void viewCoupons()
-	{
-		try
-		{
-			Document document = Jsoup.connect(url).get();
-			String[][] coupons = new String[document.getElementsByTag("a").size()][];
-			int i=0,j=0;
-	    	for (Node n : document.getElementsByTag("a"))
-	    	{
-	    		//System.out.println(n.attr("item").toString());
+	public static ArrayList<ArrayList<String>> getAllCoupons() {
+		try {		
+			SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(QualBusao.getAppContext());
+			Document document = new Document(pref.getString(COUPON_KEY, ""));
+			ArrayList<ArrayList<String>> coupons = new ArrayList<ArrayList<String>>();
+			
+			int i = 0;
+			for (Node n : document.getElementsByTag("a")) {
 	    		String[] aux = n.attr("item").toString().split("@");
-	    		coupons[i] = new String[4];
-	    		for (String s : aux)
-	    		{
-	    			//System.out.println(s);
-	    			coupons[i][j] = s;
-	    			j++;
+	    		coupons.add(new ArrayList<String>(4));
+	    		
+	    		for (String s : aux) {
+	    			coupons.get(i).add(s);
 	    		}
-	    		i++; j=0;
+	    		
+	    		i++;
 	    	}
-	    	
-	    	/*for (i=0;i<coupons.length;i++)
-	    	{
-	    		System.out.println(coupons[i][0]);
-	    		System.out.println(coupons[i][1]);
-	    		System.out.println(coupons[i][2]);
-	    		System.out.println(coupons[i][3]);
-	    	}*/
+			
+			return coupons;
 		}
-		catch (Exception e)
-		{
+		catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return null;
+	}
+	
+	public static ArrayList<String> getCoupon(String name) {
+		try {
+			SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(QualBusao.getAppContext());
+			Document document = new Document(pref.getString(COUPON_KEY, ""));
+	    	ArrayList<String> coupon = new ArrayList<String>(4);
+			
+			for (Node n : document.getElementsByTag("a")) {
+	    		String[] aux = n.attr("item").toString().split("@");
+	    		
+	    		if (aux[0] == name) {
+	    			for (String s : aux) {
+		    			coupon.add(s);
+		    		}
+	    			
+	    			return coupon;
+	    		}
+	    	}
+			
+			return coupon;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 }

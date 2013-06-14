@@ -3,7 +3,10 @@ package lais.mc851;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningServiceInfo;
 import android.content.Intent;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
@@ -27,6 +30,20 @@ public class Splashscreen extends Activity
 				//Initialize AddressManager
 				new AddressManager(pref,e);
 				
+				//Initialize CouponService
+				boolean running = false;
+				ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+			    for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+			        if (CouponService.class.getName().equals(service.service.getClassName())) {
+			            running = true;
+			        }
+			    }
+			    
+			    if (!running) {
+			    	Intent intent = new Intent(getBaseContext(), CouponService.class);
+			    	startService(intent);
+			    }
+			    
 				//Initialize CouponManager
 				new CouponManager();
 				
