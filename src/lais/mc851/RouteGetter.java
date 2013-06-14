@@ -6,8 +6,6 @@ import org.jsoup.nodes.Element;
 
 public class RouteGetter
 {
-	private static boolean timedOut = false;
-	
 	public RouteGetter()
 	{
 		//String[] origin = {"Rua Alcides Soares Cunha","240","Cidade Universitaria"};
@@ -36,12 +34,6 @@ public class RouteGetter
 		
 		data[0] = busInfo;
 		data[1] = initializeInfo;
-		if (timedOut)
-		{
-			timedOut = false;
-			data[0] = "timedOut";
-			data[1] = "timedOut";
-		}
 		return data;
 	}
 	
@@ -116,7 +108,6 @@ public class RouteGetter
 		{
 			e.printStackTrace();
 			System.out.println("Parser: erro ao pegar dados da primeira url - "+e.getMessage());
-			timedOut = true;
 		}
 		
 		return data;
@@ -197,7 +188,6 @@ public class RouteGetter
 		{
 			e.printStackTrace();
 			System.out.println("Parser: erro ao procurar link para função initialize - "+e.getMessage());
-			timedOut = true;
 		}
 		
 		return data;
@@ -216,7 +206,6 @@ public class RouteGetter
 		{
 			e.printStackTrace();
 			System.out.println("Parser: erro ao pegar função initialize - "+e.getMessage());
-			timedOut = true;
 		}
 		
 		return initialize;
