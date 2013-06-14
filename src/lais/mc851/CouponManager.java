@@ -1,33 +1,46 @@
 package lais.mc851;
 
+import java.util.ArrayList;
+
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Node;
-import java.util.ArrayList;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
-public class CouponManager {
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+
+public class CouponManager
+{
+	private static SharedPreferences pref = null;
+	private static Editor editor = null;
 	public static final String COUPON_KEY = "COUPONS_PREFS_HTML";
 	
-	public CouponManager() {}
-	
-	public static void updateCoupons(Document d) {
-		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(QualBusao.getAppContext());
-		pref.edit().putString(COUPON_KEY, d.html()).commit();
+	public CouponManager(SharedPreferences sp, Editor e)
+	{
+		pref = sp;
+		editor = e;
 	}
 	
-	public static ArrayList<ArrayList<String>> getAllCoupons() {
-		try {		
-			SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(QualBusao.getAppContext());
+	public static void updateCoupons(Document d)
+	{
+		editor.putString(COUPON_KEY, d.html());
+		editor.commit();
+	}
+	
+	public static ArrayList<ArrayList<String>> getAllCoupons()
+	{
+		try
+		{
 			Document document = new Document(pref.getString(COUPON_KEY, ""));
 			ArrayList<ArrayList<String>> coupons = new ArrayList<ArrayList<String>>();
 			
 			int i = 0;
-			for (Node n : document.getElementsByTag("a")) {
+			for (Node n : document.getElementsByTag("a"))
+			{
 	    		String[] aux = n.attr("item").toString().split("@");
 	    		coupons.add(new ArrayList<String>(4));
 	    		
-	    		for (String s : aux) {
+	    		for (String s : aux)
+	    		{
 	    			coupons.get(i).add(s);
 	    		}
 	    		
@@ -36,24 +49,29 @@ public class CouponManager {
 			
 			return coupons;
 		}
-		catch (Exception e) {
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 		
 		return null;
 	}
 	
-	public static ArrayList<String> getCoupon(String name) {
-		try {
-			SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(QualBusao.getAppContext());
+	public static ArrayList<String> getCoupon(String name)
+	{
+		try
+		{
 			Document document = new Document(pref.getString(COUPON_KEY, ""));
 	    	ArrayList<String> coupon = new ArrayList<String>(4);
 			
-			for (Node n : document.getElementsByTag("a")) {
+			for (Node n : document.getElementsByTag("a"))
+			{
 	    		String[] aux = n.attr("item").toString().split("@");
 	    		
-	    		if (aux[0] == name) {
-	    			for (String s : aux) {
+	    		if (aux[0] == name)
+	    		{
+	    			for (String s : aux)
+	    			{
 		    			coupon.add(s);
 		    		}
 	    			
@@ -63,7 +81,8 @@ public class CouponManager {
 			
 			return coupon;
 		}
-		catch (Exception e) {
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 		

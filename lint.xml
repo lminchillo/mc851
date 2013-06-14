@@ -6,4 +6,8 @@
     <issue id="ContentDescription">
         <ignore path="res/layout/activity_splashscreen.xml" />
     </issue>
+    <issue id="MissingTranslation" severity="ignore" />
+    <issue id="SelectableText">
+        <ignore path="res\layout\listview_item_simple.xml" />
+    </issue>
 </lint>

@@ -1,6 +1,10 @@
 package lais.mc851;
 
 import java.util.ArrayList;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 
 public class StartScreen extends Activity
 {
@@ -44,7 +45,7 @@ public class StartScreen extends Activity
 				position++;
 				if (position==1) startActivity(new Intent(getApplicationContext(),Route.class));
 				//if (position==2) startActivity(new Intent(getApplicationContext(),Routes.class));
-				if (position==3) startActivity(new Intent(getApplicationContext(),Addresses.class));
+				else if (position==3) startActivity(new Intent(getApplicationContext(),Addresses.class));
 				else if (position==4) startActivity(new Intent(getApplicationContext(),Coupons.class));
 				else if (position==5) startActivity(new Intent(getApplicationContext(),Settings.class));
 			}
@@ -61,6 +62,7 @@ public class StartScreen extends Activity
 			inflater = LayoutInflater.from(getApplicationContext());
 		}
 		
+		@SuppressWarnings("deprecation")
 		@Override
 		public View getView (int position, View convertView, ViewGroup parent) 
 		{

@@ -5,12 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-public class BootReceiver extends BroadcastReceiver {
-	
+public class BootReceiver extends BroadcastReceiver
+{
 	@Override
-	public void onReceive(Context context, Intent callingIntent) {
-		Intent intent = new Intent(context, CouponService.class);
-		context.startService(intent);
+	public void onReceive(Context context, Intent callingIntent)
+	{
+		context.startService(new Intent(context, CouponService.class));
 		
 		Log.d("BootReceiver", "onReceivedDone");
 	}
