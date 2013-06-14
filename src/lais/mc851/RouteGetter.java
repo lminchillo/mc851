@@ -104,7 +104,7 @@ public class RouteGetter
 		
 			}.execute();
 			
-			Document doc = task.get(3000, TimeUnit.MILLISECONDS);
+			Document doc = task.get(5000, TimeUnit.MILLISECONDS);
 			
 			for (Element e:doc.getElementsByTag("input"))
 			{
@@ -200,7 +200,7 @@ public class RouteGetter
 		
 			}.execute();
 			
-			Document doc = task.get(3000, TimeUnit.MILLISECONDS);
+			Document doc = task.get(5000, TimeUnit.MILLISECONDS);
 			
 			Element e = doc.getElementById("listLabel");
 			for (Element e2:e.getElementsByTag("div"))
@@ -274,14 +274,13 @@ public class RouteGetter
 		
 			}.execute();
 			
-			Document doc = task.get(3000, TimeUnit.MILLISECONDS);
+			Document doc = task.get(5000, TimeUnit.MILLISECONDS);
 			
 			initialize = doc.html();
 			if (initialize.contains("<html>"))
 			{
 				initialize = initialize.substring(initialize.indexOf("function initialize()"));
 			}
-			System.out.println(initialize);
 		}
 		catch (Exception e)
 		{
