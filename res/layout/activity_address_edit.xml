@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
-        android:text="@string/address_edit_name" />
+        android:text="@string/addressEdit_name" />
 
     <EditText
         android:id="@+id/address_edit_name_edit"
@@ -21,7 +21,7 @@
         android:layout_below="@id/address_edit_name"
         android:layout_marginLeft="20dp"
         android:inputType="textCapSentences"
-        android:hint="@string/address_edit_name_new"
+        android:hint="@string/addressEdit_nameNew"
         android:singleLine="true" />
 
     <TextView
@@ -31,7 +31,7 @@
         android:layout_below="@id/address_edit_name_edit"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="23dp"
-        android:text="@string/address_edit_address" />
+        android:text="@string/addressEdit_address" />
     
     <TextView
         android:id="@+id/address_edit_address_text"
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/address_edit_address_title"
         android:layout_marginLeft="20dp"
-        android:text="@string/address_edit_none" />
+        android:text="@string/none" />
 
     <Button
         android:id="@+id/address_edit_gps"
@@ -48,7 +48,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="20dp"
         android:layout_below="@id/address_edit_address_text"
-        android:text="@string/address_edit_gps" />
+        android:text="@string/gps" />
 
     <Button
         android:id="@+id/address_edit_type"
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/address_edit_address_text"
         android:layout_toRightOf="@id/address_edit_gps"
-        android:text="@string/address_edit_type" />
+        android:text="@string/type" />
 
     <Button
         android:id="@+id/address_edit_cancel"
@@ -65,7 +65,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="30dp"
-        android:text="@string/address_edit_cancel" />
+        android:text="@string/cancel" />
 
     <Button
         android:id="@+id/address_edit_delete"
@@ -74,7 +74,7 @@
         android:layout_alignParentBottom="true"
 		android:layout_alignParentRight="true"
         android:layout_marginRight="30dp"
-        android:text="@string/address_edit_delete" />
+        android:text="@string/delete" />
 
     <Button
         android:id="@+id/address_edit_save"
@@ -82,6 +82,6 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_above="@id/address_edit_cancel"
-        android:text="@string/address_edit_save" />
+        android:text="@string/save_changes" />
 
 </RelativeLayout>

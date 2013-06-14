@@ -1,35 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- General app strings -->
-    <string name="app_name">MC851Project</string>
+    <!-- General strings -->
+    <string name="app_name">Qual Busão?</string>
+    <string name="none">&lt;Nenhum&gt;</string>
+    <string name="save_changes">Salvar Alterações</string>
+    <string name="gps">GPS</string>
+    <string name="type">Digitar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="delete">Deletar</string>
+    <string name="confirm">Continuar</string>
 
     <!-- StartScreen strings -->
-    <string name="startscreen_take_bus">Pegar ônibus!</string>
-    <string name="startscreen_saved_routes">Rotas salvas</string>
-    <string name="startscreen_saved_adresses">Endereços salvos</string>
-    <string name="startscreen_my_coupons">Meus cupons</string>
+    <string name="startscreen_takeBus">Pegar ônibus!</string>
+    <string name="startscreen_savedRoutes">Rotas salvas</string>
+    <string name="startscreen_savedAddresses">Endereços salvos</string>
+    <string name="startscreen_myCoupons">Meus cupons</string>
     <string name="startscreen_config">Configurações</string>
 
     <!-- Settings strings -->
+    <string name="settings_title">Configurações</string>
     <string name="settings_notifications">Enviar notificações de novos cupons</string>
     <string name="settings_sounds">Tocar som ao chegar no destino</string>
 
     <!-- Addresses strings -->
-    <string name="addresses_new_address">Novo endereço</string>
-    <string name="addresses_no_addresses">Não há endereços salvos!\nAdicione um novo endereço usando o botão abaixo</string>
+    <string name="addresses_title">Endereços Salvos</string>
+    <string name="addresses_newAddress">Novo endereço</string>
+    <string name="addresses_noAddresses">Não há endereços salvos!\nAdicione um novo endereço usando o botão abaixo</string>
 
     <!-- AddressEdit strings -->
-    <string name="address_edit_name">Nome:</string>
-    <string name="address_edit_name_new">Digite o nome&#8230;</string>
-    <string name="address_edit_address">Endereço:</string>
-    <string name="address_edit_address_new">Digite o endereço</string>
-    <string name="address_edit_none">&lt;Nenhum&gt;</string>
-    <string name="address_edit_gps">GPS</string>
-    <string name="address_edit_type">Digitar</string>
-    <string name="address_edit_save">Salvar alterações</string>
-    <string name="address_edit_cancel">Cancelar</string>
-    <string name="address_edit_delete">Deletar</string>
+    <string name="addressEdit_title">Endereços Salvos</string>
+    <string name="addressEdit_name">Nome:</string>
+    <string name="addressEdit_nameNew">Digite o nome&#8230;</string>
+    <string name="addressEdit_address">Endereço:</string>
+    <string name="addressEdit_addressNew">Digite o endereço</string>
+
+    <!-- Coupons strings -->
+    <string name="coupons_title">Meus Cupons</string>
+    <string name="coupons_noCoupons">Você ainda não possui cupons!</string>
+
+    <!-- CouponDetails strings -->
+    <string name="couponDetails_title">Meus Cupons</string>
+    <string name="couponDetails_delete">Deletar Cupom</string>
+
+    <!-- Routes strings -->
+    <string name="routes_title">Rotas Salvas</string>
+    <string name="routes_newRoute">Nova Rota</string>
+    <string name="routes_noRoutes">Não há rotas salvas!\nAdicine uma nova rota usando o botão abaixo</string>
+
+    <!-- RouteEdit strings -->
+    <string name="routeEdit_title">Rotas Salvas</string>
+    <string name="routeEdit_name">Nome:</string>
+    <string name="routeEdit_nameNew">Digite o nome&#8230;</string>
+    <string name="routeEdit_addressSource">Endereço de Origem:</string>
+    <string name="routeEdit_addressDestination">Endereço de Destino:</string>
+    <string name="routeEdit_addressNew">Digite o endereço</string>
+
+    <!-- TakeBus strings -->
+    <string name="takeBus_title">Pegar Ônibus!</string>
+    <string name="takeBus_newRoute">Nova Rota</string>
+    <string name="takeBus_savedRoute">Usar Rota Salva</string>
+
+    <!-- TakeBusNewRoute strings -->
+    <string name="takeBusNewRoute_title">Nova Rota</string>
+    <string name="takeBusNewRoute_source">Origem:</string>
+    <string name="takeBusNewRoute_destination">Destino:</string>
+    <string name="takeBusNewRoute_save">Salvar Rota?</string>
+    <string name="takeBusNewRoute_saved_addr">End. Salvo</string>
+    <string name="takeBusNewRoute_name_route">Nome para a Rota:</string>
+    <string name="takeBusNewRoute_name">Digite o nome&#8230;</string>
 
     <!--  -->
 

@@ -27,10 +27,10 @@ public class StartScreen extends Activity
 		setContentView(R.layout.activity_start_screen);
 		
 		arrayList = new ArrayList<String>();
-		arrayList.add(getResources().getString(R.string.startscreen_take_bus));
-		arrayList.add(getResources().getString(R.string.startscreen_saved_routes));
-		arrayList.add(getResources().getString(R.string.startscreen_saved_adresses));
-		arrayList.add(getResources().getString(R.string.startscreen_my_coupons));
+		arrayList.add(getResources().getString(R.string.startscreen_takeBus));
+		arrayList.add(getResources().getString(R.string.startscreen_savedRoutes));
+		arrayList.add(getResources().getString(R.string.startscreen_savedAddresses));
+		arrayList.add(getResources().getString(R.string.startscreen_myCoupons));
 		arrayList.add(getResources().getString(R.string.startscreen_config));
 		
 		ListView listView = (ListView) findViewById(R.id.startscreen_listview);

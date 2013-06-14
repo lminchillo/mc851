@@ -332,7 +332,7 @@ public class AddressEdit extends Activity
 	    
 		Dialog dialog = new AlertDialog.Builder(AddressEdit.this)
 	        //.setIconAttribute(android.R.attr.alertDialogIcon)
-	        .setTitle(getResources().getString(R.string.address_edit_address_new))
+	        .setTitle(getResources().getString(R.string.addressEdit_addressNew))
 	        .setView(textEntryView)
 	        .setPositiveButton("Ok", new DialogInterface.OnClickListener()
 	        {
@@ -343,7 +343,7 @@ public class AddressEdit extends Activity
 	                getLocation(addressValueTemp);
 	            }
 	        })
-	        .setNegativeButton(getResources().getString(R.string.address_edit_cancel), new DialogInterface.OnClickListener()
+	        .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()
 	        {
 	            public void onClick(DialogInterface dialog, int whichButton)
 	            {
