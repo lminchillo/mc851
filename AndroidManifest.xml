@@ -68,7 +68,7 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBD0UOo7C051WbET61pfuIDQJgyMuY9k3M"
         />
-        
+
         <service android:name=".CouponService" />
         <receiver android:name=".BootReceiver" android:enabled="true" android:exported="false">
             <intent-filter>

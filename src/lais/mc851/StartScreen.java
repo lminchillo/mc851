@@ -42,7 +42,7 @@ public class StartScreen extends Activity
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
 				position++;
-				//if (position==1) startActivity(new Intent(getApplicationContext(),GetRoute.class));
+				if (position==1) startActivity(new Intent(getApplicationContext(),Route.class));
 				//if (position==2) startActivity(new Intent(getApplicationContext(),Routes.class));
 				if (position==3) startActivity(new Intent(getApplicationContext(),Addresses.class));
 				else if (position==4) startActivity(new Intent(getApplicationContext(),Coupons.class));

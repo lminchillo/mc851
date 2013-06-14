@@ -18,7 +18,7 @@
     <!-- Addresses strings -->
     <string name="addresses_new_address">Novo endereço</string>
     <string name="addresses_no_addresses">Não há endereços salvos!\nAdicione um novo endereço usando o botão abaixo</string>
-    
+
     <!-- AddressEdit strings -->
     <string name="address_edit_name">Nome:</string>
     <string name="address_edit_name_new">Digite o nome&#8230;</string>
@@ -30,7 +30,11 @@
     <string name="address_edit_save">Salvar alterações</string>
     <string name="address_edit_cancel">Cancelar</string>
     <string name="address_edit_delete">Deletar</string>
-    
+
     <!--  -->
+
+    <string name="title_activity_route">Route</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

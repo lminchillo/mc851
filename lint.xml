@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
     <issue id="CommitPrefEdits">
-        <ignore path="src\lais\mc851\Splashscreen.java" />
+        <ignore path="src/lais/mc851/Splashscreen.java" />
     </issue>
     <issue id="ContentDescription">
-        <ignore path="res\layout\activity_splashscreen.xml" />
+        <ignore path="res/layout/activity_splashscreen.xml" />
     </issue>
 </lint>
