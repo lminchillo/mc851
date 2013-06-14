@@ -1,10 +1,10 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources>
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="android:Theme.Light.NoTitleBar">
+    <style name="AppBaseTheme" parent="android:Theme.Holo.NoActionBar">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
@@ -15,24 +15,6 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    </style>
-
-    <!-- Button styles -->
-    <style name="ButtonMetro" parent="@android:style/Widget.Button">
-        <item name="android:textColor">#ffffff</item>
-        <item name="android:textSize">24sp</item>
-    </style>
-
-    <style name="ButtonStyleGray" parent="@style/ButtonMetro">
-        <item name="android:background">@drawable/button_metro_gray</item>
-    </style>
-
-    <style name="ButtonStyleGreen" parent="@style/ButtonMetro">
-        <item name="android:background">@drawable/button_metro_green</item>
-    </style>
-
-    <style name="ButtonStyleBlue" parent="@style/ButtonMetro">
-        <item name="android:background">@drawable/button_metro_blue</item>
     </style>
 
 </resources>
