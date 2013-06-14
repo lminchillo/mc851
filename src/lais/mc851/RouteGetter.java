@@ -1,18 +1,18 @@
 package lais.mc851;
 
+import java.util.concurrent.TimeUnit;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+
+import android.os.AsyncTask;
 
 public class RouteGetter
 {
 	public RouteGetter()
 	{
-		//String[] origin = {"Rua Alcides Soares Cunha","240","Cidade Universitaria"};
-		//String[] destination = {"Rua Luiz Vicentim","100","Barao Geraldo"};
-		//
-		//String [] aux = getData(origin, destination);
-		//System.out.println(aux[0]);
+		
 	}
 	
 	public static String[] getData(String[] origin, String[] destination)
@@ -22,18 +22,33 @@ public class RouteGetter
 		
 		String url = setFirstUrl(origin, destination);
 		String[][] connectionAux = connectToFirstUrl(url);
+		if (connectionAux[0][1].length()<1 || connectionAux[1][1].length()<1)
+		{
+			System.out.println("Primeira conexao - tentando novamente");
+			connectionAux = connectToFirstUrl(url);
+		}
 		origin[0] = connectionAux[0][1];
 		origin[2] = connectionAux[0][2];
 		destination[0] = connectionAux[1][1];
 		destination[2] = connectionAux[1][2];
 		url = setSecondUrl(connectionAux[0][0], connectionAux[1][0], origin, destination);
 		String[] aux = connectToSecondUrl(url);
+		if (aux[0].length()<1 || aux[1].length()<1)
+		{
+			System.out.println("Segunda conexao - tentando novamente");
+			aux = connectToSecondUrl(url);
+		}
 		url = aux[1];
 		busInfo = aux[0];
 		initializeInfo = connectToThirdUrl(url);
-		
+		if (initializeInfo.length()<1)
+		{
+			System.out.println("Terceira conexao - tentando novamente");
+			initializeInfo = connectToThirdUrl(url);
+		}
 		data[0] = busInfo;
 		data[1] = initializeInfo;
+		System.out.println(initializeInfo);
 		return data;
 	}
 	
@@ -61,7 +76,7 @@ public class RouteGetter
 		return res;
 	}
 	
-	private static String[][] connectToFirstUrl(String url)
+	private static String[][] connectToFirstUrl(final String url)
 	{
 		String[][] data = new String[2][];
 		data[0] = new String[3];
@@ -69,7 +84,27 @@ public class RouteGetter
 		
 		try
 		{
-			Document doc = Jsoup.connect(url).get();
+			AsyncTask<Void, Void, Document> task = new AsyncTask<Void, Void, Document>()
+			{
+				@Override
+				protected Document doInBackground(Void... params)
+				{
+					try
+					{
+						Document doc = Jsoup.connect(url).get();
+						return doc;
+					}
+					catch (Exception e)
+					{
+						e.printStackTrace();
+						System.out.println("Parser: erro ao pegar dados da primeira url - "+e.getMessage());
+						return null;
+					}
+				}
+		
+			}.execute();
+			
+			Document doc = task.get(3000, TimeUnit.MILLISECONDS);
 			
 			for (Element e:doc.getElementsByTag("input"))
 			{
@@ -139,13 +174,33 @@ public class RouteGetter
 		return res;
 	}
 	
-	private static String[] connectToSecondUrl(String url)
+	private static String[] connectToSecondUrl(final String url)
 	{
 		String[] data = {"",""};
 		
 		try
 		{
-			Document doc = Jsoup.connect(url).post();
+			AsyncTask<Void, Void, Document> task = new AsyncTask<Void, Void, Document>()
+			{
+				@Override
+				protected Document doInBackground(Void... params)
+				{
+					try
+					{
+						Document doc = Jsoup.connect(url).get();
+						return doc;
+					}
+					catch (Exception e)
+					{
+						e.printStackTrace();
+						System.out.println("Parser: erro ao procurar link para função initialize - "+e.getMessage());
+						return null;
+					}
+				}
+		
+			}.execute();
+			
+			Document doc = task.get(3000, TimeUnit.MILLISECONDS);
 			
 			Element e = doc.getElementById("listLabel");
 			for (Element e2:e.getElementsByTag("div"))
@@ -193,14 +248,40 @@ public class RouteGetter
 		return data;
 	}
 	
-	private static String connectToThirdUrl(String url)
+	private static String connectToThirdUrl(final String url)
 	{
 		String initialize = "";
 		
 		try
 		{
-			Document doc = Jsoup.connect(url).get();			
+			AsyncTask<Void, Void, Document> task = new AsyncTask<Void, Void, Document>()
+			{
+				@Override
+				protected Document doInBackground(Void... params)
+				{
+					try
+					{
+						Document doc = Jsoup.connect(url).get();
+						return doc;
+					}
+					catch (Exception e)
+					{
+						e.printStackTrace();
+						System.out.println("Parser: erro ao pegar função initialize - "+e.getMessage());
+						return null;
+					}
+				}
+		
+			}.execute();
+			
+			Document doc = task.get(3000, TimeUnit.MILLISECONDS);
+			
 			initialize = doc.html();
+			if (initialize.contains("<html>"))
+			{
+				initialize = initialize.substring(initialize.indexOf("function initialize()"));
+			}
+			System.out.println(initialize);
 		}
 		catch (Exception e)
 		{
