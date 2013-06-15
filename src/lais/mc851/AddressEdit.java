@@ -2,7 +2,6 @@ package lais.mc851;
 
 import java.util.List;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,9 +11,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,8 +22,6 @@ import android.widget.Toast;
 
 public class AddressEdit extends Activity
 {
-	private final static String TAG = "AddressEdit";
-	
 	Button gps = null;
 	Button type = null;
 	Button save = null;
@@ -65,7 +60,6 @@ public class AddressEdit extends Activity
 		finish();
 	}
 	
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
 	private void getSavedAddress()
 	{
 		Bundle b = getIntent().getExtras();
@@ -75,9 +69,9 @@ public class AddressEdit extends Activity
 			savedAddressName = b.getString("addressName", "");
 			savedAddressValue = b.getString("addressValue", "");
 			
-			addressNameEdit = (EditText) findViewById(R.id.addressEdit_editTextName);
+			addressNameEdit = (EditText) findViewById(R.id.address_edit_name_edit);
 			addressNameEdit.setText(savedAddressName);
-			addressView = (TextView) findViewById(R.id.addressEdit_address_text);
+			addressView = (TextView) findViewById(R.id.address_edit_address_text);
 			addressView.setText(getStreetAddress(savedAddressValue));
 			
 			addressName = savedAddressName;
@@ -91,35 +85,31 @@ public class AddressEdit extends Activity
 	
 	private void initializeButtons()
 	{
-		gps = (Button) findViewById(R.id.addressEdit_buttonGps);
+		gps = (Button) findViewById(R.id.address_edit_gps);
 		gps.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
-				Log.d(TAG, "clicked on GPS");
 				getAddress(getLastBestLocation());
 				System.out.println("Location: "+addressStreetValue);
 			}
 		});
-		type = (Button) findViewById(R.id.addressEdit_buttonType);
+		type = (Button) findViewById(R.id.address_edit_type);
 		type.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
-				Log.d(TAG, "clicked on Type");
 				showDialog();
 			}
 		});
-		save = (Button) findViewById(R.id.addressEdit_buttonSave);
+		save = (Button) findViewById(R.id.address_edit_save);
 		save.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
-				Log.d(TAG, "clicked on Save");
-				
 				if (saveChanges())
 				{
 					if (!savedAddress)
@@ -164,14 +154,12 @@ public class AddressEdit extends Activity
 				}
 			}
 		});
-		delete = (Button) findViewById(R.id.addressEdit_buttonDelete);
+		delete = (Button) findViewById(R.id.address_edit_delete);
 		delete.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
-				Log.d(TAG, "clicked on Delete");
-				
 				if (saveChanges())
 				{
 					if (savedAddress)
@@ -198,13 +186,12 @@ public class AddressEdit extends Activity
 				}
 			}
 		});
-		cancel = (Button) findViewById(R.id.addressEdit_buttonCancel);
+		cancel = (Button) findViewById(R.id.address_edit_cancel);
 		cancel.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
-				Log.d(TAG, "clicked on Cancel");
 				startActivity(new Intent(getApplicationContext(),Addresses.class));
 				finish();
 			}
@@ -229,7 +216,7 @@ public class AddressEdit extends Activity
     		}
     		value = value.replaceFirst(" - ", "");
     		addressStreetValue = value;
-    		addressView = (TextView) findViewById(R.id.addressEdit_address_text);
+    		addressView = (TextView) findViewById(R.id.address_edit_address_text);
     		addressView.setText(addressStreetValue);
     		addressLatLng = latlng;
 		}
@@ -285,7 +272,7 @@ public class AddressEdit extends Activity
 			latlng += a.getLatitude() + "," + a.getLongitude();
     		value = value.replaceFirst(" - ", "");
     		addressStreetValue = value;
-    		addressView = (TextView) findViewById(R.id.addressEdit_address_text);
+    		addressView = (TextView) findViewById(R.id.address_edit_address_text);
     		addressView.setText(addressStreetValue);
     		addressLatLng = latlng;
 		}
@@ -345,7 +332,7 @@ public class AddressEdit extends Activity
 	    
 		Dialog dialog = new AlertDialog.Builder(AddressEdit.this)
 	        //.setIconAttribute(android.R.attr.alertDialogIcon)
-	        .setTitle(getResources().getString(R.string.addressEdit_addressNew))
+	        .setTitle(getResources().getString(R.string.address_edit_address_new))
 	        .setView(textEntryView)
 	        .setPositiveButton("Ok", new DialogInterface.OnClickListener()
 	        {
@@ -356,7 +343,7 @@ public class AddressEdit extends Activity
 	                getLocation(addressValueTemp);
 	            }
 	        })
-	        .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()
+	        .setNegativeButton(getResources().getString(R.string.address_edit_cancel), new DialogInterface.OnClickListener()
 	        {
 	            public void onClick(DialogInterface dialog, int whichButton)
 	            {
@@ -370,7 +357,7 @@ public class AddressEdit extends Activity
 	
 	private boolean saveChanges()
 	{
-		addressNameEdit = (EditText) findViewById(R.id.addressEdit_editTextName);
+		addressNameEdit = (EditText) findViewById(R.id.address_edit_name_edit);
 		addressName = addressNameEdit.getText().toString().trim();
 		
 		if (addressName.equals("") || addressName.length()<1)

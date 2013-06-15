@@ -1,123 +1,87 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:orientation="vertical"
     tools:context=".AddressEdit" >
 
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:background="@color/top_bar"
-        android:gravity="center"
-        android:text="@string/addressEdit_title"
-        android:textColor="#ffffff"
-        android:textSize="24sp" />
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginTop="30dp"
-        android:layout_weight="1"
-        android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/addressEdit_name"
-            android:textColor="#ffffff"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/addressEdit_editTextName"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/addressEdit_nameNew"
-            android:inputType="textCapSentences"
-            android:singleLine="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/addressEdit_address"
-            android:textColor="#ffffff"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/addressEdit_address_text"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/none"
-            android:textColor="#ffffff"
-            android:textSize="20sp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal" >
-
-            <Button
-                android:id="@+id/addressEdit_buttonGps"
-                style="@style/ButtonStyleBlue"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:text="@string/gps"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/addressEdit_buttonType"
-                style="@style/ButtonStyleBlue"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:text="@string/type"
-                android:textSize="20sp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
+        android:id="@+id/address_edit_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/address_edit_name" />
 
-        <Button
-            android:id="@+id/addressEdit_buttonSave"
-            style="@style/ButtonStyleGreen"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:layout_margin="2dp"
-            android:text="@string/save_changes" />
+    <EditText
+        android:id="@+id/address_edit_name_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address_edit_name"
+        android:layout_marginLeft="20dp"
+        android:inputType="textCapSentences"
+        android:hint="@string/address_edit_name_new"
+        android:singleLine="true" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal" >
+    <TextView
+        android:id="@+id/address_edit_address_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address_edit_name_edit"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="23dp"
+        android:text="@string/address_edit_address" />
+    
+    <TextView
+        android:id="@+id/address_edit_address_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address_edit_address_title"
+        android:layout_marginLeft="20dp"
+        android:text="@string/address_edit_none" />
 
-            <Button
-                android:id="@+id/addressEdit_buttonCancel"
-                style="@style/ButtonStyleBlue"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:text="@string/cancel" />
+    <Button
+        android:id="@+id/address_edit_gps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/address_edit_address_text"
+        android:text="@string/address_edit_gps" />
 
-            <Button
-                android:id="@+id/addressEdit_buttonDelete"
-                style="@style/ButtonStyleBlue"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:text="@string/delete" />
-        </LinearLayout>
-    </LinearLayout>
+    <Button
+        android:id="@+id/address_edit_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address_edit_address_text"
+        android:layout_toRightOf="@id/address_edit_gps"
+        android:text="@string/address_edit_type" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/address_edit_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:text="@string/address_edit_cancel" />
+
+    <Button
+        android:id="@+id/address_edit_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:text="@string/address_edit_delete" />
+
+    <Button
+        android:id="@+id/address_edit_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/address_edit_cancel"
+        android:text="@string/address_edit_save" />
+
+</RelativeLayout>
