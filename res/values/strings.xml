@@ -2,7 +2,14 @@
 <resources>
 
     <!-- General app strings -->
-    <string name="app_name">MC851Project</string>
+    <string name="app_name">Qual Busão?</string>
+    <string name="none">&lt;Nenhum&gt;</string>
+    <string name="save_changes">Salvar Alterações</string>
+    <string name="gps">GPS</string>
+    <string name="type">Digitar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="delete">Deletar</string>
+    <string name="confirm">Continuar</string>
 
     <!-- StartScreen strings -->
     <string name="startscreen_take_bus">Pegar ônibus!</string>
@@ -12,6 +19,7 @@
     <string name="startscreen_config">Configurações</string>
 
     <!-- Settings strings -->
+    <string name="settings_title">Configurações</string>
     <string name="settings_notifications">Enviar notificações de novos cupons</string>
     <string name="settings_sounds">Tocar som ao chegar no destino</string>
 
@@ -31,6 +39,14 @@
     <string name="address_edit_cancel">Cancelar</string>
     <string name="address_edit_delete">Deletar</string>
 
+    <!-- Coupons strings -->
+    <string name="coupons_title">Meus Cupons</string>
+    <string name="coupons_no_coupons">Você ainda não possui cupons!</string>
+
+    <!-- CouponDetails strings -->
+    <string name="coupon_details_title">Meus Cupons</string>
+    <string name="coupon_details_delete">Deletar Cupom</string>
+    
     <!--  -->
 
     <string name="title_activity_route">Route</string>

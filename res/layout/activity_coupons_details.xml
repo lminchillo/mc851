@@ -12,7 +12,7 @@
         android:layout_height="40dp"
         android:background="@color/top_bar"
         android:gravity="center"
-        android:text="@string/couponDetails_title"
+        android:text="@string/coupon_details_title"
         android:textColor="#ffffff"
         android:textSize="24sp" />
 
