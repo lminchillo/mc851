@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import android.widget.TextView;
 
 public class StartScreen extends Activity
 {
+	private final static String TAG = "StartScreen";
+	
 	ArrayList<String> arrayList = null;
 	
 	@Override
@@ -27,9 +30,9 @@ public class StartScreen extends Activity
 		setContentView(R.layout.activity_start_screen);
 		
 		arrayList = new ArrayList<String>();
-		arrayList.add(getResources().getString(R.string.startscreen_take_bus));
+		arrayList.add(getResources().getString(R.string.app_name));
 		arrayList.add(getResources().getString(R.string.startscreen_saved_routes));
-		arrayList.add(getResources().getString(R.string.startscreen_saved_adresses));
+		arrayList.add(getResources().getString(R.string.startscreen_saved_addresses));
 		arrayList.add(getResources().getString(R.string.startscreen_my_coupons));
 		arrayList.add(getResources().getString(R.string.startscreen_config));
 		
@@ -43,8 +46,9 @@ public class StartScreen extends Activity
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
 				position++;
-				if (position==1) startActivity(new Intent(getApplicationContext(),Route.class));
-				//if (position==2) startActivity(new Intent(getApplicationContext(),Routes.class));
+				Log.d(TAG, "Clicked on position: " + position);
+				if (position==1) startActivity(new Intent(getApplicationContext(),TakeBus.class));
+				else if (position==2) startActivity(new Intent(getApplicationContext(),Routes.class));
 				else if (position==3) startActivity(new Intent(getApplicationContext(),Addresses.class));
 				else if (position==4) startActivity(new Intent(getApplicationContext(),Coupons.class));
 				else if (position==5) startActivity(new Intent(getApplicationContext(),Settings.class));
@@ -68,20 +72,21 @@ public class StartScreen extends Activity
 		{
 			convertView = inflater.inflate(R.layout.listview_item_simple, null);
 			TextView tv = (TextView) convertView.findViewById(R.id.listview_item_simple_text);
+			tv.setTextSize(24);
 			tv.setText(" \n\t"+arrayList.get(position)+"\n ");
 			ImageView img = (ImageView) convertView.findViewById(R.id.listview_item_simple_img);
 			if (position==0)
 			{
-				img.getLayoutParams().height = (int) (getWindowManager().getDefaultDisplay().getHeight() * 0.40);
+				tv.setTextSize(48);
+				img.getLayoutParams().height = (int) (getWindowManager().getDefaultDisplay().getHeight() * 0.36);
 			}
 			else
 			{
-				img.getLayoutParams().height = (int) (getWindowManager().getDefaultDisplay().getHeight() * 0.14);
+				img.getLayoutParams().height = (int) (getWindowManager().getDefaultDisplay().getHeight() * 0.12);
 			}
 			
 			return convertView;
 		}
 		
 	}
-	
 }

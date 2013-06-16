@@ -4,45 +4,48 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context=".Coupons" >
+    tools:context=".Routes" >
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="40dp"
         android:background="@color/top_bar"
         android:gravity="center"
-        android:text="@string/coupons_title"
+        android:text="@string/routes_title"
         android:textColor="#ffffff"
         android:textSize="24sp" />
-
-    <!-- Remover depois -->
-    <Button
-        android:id="@+id/coupons_button_dummy"
-        style="@style/ButtonStyleBlue"
-        android:layout_width="80dp"
-        android:layout_height="50dp"
-        android:layout_margin="2dp"
-        android:text="Dummy"
-        android:textSize="14sp" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
 
+        <Button
+            android:id="@+id/routes_button_new_route"
+            style="@style/ButtonStyleNavy"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="2dp"
+            android:text="@string/routes_new_route" />
+
         <ListView
-            android:id="@+id/coupons_listview"
+            android:id="@+id/routes_listview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:layout_above="@id/routes_button_new_route"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
         <TextView
-            android:id="@+id/coupons_text_view_no_coupons"
+            android:id="@+id/routes_text_view_no_saved_routes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:text="@string/coupons_no_coupons"
+            android:text="@string/routes_no_routes"
             android:textColor="#ffffff"
             android:visibility="invisible" />
     </RelativeLayout>

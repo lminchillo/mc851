@@ -23,7 +23,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/couponsDetails_textViewTitle"
+            android:id="@+id/coupons_details_text_view_title"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -33,7 +33,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/couponsDetails_textViewContent"
+            android:id="@+id/coupons_details_text_view_content"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -44,14 +44,14 @@
             android:textSize="14sp" />
 
         <ImageView
-            android:id="@+id/couponsDetails_imageViewQrCode"
+            android:id="@+id/coupons_details_image_view_qr_code"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/qrcode" />
 
         <TextView
-            android:id="@+id/couponsDetails_textViewCode"
+            android:id="@+id/coupons_details_text_view_code"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -61,12 +61,11 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/couponsDetails_buttonDelete"
-        style="@style/ButtonStyleBlue"
+        android:id="@+id/coupons_details_button_delete"
+        style="@style/ButtonStyleNavy"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_margin="2dp"
-        android:onClick="onClickDelete"
-        android:text="@string/delete" />
+        android:text="@string/coupon_details_delete" />
 
 </LinearLayout>

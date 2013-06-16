@@ -69,7 +69,7 @@ public class AddressEdit extends Activity
 			savedAddressName = b.getString("addressName", "");
 			savedAddressValue = b.getString("addressValue", "");
 			
-			addressNameEdit = (EditText) findViewById(R.id.address_edit_name_edit);
+			addressNameEdit = (EditText) findViewById(R.id.address_edit_edit_text_name);
 			addressNameEdit.setText(savedAddressName);
 			addressView = (TextView) findViewById(R.id.address_edit_address_text);
 			addressView.setText(getStreetAddress(savedAddressValue));
@@ -85,7 +85,7 @@ public class AddressEdit extends Activity
 	
 	private void initializeButtons()
 	{
-		gps = (Button) findViewById(R.id.address_edit_gps);
+		gps = (Button) findViewById(R.id.address_edit_button_gps);
 		gps.setOnClickListener(new OnClickListener()
 		{
 			@Override
@@ -95,7 +95,7 @@ public class AddressEdit extends Activity
 				System.out.println("Location: "+addressStreetValue);
 			}
 		});
-		type = (Button) findViewById(R.id.address_edit_type);
+		type = (Button) findViewById(R.id.address_edit_button_type);
 		type.setOnClickListener(new OnClickListener()
 		{
 			@Override
@@ -104,7 +104,7 @@ public class AddressEdit extends Activity
 				showDialog();
 			}
 		});
-		save = (Button) findViewById(R.id.address_edit_save);
+		save = (Button) findViewById(R.id.address_edit_button_save);
 		save.setOnClickListener(new OnClickListener()
 		{
 			@Override
@@ -154,7 +154,7 @@ public class AddressEdit extends Activity
 				}
 			}
 		});
-		delete = (Button) findViewById(R.id.address_edit_delete);
+		delete = (Button) findViewById(R.id.address_edit_button_delete);
 		delete.setOnClickListener(new OnClickListener()
 		{
 			@Override
@@ -186,7 +186,7 @@ public class AddressEdit extends Activity
 				}
 			}
 		});
-		cancel = (Button) findViewById(R.id.address_edit_cancel);
+		cancel = (Button) findViewById(R.id.address_edit_button_cancel);
 		cancel.setOnClickListener(new OnClickListener()
 		{
 			@Override
@@ -343,7 +343,7 @@ public class AddressEdit extends Activity
 	                getLocation(addressValueTemp);
 	            }
 	        })
-	        .setNegativeButton(getResources().getString(R.string.address_edit_cancel), new DialogInterface.OnClickListener()
+	        .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()
 	        {
 	            public void onClick(DialogInterface dialog, int whichButton)
 	            {
@@ -357,7 +357,7 @@ public class AddressEdit extends Activity
 	
 	private boolean saveChanges()
 	{
-		addressNameEdit = (EditText) findViewById(R.id.address_edit_name_edit);
+		addressNameEdit = (EditText) findViewById(R.id.address_edit_edit_text_name);
 		addressName = addressNameEdit.getText().toString().trim();
 		
 		if (addressName.equals("") || addressName.length()<1)

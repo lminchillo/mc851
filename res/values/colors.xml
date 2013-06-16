@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="navy">#ff2a557c</color>
     <color name="background">#ff111111</color>
     <color name="top_bar">#ff777777</color>
 

@@ -45,7 +45,7 @@ public class Addresses extends Activity
 			addressListView = (ListView) findViewById(R.id.addresses_listview);
 		}
 		
-		TextView noAddresses = (TextView) findViewById(R.id.addresses_no_saved_address);
+		TextView noAddresses = (TextView) findViewById(R.id.addresses_text_view_no_saved_address);
 		addressList = AddressManager.getAddressList();
 		if (addressList ==  null || addressList.size()==0)
 		{
@@ -70,7 +70,7 @@ public class Addresses extends Activity
 	
 	private void initializeButtons()
 	{
-		Button addAddress = (Button) findViewById(R.id.addresses_button);
+		Button addAddress = (Button) findViewById(R.id.addresses_button_new_address);
 		addAddress.setOnClickListener(new OnClickListener()
 		{
 			@Override

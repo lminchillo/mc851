@@ -1,37 +1,40 @@
 package lais.mc851;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class CouponDetails extends Activity 
+public class Routes extends Activity
 {
-	private final static String TAG = "CouponDetails";
 
-	private Button buttonDelete;
-
+	private final static String TAG = "Routes";
+	
+	private Button buttonNewRoute;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_coupons_details);
-
+		setContentView(R.layout.activity_routes);
+		
 		initializeButtons();
 	}
 	
 	private void initializeButtons()
 	{
-		buttonDelete = (Button) findViewById(R.id.coupons_details_button_delete);
-		buttonDelete.setOnClickListener(new OnClickListener() {
+		buttonNewRoute = (Button) findViewById(R.id.routes_button_new_route);
+		buttonNewRoute.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) 
 			{
-				Log.d(TAG, "Clicked on Delete button");
+				Log.d(TAG, "Clicked on New Route button");
+				startActivity(new Intent(getApplicationContext(), RouteEdit.class));
 			}
 		});
 	}
-
+	
 }
