@@ -76,6 +76,10 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name="lais.mc851.TakeBusSavedRoute"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="lais.mc851.Routes"
             android:screenOrientation="portrait" >
         </activity>

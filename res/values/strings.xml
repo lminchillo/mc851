@@ -70,6 +70,10 @@
     <string name="take_bus_new_route_name_route">Nome para a Rota:</string>
     <string name="take_bus_new_route_name">Digite o nome&#8230;</string>
     
+    <!-- Take Bus Saved Route strings -->
+    <string name="take_bus_saved_route_title">Escolher Rota Salva</string>
+    <string name="take_bus_saved_route_no_routes">Não há rotas salvas!</string>
+    
     <!--  -->
 
     <string name="title_activity_route">Route</string>

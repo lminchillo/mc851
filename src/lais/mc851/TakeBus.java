@@ -42,6 +42,7 @@ public class TakeBus extends Activity
 			public void onClick(View v) 
 			{
 				Log.d(TAG, "Clicked on Saved Route button");
+				startActivity(new Intent(getApplicationContext(), TakeBusSavedRoute.class));
 			}
 		});
 	}
