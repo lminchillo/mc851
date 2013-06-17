@@ -1,24 +1,24 @@
-* GetRoute
+* GetRoute ( -> Alexandre)
 
 Tela inicial de rotas. Oferece opção de uma rota nova ou salva.
 
     Criado: não
     Push: restrito
-    Layout: Sim
+    Layout: não
 
     ---
 
-* GetRouteNew
+* GetRouteNew ( -> Alexandre)
 
 Tela para uma nova rota. Leva à tela que mostra a rota.
 
     Criado: não
     Push: restrito
-    Layout: Sim
+    Layout: não
 
     ---
 
-* GetRouteSaved
+* GetRouteSaved ( -> Alexandre)
 
 Tela para uma rota salva. Leva à tela que mostra a rota.
 
@@ -28,7 +28,7 @@ Tela para uma rota salva. Leva à tela que mostra a rota.
 
     ---
 
-* Route
+* Route ( -> Laís)
 
 Tela que mostra a rota (mapa, cupons, etc).
 
@@ -44,7 +44,7 @@ Tela que mostra uma lista com todas as rotas salvas. Ao clicar em um item, leva 
 
     Criado: não
     Push: restrito
-    Layout: Sim
+    Layout: não
 
     ---
 
@@ -54,7 +54,7 @@ Tela que mostra detalhes de uma rota. Pode haver a opção de editar a rota ou n
 
     Criado: não
     Push: restrito
-    Layout: Sim
+    Layout: não
 
     ---
 
@@ -64,7 +64,7 @@ Tela que mostra uma lista com todos os cupons salvos. Ao clicar em um item, leva
 
     Criado: sim
     Push: restrito
-    Layout: Sim
+    Layout: não
 
     ---
 
@@ -94,7 +94,7 @@ Tela que mostra detalhes de um cupom salvo.
 
     Criado: não
     Push: restrito
-    Layout: Sim
+    Layout: não
 
     ---
 
@@ -104,7 +104,7 @@ Tela que mostra opções.
 
     Criado: sim
     Push: livre
-    Layout: Sim
+    Layout: livre (pronto)
 
     ---
 
@@ -115,7 +115,7 @@ No final, inicializa Startscreen e finaliza.
 
     Criado: sim
     Push: livre
-    Layout: Sim (falta logotipo)
+    Layout: livre (pronto)
 
     ---
 
@@ -125,7 +125,7 @@ Menu inicial que leva a varias atividades.
 
     Criado: sim
     Push: livre
-    Layout: Sim
+    Layout: livre (pronto)
 
     ---
 
@@ -135,7 +135,7 @@ Tela que mostra uma lista com todos os endereços salvos. Ao clicar em um item, 
 
     Criado: sim
     Push: livre
-    Layout: Sim
+    Layout: livre (pronto)
 
     ---
 
@@ -145,7 +145,7 @@ Mostra detalhes de um endereço, ou uma tela para criar um novo endereço.
 
     Criado: sim
     Push: livre
-    Layout: Sim
+    Layout: livre (pronto)
 
     ---
 
