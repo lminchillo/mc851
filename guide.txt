@@ -4,7 +4,7 @@ Tela inicial de rotas. Oferece opção de uma rota nova ou salva.
 
     Criado: não
     Push: restrito
-    Layout: não
+    Layout: Sim
 
     ---
 
@@ -14,7 +14,7 @@ Tela para uma nova rota. Leva à tela que mostra a rota.
 
     Criado: não
     Push: restrito
-    Layout: não
+    Layout: Sim
 
     ---
 
@@ -44,7 +44,7 @@ Tela que mostra uma lista com todas as rotas salvas. Ao clicar em um item, leva 
 
     Criado: não
     Push: restrito
-    Layout: não
+    Layout: Sim
 
     ---
 
@@ -54,7 +54,7 @@ Tela que mostra detalhes de uma rota. Pode haver a opção de editar a rota ou n
 
     Criado: não
     Push: restrito
-    Layout: não
+    Layout: Sim
 
     ---
 
@@ -64,7 +64,7 @@ Tela que mostra uma lista com todos os cupons salvos. Ao clicar em um item, leva
 
     Criado: sim
     Push: restrito
-    Layout: não
+    Layout: Sim
 
     ---
 
@@ -94,7 +94,7 @@ Tela que mostra detalhes de um cupom salvo.
 
     Criado: não
     Push: restrito
-    Layout: não
+    Layout: Sim
 
     ---
 
@@ -104,7 +104,7 @@ Tela que mostra opções.
 
     Criado: sim
     Push: livre
-    Layout: livre
+    Layout: Sim
 
     ---
 
@@ -115,7 +115,7 @@ No final, inicializa Startscreen e finaliza.
 
     Criado: sim
     Push: livre
-    Layout: livre
+    Layout: Sim (falta logotipo)
 
     ---
 
@@ -125,7 +125,7 @@ Menu inicial que leva a varias atividades.
 
     Criado: sim
     Push: livre
-    Layout: livre
+    Layout: Sim
 
     ---
 
@@ -135,7 +135,7 @@ Tela que mostra uma lista com todos os endereços salvos. Ao clicar em um item, 
 
     Criado: sim
     Push: livre
-    Layout: livre
+    Layout: Sim
 
     ---
 
@@ -145,7 +145,7 @@ Mostra detalhes de um endereço, ou uma tela para criar um novo endereço.
 
     Criado: sim
     Push: livre
-    Layout: livre
+    Layout: Sim
 
     ---
 
