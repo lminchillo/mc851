@@ -8,7 +8,7 @@
 
     <TextView
         android:layout_width="fill_parent"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:background="@color/top_bar"
         android:gravity="center"
         android:text="@string/route_edit_title"
@@ -18,9 +18,9 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_marginTop="30dp"
         android:layout_weight="1"
         android:orientation="vertical" >
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:text="@string/route_edit_name"
             android:textColor="#ffffff"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/route_edit_edit_text_name"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:text="@string/route_edit_address_source"
             android:textColor="#ffffff"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/route_edit_text_view_address_source"
@@ -67,8 +67,7 @@
                 android:layout_width="70dp"
                 android:layout_height="40dp"
                 android:layout_margin="2dp"
-                android:text="@string/gps"
-                android:textSize="20sp" />
+                android:text="@string/gps" />
 
             <Button
                 android:id="@+id/route_edit_button_type_source"
@@ -76,8 +75,7 @@
                 android:layout_width="70dp"
                 android:layout_height="40dp"
                 android:layout_margin="2dp"
-                android:text="@string/type"
-                android:textSize="20sp" />
+                android:text="@string/type" />
         </LinearLayout>
 
         <TextView
@@ -85,7 +83,7 @@
             android:layout_height="wrap_content"
             android:text="@string/route_edit_address_destination"
             android:textColor="#ffffff"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/route_edit_text_view_address_destination"
@@ -107,8 +105,7 @@
                 android:layout_width="70dp"
                 android:layout_height="40dp"
                 android:layout_margin="2dp"
-                android:text="@string/gps"
-                android:textSize="20sp" />
+                android:text="@string/gps" />
 
             <Button
                 android:id="@+id/route_edit_button_type_destination"
@@ -116,14 +113,14 @@
                 android:layout_width="70dp"
                 android:layout_height="40dp"
                 android:layout_margin="2dp"
-                android:text="@string/type"
-                android:textSize="20sp" />
+                android:text="@string/type" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:orientation="vertical" >
 
         <Button

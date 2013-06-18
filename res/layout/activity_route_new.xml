@@ -9,7 +9,7 @@
 
     <TextView
         android:layout_width="fill_parent"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:background="@color/top_bar"
         android:gravity="center"
         android:text="@string/take_bus_title"
@@ -19,7 +19,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_margin="2dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_weight="1"
         android:orientation="vertical" >
 
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:text="@string/take_bus_new_route_source"
             android:textColor="#ffffff"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/take_bus_new_route_text_view_address_source"
@@ -59,8 +60,7 @@
                 android:layout_width="80dp"
                 android:layout_height="40dp"
                 android:layout_margin="2dp"
-                android:text="@string/gps"
-                android:textSize="20sp" />
+                android:text="@string/gps" />
 
             <Button
                 android:id="@+id/take_bus_new_route_button_type_source"
@@ -68,8 +68,7 @@
                 android:layout_width="80dp"
                 android:layout_height="40dp"
                 android:layout_margin="2dp"
-                android:text="@string/type"
-                android:textSize="20sp" />
+                android:text="@string/type" />
 
             <Button
                 android:id="@+id/take_bus_new_route_button_saved_source"
@@ -77,8 +76,7 @@
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_margin="2dp"
-                android:text="@string/take_bus_new_route_saved_addr"
-                android:textSize="20sp" />
+                android:text="@string/take_bus_new_route_saved_addr" />
         </LinearLayout>
 
         <TextView
@@ -87,7 +85,7 @@
             android:layout_marginTop="15dp"
             android:text="@string/take_bus_new_route_destination"
             android:textColor="#ffffff"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/take_bus_new_route_text_view_address_destination"
@@ -108,8 +106,7 @@
                 android:layout_width="80dp"
                 android:layout_height="40dp"
                 android:layout_margin="2dp"
-                android:text="@string/type"
-                android:textSize="20sp" />
+                android:text="@string/type" />
 
             <Button
                 android:id="@+id/take_bus_new_route_button_saved_destination"
@@ -117,8 +114,7 @@
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_margin="2dp"
-                android:text="@string/take_bus_new_route_saved_addr"
-                android:textSize="20sp" />
+                android:text="@string/take_bus_new_route_saved_addr" />
         </LinearLayout>
 
         <CheckBox
@@ -126,20 +122,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/take_bus_new_route_save"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:id="@+id/take_bus_new_route_layout_save"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/take_bus_new_route_name_route"
                 android:textColor="#ffffff"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/take_bus_new_route_edit_text_route_name"
@@ -153,6 +150,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:orientation="horizontal" >
 
         <Button
