@@ -60,7 +60,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="lais.mc851.CouponDetails"
+            android:name="lais.mc851.CouponView"
             android:screenOrientation="portrait" >
         </activity>
         <activity

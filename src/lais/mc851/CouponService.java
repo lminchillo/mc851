@@ -46,7 +46,7 @@ public class CouponService extends IntentService
 			try
 			{
 				Document document = Jsoup.connect(url).get();
-				CouponManager.updateCoupons(document);
+				CouponManager.updateCouponDatabase(document);
 				Log.d("CouponService", "Coupons fetched!");
 			}
 			catch (Exception e)

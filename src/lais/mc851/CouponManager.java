@@ -20,13 +20,13 @@ public class CouponManager
 		editor = e;
 	}
 	
-	public static void updateCoupons(Document d)
+	public static void updateCouponDatabase(Document d)
 	{
 		editor.putString(COUPON_KEY, d.html());
 		editor.commit();
 	}
 	
-	public static ArrayList<ArrayList<String>> getAllCoupons()
+	public static ArrayList<ArrayList<String>> getActiveCoupons()
 	{
 		try
 		{
@@ -57,7 +57,7 @@ public class CouponManager
 		return null;
 	}
 	
-	public static ArrayList<String> getCoupon(String name)
+	public static ArrayList<String> getActiveCoupon(String name)
 	{
 		try
 		{

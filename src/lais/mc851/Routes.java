@@ -3,16 +3,12 @@ package lais.mc851;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class Routes extends Activity
 {
-
-	private final static String TAG = "Routes";
-	
 	private Button buttonNewRoute;
 	
 	@Override
@@ -27,11 +23,11 @@ public class Routes extends Activity
 	private void initializeButtons()
 	{
 		buttonNewRoute = (Button) findViewById(R.id.routes_button_new_route);
-		buttonNewRoute.setOnClickListener(new OnClickListener() {
+		buttonNewRoute.setOnClickListener(new OnClickListener()
+		{
 			@Override
 			public void onClick(View v) 
 			{
-				Log.d(TAG, "Clicked on New Route button");
 				startActivity(new Intent(getApplicationContext(), RouteEdit.class));
 			}
 		});

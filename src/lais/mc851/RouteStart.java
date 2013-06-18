@@ -10,8 +10,6 @@ import android.widget.Button;
 
 public class RouteStart extends Activity 
 {
-	private final static String TAG = "TakeBusRoute";
-	
 	private Button buttonNewRoute;
 	private Button buttonSavedRoute;
 	
@@ -27,21 +25,21 @@ public class RouteStart extends Activity
 	private void initializeButtons()
 	{
 		buttonNewRoute = (Button) findViewById(R.id.take_bus_button_new_route);
-		buttonNewRoute.setOnClickListener(new OnClickListener() {
+		buttonNewRoute.setOnClickListener(new OnClickListener()
+		{
 			@Override
 			public void onClick(View v) 
 			{
-				Log.d(TAG, "Clicked on New Route button");
 				startActivity(new Intent(getApplicationContext(), RouteNew.class));
 			}
 		});
 		
 		buttonSavedRoute = (Button) findViewById(R.id.take_bus_button_saved_route);
-		buttonSavedRoute.setOnClickListener(new OnClickListener() {
+		buttonSavedRoute.setOnClickListener(new OnClickListener()
+		{
 			@Override
 			public void onClick(View v) 
 			{
-				Log.d(TAG, "Clicked on Saved Route button");
 				startActivity(new Intent(getApplicationContext(), RouteSaved.class));
 			}
 		});

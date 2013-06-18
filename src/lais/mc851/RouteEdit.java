@@ -2,15 +2,12 @@ package lais.mc851;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class RouteEdit extends Activity
 {
-	private final static String TAG = "RouteEdit";
-	
 	private Button buttonGpsSource;
 	private Button buttonGpsDestination;
 	private Button buttonTypeSource;
@@ -38,60 +35,66 @@ public class RouteEdit extends Activity
 		buttonCancel = (Button) findViewById(R.id.route_edit_button_cancel);
 		buttonDelete = (Button) findViewById(R.id.route_edit_button_delete);
 		
-		buttonGpsSource.setOnClickListener(new OnClickListener() {
+		buttonGpsSource.setOnClickListener(new OnClickListener()
+		{
 			@Override
 			public void onClick(View v)
 			{
-				Log.d(TAG, "Clicked on GPS Source");
+				
 			}
 		});
 		
-		buttonGpsDestination.setOnClickListener(new OnClickListener() {
+		buttonGpsDestination.setOnClickListener(new OnClickListener()
+		{
 			@Override
 			public void onClick(View v)
 			{
-				Log.d(TAG, "Clicked on GPS Destination");
+				
 			}
 		});
 		
-		buttonTypeSource.setOnClickListener(new OnClickListener() {
+		buttonTypeSource.setOnClickListener(new OnClickListener()
+		{
 			@Override
 			public void onClick(View v)
 			{
-				Log.d(TAG, "Clicked on Type Source");
+				
 			}
 		});
 		
-		buttonTypeDestination.setOnClickListener(new OnClickListener() {
+		buttonTypeDestination.setOnClickListener(new OnClickListener()
+		{
 			@Override
 			public void onClick(View v)
 			{
-				Log.d(TAG, "Clicked on Type Desination");
+				
 			}
 		});
 		
-		buttonSave.setOnClickListener(new OnClickListener() {
+		buttonSave.setOnClickListener(new OnClickListener()
+		{
 			@Override
 			public void onClick(View v)
 			{
-				Log.d(TAG, "Clicked on Save");
+				
 			}
 		});
 		
-		buttonCancel.setOnClickListener(new OnClickListener() {
+		buttonCancel.setOnClickListener(new OnClickListener()
+		{
 			@Override
 			public void onClick(View v)
 			{
-				Log.d(TAG, "Clicked on Cancel");
 				onBackPressed();
 			}
 		});
 		
-		buttonDelete.setOnClickListener(new OnClickListener() {
+		buttonDelete.setOnClickListener(new OnClickListener()
+		{
 			@Override
 			public void onClick(View v)
 			{
-				Log.d(TAG, "Clicked on Delete");
+				
 			}
 		});
 		
