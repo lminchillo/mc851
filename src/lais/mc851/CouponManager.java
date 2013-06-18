@@ -30,7 +30,8 @@ public class CouponManager
 	{
 		try
 		{
-			Document document = new Document(pref.getString(COUPON_KEY, ""));
+			Document document = new Document("");
+			document.html(pref.getString(COUPON_KEY, ""));
 			ArrayList<ArrayList<String>> coupons = new ArrayList<ArrayList<String>>();
 			
 			int i = 0;
@@ -61,7 +62,8 @@ public class CouponManager
 	{
 		try
 		{
-			Document document = new Document(pref.getString(COUPON_KEY, ""));
+			Document document = new Document("");
+			document.html(pref.getString(COUPON_KEY, ""));
 	    	ArrayList<String> coupon = new ArrayList<String>(4);
 			
 			for (Node n : document.getElementsByTag("a"))
