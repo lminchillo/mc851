@@ -88,4 +88,76 @@ public class CouponManager
 		
 		return null;
 	}
+	
+	public static boolean addCoupon(String couponName, String coupon)
+	{
+		if (findKey(couponName) == null)
+		{
+			editor.putString(findEmptyPosition(), coupon);
+			editor.commit();
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean removeCoupon(String couponName)
+	{
+		String key = findKey(couponName);
+		if (key != null)
+		{
+			editor.putString(key, "next");
+			editor.commit();
+			return true;
+		}
+		return false;
+	}
+	
+	public static ArrayList<String> getCouponList()
+	{
+		ArrayList<String> res = new ArrayList<String>();
+		String aux = "next";
+		for (int i=1; !aux.equals("end"); i++)
+		{
+			aux = pref.getString("savedCoupon"+i, "end");
+			if (!aux.equals("next") && !aux.equals("end"))
+			{
+				res.add(aux);
+			}
+		}
+		return res;
+	}
+	
+	private static String findKey(String couponName)
+	{
+		String res = null;
+		String aux = " ";
+		for (int i=1; (!aux.equals("end") && !aux.equals(couponName)); i++)
+		{
+			aux = pref.getString("savedCoupon"+i, "end");
+			if (!aux.equals("end") && aux.contains("|"))
+			{
+				aux = aux.substring(0, aux.indexOf("|"));
+			}
+			if (aux.equals(couponName))
+			{
+				res = "savedCoupon"+i;
+			}
+		}
+		return res;
+	}
+	
+	private static String findEmptyPosition()
+	{
+		String res = null;
+		String aux = " ";
+		for (int i=1; !aux.equals("end") && !aux.equals("next"); i++)
+		{
+			aux = pref.getString("savedCoupon"+i, "end");
+			if (aux.equals("end") || aux.equals("next"))
+			{
+				res = "savedCoupon"+i;
+			}
+		}
+		return res;
+	}
 }

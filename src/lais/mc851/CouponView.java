@@ -54,7 +54,7 @@ public class CouponView extends Activity
 			{
 				if(savedCoupon){
 						
-						if (RouteManager.removeAddress(couponName))
+						if (CouponManager.removeCoupon(couponName))
 						{
 							Toast.makeText(getApplicationContext(), "Cupom deletado", Toast.LENGTH_SHORT).show();
 							startActivity(new Intent(getApplicationContext(),Coupons.class));		

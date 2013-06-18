@@ -40,12 +40,16 @@ public class Coupons extends Activity {
 
 		TextView noCoupons = (TextView) findViewById(R.id.coupons_text_view_no_coupons);
 
-		// TODO: usar CouponManager, ao inves de hardcoded
+		// TODO: descomentar isso para adicionar cupons hardcoded
+//		CouponManager.addCoupon("Coxinha", "Coxinha|Desconto de 15% na compra de Coxinha!");
+//		CouponManager.addCoupon("Espinafre", "Espinafre|Desconto de 90% na compra de Espinafre, mas não vale para os dias primos do mês, nem para os dias em que o presidente Barack Obama aparece na televisão do México");
+		ArrayList<String> coupons = CouponManager.getCouponList();
 		couponList = new ArrayList<String>();
-		couponList.add("Coxinha|Desconto de 15% na compra de Coxinha!");
-		couponList.add("Quibe|Desconto de 10% na compra de Quibe!");
-		couponList.add("Espinafre|Desconto de 90% na compra de Espinafre, mas não vale para os dias primos do mês, nem para os dias em que o presidente Barack Obama aparece na televisão do México");
-
+		for(String s : coupons)
+		{
+			couponList.add(s);
+		}
+		
 		if (couponList == null || couponList.size() == 0) {
 			noCoupons.setVisibility(View.VISIBLE);
 		} else {
@@ -102,6 +106,7 @@ public class Coupons extends Activity {
 					intent.putExtra("couponName", couponName);
 					intent.putExtra("couponDescription", couponDescription);
 					startActivity(intent);
+					finish();
 				}
 			});
 
