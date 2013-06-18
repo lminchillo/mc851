@@ -15,16 +15,6 @@
         android:textColor="#ffffff"
         android:textSize="24sp" />
 
-    <!-- Remover depois -->
-    <Button
-        android:id="@+id/coupons_button_dummy"
-        style="@style/ButtonStyleBlue"
-        android:layout_width="80dp"
-        android:layout_height="50dp"
-        android:layout_margin="2dp"
-        android:text="Dummy"
-        android:textSize="14sp" />
-
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
