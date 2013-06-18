@@ -55,6 +55,7 @@
     <string name="route_edit_address_source">Endereço de Origem:</string>
     <string name="route_edit_address_destination">Endereço de Destino:</string>
     <string name="route_edit_address_new">Digite o endereço</string>
+    <string name="route_edit_saved_addr">End. Salvo</string>
     
     <!-- Take Bus strings -->
     <string name="take_bus_title">Pegar Ônibus!</string>

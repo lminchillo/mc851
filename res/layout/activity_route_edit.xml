@@ -15,107 +15,128 @@
         android:textColor="#ffffff"
         android:textSize="24sp" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="30dp"
-        android:layout_weight="1"
-        android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/route_edit_name"
-            android:textColor="#ffffff"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/route_edit_edit_text_name"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/route_edit_name_new"
-            android:inputType="textCapSentences"
-            android:singleLine="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/route_edit_address_source"
-            android:textColor="#ffffff"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/route_edit_text_view_address_source"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/none"
-            android:textColor="#ffffff"
-            android:textSize="20sp" />
+        android:layout_marginTop="5dp"
+        android:layout_weight="1" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal" >
-
-            <Button
-                android:id="@+id/route_edit_button_gps_source"
-                style="@style/ButtonStyleNavy"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:text="@string/gps" />
-
-            <Button
-                android:id="@+id/route_edit_button_type_source"
-                style="@style/ButtonStyleNavy"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:text="@string/type" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/route_edit_address_destination"
-            android:textColor="#ffffff"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/route_edit_text_view_address_destination"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/none"
-            android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/route_edit_name"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
 
-            <Button
-                android:id="@+id/route_edit_button_gps_destination"
-                style="@style/ButtonStyleNavy"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:text="@string/gps" />
+            <EditText
+                android:id="@+id/route_edit_edit_text_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/route_edit_name_new"
+                android:inputType="textCapSentences"
+                android:singleLine="true" />
 
-            <Button
-                android:id="@+id/route_edit_button_type_destination"
-                style="@style/ButtonStyleNavy"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:text="@string/type" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/route_edit_address_source"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/route_edit_text_view_address_source"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/none"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/route_edit_button_gps_source"
+                    style="@style/ButtonStyleNavy"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:text="@string/gps" />
+
+                <Button
+                    android:id="@+id/route_edit_button_type_source"
+                    style="@style/ButtonStyleNavy"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:text="@string/type" />
+
+                <Button
+                    android:id="@+id/route_edit_button_saved_source"
+                    style="@style/ButtonStyleNavy"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:text="@string/route_edit_saved_addr" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/route_edit_address_destination"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/route_edit_text_view_address_destination"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/none"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/route_edit_button_gps_destination"
+                    style="@style/ButtonStyleNavy"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:text="@string/gps" />
+
+                <Button
+                    android:id="@+id/route_edit_button_type_destination"
+                    style="@style/ButtonStyleNavy"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:text="@string/type" />
+
+                <Button
+                    android:id="@+id/route_edit_button_saved_destination"
+                    style="@style/ButtonStyleNavy"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:text="@string/route_edit_saved_addr" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="fill_parent"
