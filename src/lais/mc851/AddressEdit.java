@@ -1,16 +1,13 @@
 package lais.mc851;
 
-import java.util.List;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,7 +53,7 @@ public class AddressEdit extends Activity
 	public void onBackPressed()
 	{
 		System.gc();
-		startActivity(new Intent(getApplicationContext(),Addresses.class));
+		startActivity(new Intent(getApplicationContext(), Addresses.class));
 		finish();
 	}
 	
@@ -72,13 +69,13 @@ public class AddressEdit extends Activity
 			addressNameEdit = (EditText) findViewById(R.id.address_edit_edit_text_name);
 			addressNameEdit.setText(savedAddressName);
 			addressView = (TextView) findViewById(R.id.address_edit_address_text);
-			addressView.setText(getStreetAddress(savedAddressValue));
+			addressView.setText(GPSManager.getStreetAddress(savedAddressValue));
 			
 			addressName = savedAddressName;
 			addressValue = savedAddressValue;
-			addressStreetValue = getStreetAddress(addressValue);
+			addressStreetValue = GPSManager.getStreetAddress(addressValue);
 			//System.out.println("street value saved: "+addressStreetValue);
-			addressLatLng = getLatLng(addressValue);
+			addressLatLng = GPSManager.getLatLng(addressValue);
 			//System.out.println("latlng value saved: "+addressLatLng);
 		}
 	}
@@ -91,7 +88,19 @@ public class AddressEdit extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				getAddress(getLastBestLocation());
+				try 
+				{
+					ArrayList<String> ret = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(AddressEdit.this), AddressEdit.this);
+					addressStreetValue = ret.get(0);
+		    		addressView = (TextView) findViewById(R.id.address_edit_address_text);
+		    		addressView.setText(addressStreetValue);
+		    		addressLatLng = ret.get(1);
+				}
+				catch(IOException e)
+				{
+					e.printStackTrace();	
+				}
+				
 				System.out.println("Location: "+addressStreetValue);
 			}
 		});
@@ -198,120 +207,6 @@ public class AddressEdit extends Activity
 		});
 	}
 	
-	private void getLocation(String address)
-    {
-    	try
-    	{
-    		Geocoder g = new Geocoder(getApplicationContext());
-    		List<Address> a = g.getFromLocationName(address, 1);
-    		String value = "";
-    		String latlng = "";
-    		for (int i=0; i<a.size(); i++)
-    		{
-    			for (int j=0; j< a.get(i).getMaxAddressLineIndex(); j++)
-        		{
-        			 value += " - "+a.get(i).getAddressLine(j);
-        		}
-    			latlng += a.get(i).getLatitude() + "," + a.get(i).getLongitude();
-    		}
-    		value = value.replaceFirst(" - ", "");
-    		addressStreetValue = value;
-    		addressView = (TextView) findViewById(R.id.address_edit_address_text);
-    		addressView.setText(addressStreetValue);
-    		addressLatLng = latlng;
-		}
-    	catch (Exception e)
-    	{
-			e.printStackTrace();
-		}
-    }
-	
-	private Location getLastBestLocation()
-    {
-        LocationManager mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-                
-		Location locationGPS = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        Location locationNet = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
- 
-        long GPSLocationTime = 0;
-        if (null != locationGPS)
-        {
-        	GPSLocationTime = locationGPS.getTime();
-        }
- 
-        long NetLocationTime = 0;
- 
-        if (null != locationNet)
-        {
-            NetLocationTime = locationNet.getTime();
-        }
- 
-        if ( 0 < GPSLocationTime - NetLocationTime )
-        {
-            return locationGPS;
-        }
-        else
-        {
-            return locationNet;
-        }
-    }
-	
-	private void getAddress(Location l)
-    {
-    	try
-    	{
-    		Geocoder g = new Geocoder(getApplicationContext());
-    		Address a = g.getFromLocation(l.getLatitude(), l.getLongitude(), 1).get(0);
-    		
-    		String value = "";
-    		String latlng = "";
-    		for (int i = 0; i<a.getMaxAddressLineIndex(); i++)
-    		{
-    			 value += " - " + a.getAddressLine(i);
-    		}
-			latlng += a.getLatitude() + "," + a.getLongitude();
-    		value = value.replaceFirst(" - ", "");
-    		addressStreetValue = value;
-    		addressView = (TextView) findViewById(R.id.address_edit_address_text);
-    		addressView.setText(addressStreetValue);
-    		addressLatLng = latlng;
-		}
-    	catch (Exception e)
-    	{
-			e.printStackTrace();
-		}
-    }
-	
-	private String getStreetAddress(String address)
-	{
-		if (address.contains("\n"))
-		{
-			String res = address.substring(address.indexOf("\n")+1);
-			if (address.contains("\n"))
-			{
-				res = res.substring(0,res.indexOf("\n"));
-				return res;
-			}
-			else return address;
-		}
-		else return address;
-	}
-	
-	private String getLatLng(String address)
-	{
-		if (address.contains("\n"))
-		{
-			String res = address.substring(address.indexOf("\n")+1);
-			if (address.contains("\n"))
-			{
-				res = res.substring(res.indexOf("\n")+1);
-				return res;
-			}
-			else return address;
-		}
-		else return address;
-	}
-	
 	private void showDialog()
 	{
 		LayoutInflater factory = LayoutInflater.from(this);
@@ -319,11 +214,11 @@ public class AddressEdit extends Activity
 	    final EditText editText = (EditText) textEntryView.findViewById(R.id.alert_dialog_edittext);
 	    if (savedAddress)
 	    {
-	    	editText.setText(getStreetAddress(savedAddressValue));
+	    	editText.setText(GPSManager.getStreetAddress(savedAddressValue));
 	    }
 	    else if (addressValueTemp != null)
 	    {
-	    	editText.setText(getStreetAddress(addressValueTemp));
+	    	editText.setText(GPSManager.getStreetAddress(addressValueTemp));
 	    }
 	    else if (addressValue != null)
 	    {
@@ -336,18 +231,26 @@ public class AddressEdit extends Activity
 	        .setView(textEntryView)
 	        .setPositiveButton("Ok", new DialogInterface.OnClickListener()
 	        {
-	            @Override
-				public void onClick(DialogInterface dialog, int whichButton)
+	            public void onClick(DialogInterface dialog, int whichButton)
 	            {
-	                
 	                addressValueTemp = editText.getText().toString().trim();
-	                getLocation(addressValueTemp);
+	                try 
+	                {
+	                	ArrayList<String> ret = (ArrayList<String>) GPSManager.getLocation(addressValueTemp, AddressEdit.this);
+	                	addressStreetValue = ret.get(0);
+	                	addressView = (TextView) findViewById(R.id.address_edit_address_text);
+	                	addressView.setText(addressStreetValue);
+	                	addressLatLng = ret.get(1);
+	                }
+	                catch(IOException e)
+	                {
+	                	e.printStackTrace();
+	                }
 	            }
 	        })
 	        .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()
 	        {
-	            @Override
-				public void onClick(DialogInterface dialog, int whichButton)
+	            public void onClick(DialogInterface dialog, int whichButton)
 	            {
 	            	
 	            }

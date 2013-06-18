@@ -60,9 +60,9 @@ public class RouteManager
 		return false;
 	}
 	
-	public static boolean removeAddress(String addressName)
+	public static boolean removeRoute(String routeName)
 	{
-		String key = findKey(addressName);
+		String key = findKey(routeName);
 		if (key != null)
 		{
 			editor.putString(key, tagNext);
@@ -72,18 +72,18 @@ public class RouteManager
 		return false;
 	}
 	
-	private static String findKey(String addressName)
+	private static String findKey(String routeName)
 	{
 		String res = null;
 		String aux = " ";
-		for (int i=1; (!aux.equals(tagEnd) && !aux.equals(addressName)); i++)
+		for (int i=1; (!aux.equals(tagEnd) && !aux.equals(routeName)); i++)
 		{
 			aux = pref.getString(tag+i, tagEnd);
 			if (!aux.equals(tagEnd) && aux.contains("\n"))
 			{
 				aux = aux.substring(0, aux.indexOf("\n"));
 			}
-			if (aux.equals(addressName))
+			if (aux.equals(routeName))
 			{
 				res = tag+i;
 			}
