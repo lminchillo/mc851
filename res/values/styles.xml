@@ -18,25 +18,25 @@
     </style>
     
     <!-- Button styles -->
-    <style name="ButtonMetro" parent="@android:style/Widget.Button">
+    <style name="MyButton" parent="@android:style/Widget.Button">
         <item name="android:textColor">#ffffff</item>
         <item name="android:textSize">24sp</item>
     </style>
 
-    <style name="ButtonStyleGray" parent="@style/ButtonMetro">
-        <item name="android:background">@drawable/button_metro_gray</item>
+    <style name="ButtonStyleGray" parent="@style/MyButton">
+        <item name="android:background">@drawable/button_gray</item>
     </style>
 
-    <style name="ButtonStyleGreen" parent="@style/ButtonMetro">
-        <item name="android:background">@drawable/button_metro_green</item>
+    <style name="ButtonStyleGreen" parent="@style/MyButton">
+        <item name="android:background">@drawable/button_green</item>
     </style>
 
-    <style name="ButtonStyleBlue" parent="@style/ButtonMetro">
-        <item name="android:background">@drawable/button_metro_blue</item>
+    <style name="ButtonStyleBlue" parent="@style/MyButton">
+        <item name="android:background">@drawable/button_blue</item>
     </style>
 
-    <style name="ButtonStyleNavy" parent="@style/ButtonMetro">
-        <item name="android:background">@drawable/button_metro_navy</item>
+    <style name="ButtonStyleNavy" parent="@style/MyButton">
+        <item name="android:background">@drawable/button_navy</item>
     </style>
 
 </resources>

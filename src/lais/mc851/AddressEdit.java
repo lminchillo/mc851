@@ -336,7 +336,8 @@ public class AddressEdit extends Activity
 	        .setView(textEntryView)
 	        .setPositiveButton("Ok", new DialogInterface.OnClickListener()
 	        {
-	            public void onClick(DialogInterface dialog, int whichButton)
+	            @Override
+				public void onClick(DialogInterface dialog, int whichButton)
 	            {
 	                
 	                addressValueTemp = editText.getText().toString().trim();
@@ -345,7 +346,8 @@ public class AddressEdit extends Activity
 	        })
 	        .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()
 	        {
-	            public void onClick(DialogInterface dialog, int whichButton)
+	            @Override
+				public void onClick(DialogInterface dialog, int whichButton)
 	            {
 	            	
 	            }

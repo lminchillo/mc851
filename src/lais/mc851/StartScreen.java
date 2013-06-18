@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class StartScreen extends Activity
-{
-	private final static String TAG = "StartScreen";
-	
+{	
 	ArrayList<String> arrayList = null;
 	
 	@Override
@@ -46,8 +43,7 @@ public class StartScreen extends Activity
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
 				position++;
-				Log.d(TAG, "Clicked on position: " + position);
-				if (position==1) startActivity(new Intent(getApplicationContext(),TakeBus.class));
+				if (position==1) startActivity(new Intent(getApplicationContext(),RouteStart.class));
 				else if (position==2) startActivity(new Intent(getApplicationContext(),Routes.class));
 				else if (position==3) startActivity(new Intent(getApplicationContext(),Addresses.class));
 				else if (position==4) startActivity(new Intent(getApplicationContext(),Coupons.class));
@@ -72,17 +68,18 @@ public class StartScreen extends Activity
 		{
 			convertView = inflater.inflate(R.layout.listview_item_simple, null);
 			TextView tv = (TextView) convertView.findViewById(R.id.listview_item_simple_text);
-			tv.setTextSize(24);
+			tv.setTextSize(18);
 			tv.setText(" \n\t"+arrayList.get(position)+"\n ");
 			ImageView img = (ImageView) convertView.findViewById(R.id.listview_item_simple_img);
 			if (position==0)
 			{
-				tv.setTextSize(48);
-				img.getLayoutParams().height = (int) (getWindowManager().getDefaultDisplay().getHeight() * 0.36);
+				tv.setTextSize(36);
+				img.getLayoutParams().height = (int) (getWindowManager().getDefaultDisplay().getHeight() * 0.40);
+				//img.setBackgroundColor(0xFF00A2E8);
 			}
 			else
 			{
-				img.getLayoutParams().height = (int) (getWindowManager().getDefaultDisplay().getHeight() * 0.12);
+				img.getLayoutParams().height = (int) (getWindowManager().getDefaultDisplay().getHeight() * 0.14);
 			}
 			
 			return convertView;

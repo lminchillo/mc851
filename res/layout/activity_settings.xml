@@ -30,8 +30,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
             android:enabled="false"
-            android:text="@string/settings_notifications"
-            android:textColor="#ffffff" />
+            android:text="@string/settings_notifications" />
 
         <CheckBox
             android:id="@+id/settings_sounds"
@@ -44,8 +43,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
             android:enabled="false"
-            android:text="@string/settings_sounds"
-            android:textColor="#ffffff" />
+            android:text="@string/settings_sounds" />
+        
     </RelativeLayout>
 
 </LinearLayout>

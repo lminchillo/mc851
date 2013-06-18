@@ -17,7 +17,7 @@ public class CouponDetails extends Activity
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_coupons_details);
+		setContentView(R.layout.activity_coupon_details);
 
 		initializeButtons();
 	}

@@ -9,11 +9,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.LinearLayout;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
-public class TakeBusNewRoute extends Activity
+public class RouteNew extends Activity
 {
 	private final static String TAG = "TakeBusNewRoute";
 
@@ -34,7 +34,7 @@ public class TakeBusNewRoute extends Activity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_take_bus_new_route);
+		setContentView(R.layout.activity_route_new);
 		
 		initializeWidgets();
 	}

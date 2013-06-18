@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class TakeBus extends Activity 
+public class RouteStart extends Activity 
 {
 	private final static String TAG = "TakeBusRoute";
 	
@@ -19,7 +19,7 @@ public class TakeBus extends Activity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_take_bus);
+		setContentView(R.layout.activity_route_start);
 		
 		initializeButtons();
 	}
@@ -32,7 +32,7 @@ public class TakeBus extends Activity
 			public void onClick(View v) 
 			{
 				Log.d(TAG, "Clicked on New Route button");
-				startActivity(new Intent(getApplicationContext(), TakeBusNewRoute.class));
+				startActivity(new Intent(getApplicationContext(), RouteNew.class));
 			}
 		});
 		
@@ -42,7 +42,7 @@ public class TakeBus extends Activity
 			public void onClick(View v) 
 			{
 				Log.d(TAG, "Clicked on Saved Route button");
-				startActivity(new Intent(getApplicationContext(), TakeBusSavedRoute.class));
+				startActivity(new Intent(getApplicationContext(), RouteSaved.class));
 			}
 		});
 	}

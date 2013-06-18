@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class TakeBusSavedRoute extends Activity
+public class RouteSaved extends Activity
 {
 	private final static String TAG = "TakeBusSavedRoute";
 	
@@ -17,7 +17,7 @@ public class TakeBusSavedRoute extends Activity
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_take_bus_saved_route);
+		setContentView(R.layout.activity_route_saved);
 		
 		initializeButtons();
 	}
