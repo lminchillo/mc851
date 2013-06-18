@@ -52,7 +52,7 @@ public class Routes extends Activity
 		
 		TextView noRoutes = (TextView) findViewById(R.id.routes_text_view_no_saved_routes);
 		routeList = RouteManager.getRouteList();
-		if (routeList ==  null || routeList.size()==0)
+		if (routeList ==  null || routeList.size() == 0)
 		{
 			noRoutes.setVisibility(View.VISIBLE);
 		}
@@ -82,10 +82,10 @@ public class Routes extends Activity
 			{
 				Log.d(TAG, "Clicked on New Route button");
 				Intent intent = new Intent(getApplicationContext(), RouteEdit.class);
-				intent.putExtra("routeName","");
-				intent.putExtra("routeSourceValue","");
+				intent.putExtra("routeName", "");
+				intent.putExtra("routeSourceValue", "");
 				intent.putExtra("routeDestValue", "");
-				startActivity(new Intent(getApplicationContext(), RouteEdit.class));
+				startActivity(intent);
 				finish();
 			}
 		});
