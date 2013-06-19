@@ -12,7 +12,6 @@
     <string name="confirm">Continuar</string>
 
     <!-- StartScreen strings -->
-    <string name="startscreen_take_bus">Pegar ônibus!</string>
     <string name="startscreen_saved_routes">Rotas salvas</string>
     <string name="startscreen_saved_addresses">Endereços salvos</string>
     <string name="startscreen_my_coupons">Meus cupons</string>
