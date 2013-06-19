@@ -20,13 +20,15 @@
 
         <Button
             android:id="@+id/addresses_button_new_address"
-            style="@style/ButtonStyleNavy"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_margin="5dp"
-            android:text="@string/addresses_new_address" />
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/addresses_new_address"
+            style="@style/ButtonStyleNavy" />
 
         <ListView
             android:id="@+id/addresses_listview"
@@ -44,9 +46,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:text="@string/addresses_no_addresses"
-            android:textColor="#ffffff"
-            android:visibility="invisible" />
+            android:text="@string/addresses_no_addresses" />
+        
     </RelativeLayout>
 
 </LinearLayout>
