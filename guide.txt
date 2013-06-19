@@ -98,81 +98,11 @@ Tela que mostra detalhes de um cupom salvo.
 
     ---
 
-* Settings (Pronto)
-
-Tela que mostra opções.
-
-    Criado: sim
-    Push: livre
-    Layout: livre (pronto)
-
-    ---
-
-* Splashscreen (Pronto)
-    
-Inicializa todas as classes, serviços, etc. (Em background)
-No final, inicializa Startscreen e finaliza.
-
-    Criado: sim
-    Push: livre
-    Layout: livre (pronto)
-
-    ---
-
-* Startscreen (Pronto)
-
-Menu inicial que leva a varias atividades.
-
-    Criado: sim
-    Push: livre
-    Layout: livre (pronto)
-
-    ---
-
-* Addresses (Pronto)
-
-Tela que mostra uma lista com todos os endereços salvos. Ao clicar em um item, leva a AddressEdit com esse item aberto.
-
-    Criado: sim
-    Push: livre
-    Layout: livre (pronto)
-
-    ---
-
-* AddressEdit (Pronto)
-
-Mostra detalhes de um endereço, ou uma tela para criar um novo endereço.
-
-    Criado: sim
-    Push: livre
-    Layout: livre (pronto)
-
-    ---
-
-* AddressManager (Pronto)
-
-Classe controladora de endereços. Funções do tipo getAllAddresses(), getAddress(String name), deleteAddress(String name), entre outras.
-
-    Criado: sim
-    Push: livre
-    Layout: N/A
-
-    ---
-
-* RouteManager (Pronto)
-
-Classe controladora de rotas. Funções do tipo getAllRoutes(), getRoute(String name), deleteRoute(String name), entre outras.
-
-    Criado: sim
-    Push: livre
-    Layout: N/A
-
-    ---
-
-* RouteGetter (Pronto)
-
-Classe controladora de rotas. Faz acesso ao site da Emdec. Funções do tipo getBusLines() e getFunctionInitialize(), entre outras.
-
-    Criado: não
-    Push: restrito
-    Layout: N/A
+* Settings (Pronto) - Tela que mostra opções.
+* Splashscreen (Pronto) - Inicializa todas as classes, serviços, etc.
+* Startscreen (Pronto) - Menu inicial que leva a varias atividades.
+* Addresses (Pronto) - Tela que mostra uma lista com todos os endereços salvos. Ao clicar em um item, leva a AddressEdit com esse item aberto.
+* AddressEdit (Pronto) - Mostra detalhes de um endereço, ou uma tela para criar um novo endereço.
+* AddressManager (Pronto) - Classe controladora de endereços. Funções do tipo getAllAddresses(), getAddress(String name), deleteAddress(String name), entre outras.
+* RouteManager (Pronto) - Classe controladora de rotas. Funções do tipo getAllRoutes(), getRoute(String name), deleteRoute(String name), entre outras.
+* RouteGetter (Pronto) - Classe controladora de rotas. Faz acesso ao site da Emdec. Funções do tipo getBusLines() e getFunctionInitialize(), entre outras.
