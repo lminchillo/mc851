@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Addresses extends Activity
+public class _4_Addresses extends Activity
 {
 	private ListView addressListView = null;
 	private ArrayList<String> addressList = null;
@@ -76,7 +76,7 @@ public class Addresses extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				Intent intent = new Intent(getApplicationContext(),AddressEdit.class);
+				Intent intent = new Intent(getApplicationContext(),_41_AddressEdit.class);
 				intent.putExtra("addressName","");
 				intent.putExtra("addressValue","");
 				startActivity(intent);
@@ -111,7 +111,7 @@ public class Addresses extends Activity
 				@Override
 				public void onClick(View v)
 				{
-					Intent intent = new Intent(getApplicationContext(),AddressEdit.class);
+					Intent intent = new Intent(getApplicationContext(),_41_AddressEdit.class);
 					String aux = addressList.get(position);
 					intent.putExtra("addressName",aux.substring(0, aux.indexOf("\n")));
 					intent.putExtra("addressValue",aux);

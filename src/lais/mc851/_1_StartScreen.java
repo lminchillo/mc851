@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class StartScreen extends Activity
+public class _1_StartScreen extends Activity
 {	
 	ArrayList<String> arrayList = null;
 	
@@ -43,11 +43,11 @@ public class StartScreen extends Activity
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
 				position++;
-				if (position==1) startActivity(new Intent(getApplicationContext(),RouteStart.class));
-				else if (position==2) startActivity(new Intent(getApplicationContext(),Routes.class));
-				else if (position==3) startActivity(new Intent(getApplicationContext(),Addresses.class));
-				else if (position==4) startActivity(new Intent(getApplicationContext(),Coupons.class));
-				else if (position==5) startActivity(new Intent(getApplicationContext(),Settings.class));
+				if (position==1) startActivity(new Intent(getApplicationContext(),_2_RouteStart.class));
+				else if (position==2) startActivity(new Intent(getApplicationContext(),_3_Routes.class));
+				else if (position==3) startActivity(new Intent(getApplicationContext(),_4_Addresses.class));
+				else if (position==4) startActivity(new Intent(getApplicationContext(),_5_Coupons.class));
+				else if (position==5) startActivity(new Intent(getApplicationContext(),_6_Settings.class));
 			}
 		});
 	}

@@ -12,7 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 @SuppressLint("CommitPrefEdits")
-public class Splashscreen extends Activity
+public class _0_Splashscreen extends Activity
 {
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -62,7 +62,7 @@ public class Splashscreen extends Activity
 			@Override
 			protected void onPostExecute(Void result)
 			{
-				startActivity(new Intent(getApplicationContext(),StartScreen.class));
+				startActivity(new Intent(getApplicationContext(),_1_StartScreen.class));
 				finish();
 			}
 		}.execute();

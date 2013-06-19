@@ -10,7 +10,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-public class Route extends Activity
+public class _23_Route extends Activity
 {
 	GoogleMap map = null;
 	String initialize = null;

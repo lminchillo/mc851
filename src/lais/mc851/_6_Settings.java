@@ -3,7 +3,7 @@ package lais.mc851;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class Settings extends Activity
+public class _6_Settings extends Activity
 {
 	@Override
 	protected void onCreate(Bundle savedInstanceState)

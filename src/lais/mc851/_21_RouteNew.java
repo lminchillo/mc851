@@ -12,7 +12,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-public class RouteNew extends Activity
+public class _21_RouteNew extends Activity
 {
 	private LinearLayout layoutSave;
 	
@@ -71,7 +71,7 @@ public class RouteNew extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				startActivity(new Intent(getApplicationContext(), Route.class));
+				startActivity(new Intent(getApplicationContext(), _23_Route.class));
 			}
 		});
 		

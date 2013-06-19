@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class RouteEdit extends Activity
+public class _31_RouteEdit extends Activity
 {
 	private final static String TAG = "RouteEdit";
 	
@@ -55,7 +55,7 @@ public class RouteEdit extends Activity
 	public void onBackPressed()
 	{
 		System.gc();
-		startActivity(new Intent(getApplicationContext(), Routes.class));
+		startActivity(new Intent(getApplicationContext(), _3_Routes.class));
 		finish();
 	}
 	
@@ -111,7 +111,7 @@ public class RouteEdit extends Activity
 			public void onClick(View v)
 			{
 				try {
-					ArrayList<String> list = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(RouteEdit.this), RouteEdit.this);
+					ArrayList<String> list = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(_31_RouteEdit.this), _31_RouteEdit.this);
 					routeSourceStreetValue = list.get(0);
 					routeViewSource = (TextView) findViewById(R.id.route_edit_text_view_address_source);
 					routeViewSource.setText(routeSourceStreetValue);
@@ -131,7 +131,7 @@ public class RouteEdit extends Activity
 			public void onClick(View v)
 			{
 				try {
-					ArrayList<String> list = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(RouteEdit.this), RouteEdit.this);
+					ArrayList<String> list = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(_31_RouteEdit.this), _31_RouteEdit.this);
 					routeDestStreetValue = list.get(0);
 					routeViewDest = (TextView) findViewById(R.id.route_edit_text_view_address_destination);
 					routeViewDest.setText(routeDestStreetValue);
@@ -150,7 +150,7 @@ public class RouteEdit extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				LayoutInflater factory = LayoutInflater.from(RouteEdit.this);
+				LayoutInflater factory = LayoutInflater.from(_31_RouteEdit.this);
 			    final View textEntryView = factory.inflate(R.layout.alert_dialog_simple_edittext, null);
 			    final EditText editText = (EditText) textEntryView.findViewById(R.id.alert_dialog_edittext);
 			    
@@ -167,7 +167,7 @@ public class RouteEdit extends Activity
 			    	editText.setText(routeSourceValue);
 			    }
 			    
-				Dialog dialog = new AlertDialog.Builder(RouteEdit.this)			        
+				Dialog dialog = new AlertDialog.Builder(_31_RouteEdit.this)			        
 			        .setTitle(getResources().getString(R.string.address_edit_address_new))
 			        .setView(textEntryView)
 			        .setPositiveButton("Ok", new DialogInterface.OnClickListener()
@@ -178,7 +178,7 @@ public class RouteEdit extends Activity
 			                
 			                try 
 			                {
-			                	GPSManager.getLocation(routeSourceValueTemp, RouteEdit.this);
+			                	GPSManager.getLocation(routeSourceValueTemp, _31_RouteEdit.this);
 			                }
 			                catch(IOException e) 
 			                {
@@ -204,7 +204,7 @@ public class RouteEdit extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				LayoutInflater factory = LayoutInflater.from(RouteEdit.this);
+				LayoutInflater factory = LayoutInflater.from(_31_RouteEdit.this);
 			    final View textEntryView = factory.inflate(R.layout.alert_dialog_simple_edittext, null);
 			    final EditText editText = (EditText) textEntryView.findViewById(R.id.alert_dialog_edittext);
 			    
@@ -221,7 +221,7 @@ public class RouteEdit extends Activity
 			    	editText.setText(routeDestValue);
 			    }
 			    
-				Dialog dialog = new AlertDialog.Builder(RouteEdit.this)			        
+				Dialog dialog = new AlertDialog.Builder(_31_RouteEdit.this)			        
 			        .setTitle(getResources().getString(R.string.address_edit_address_new))
 			        .setView(textEntryView)
 			        .setPositiveButton("Ok", new DialogInterface.OnClickListener()
@@ -232,7 +232,7 @@ public class RouteEdit extends Activity
 			                
 			                try 
 			                {
-			                	GPSManager.getLocation(routeDestValueTemp, RouteEdit.this);
+			                	GPSManager.getLocation(routeDestValueTemp, _31_RouteEdit.this);
 			                }
 			                catch(IOException e) 
 			                {
@@ -268,7 +268,7 @@ public class RouteEdit extends Activity
 						if (RouteManager.addRoute(routeName, routeSaveValue))
 						{
 							Toast.makeText(getApplicationContext(), "Rota salva!", Toast.LENGTH_SHORT).show();
-							startActivity(new Intent(getApplicationContext(), Routes.class));
+							startActivity(new Intent(getApplicationContext(), _3_Routes.class));
 							finish();
 						}
 						else
@@ -286,7 +286,7 @@ public class RouteEdit extends Activity
 							if (RouteManager.addRoute(routeName, routeSaveValue))
 							{
 								Toast.makeText(getApplicationContext(), "Rota Salva!", Toast.LENGTH_SHORT).show();
-								startActivity(new Intent(getApplicationContext(), Routes.class));
+								startActivity(new Intent(getApplicationContext(), _3_Routes.class));
 								finish();
 							}
 							else
@@ -329,7 +329,7 @@ public class RouteEdit extends Activity
 						if (RouteManager.removeRoute(savedRouteName))
 						{
 							Toast.makeText(getApplicationContext(), "Rota deletada!", Toast.LENGTH_SHORT).show();
-							startActivity(new Intent(getApplicationContext(), Routes.class));
+							startActivity(new Intent(getApplicationContext(), _3_Routes.class));
 							finish();
 						}
 						else

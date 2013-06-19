@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class RouteStart extends Activity 
+public class _2_RouteStart extends Activity 
 {
 	private Button buttonNewRoute;
 	private Button buttonSavedRoute;
@@ -29,7 +29,7 @@ public class RouteStart extends Activity
 			@Override
 			public void onClick(View v) 
 			{
-				startActivity(new Intent(getApplicationContext(), RouteNew.class));
+				startActivity(new Intent(getApplicationContext(), _21_RouteNew.class));
 			}
 		});
 		
@@ -39,7 +39,7 @@ public class RouteStart extends Activity
 			@Override
 			public void onClick(View v) 
 			{
-				startActivity(new Intent(getApplicationContext(), RouteSaved.class));
+				startActivity(new Intent(getApplicationContext(), _22_RouteSaved.class));
 			}
 		});
 	}

@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CouponView extends Activity 
+public class _51_CouponView extends Activity 
 {
 	private Button buttonDelete;
 	
@@ -57,7 +57,7 @@ public class CouponView extends Activity
 						if (CouponManager.removeCoupon(couponName))
 						{
 							Toast.makeText(getApplicationContext(), "Cupom deletado", Toast.LENGTH_SHORT).show();
-							startActivity(new Intent(getApplicationContext(),Coupons.class));		
+							startActivity(new Intent(getApplicationContext(),_5_Coupons.class));		
 							finish();
 						}
 						else

@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AddressEdit extends Activity
+public class _41_AddressEdit extends Activity
 {
 	Button gps = null;
 	Button type = null;
@@ -53,7 +53,7 @@ public class AddressEdit extends Activity
 	public void onBackPressed()
 	{
 		System.gc();
-		startActivity(new Intent(getApplicationContext(), Addresses.class));
+		startActivity(new Intent(getApplicationContext(), _4_Addresses.class));
 		finish();
 	}
 	
@@ -90,7 +90,7 @@ public class AddressEdit extends Activity
 			{
 				try 
 				{
-					ArrayList<String> ret = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(AddressEdit.this), AddressEdit.this);
+					ArrayList<String> ret = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(_41_AddressEdit.this), _41_AddressEdit.this);
 					addressStreetValue = ret.get(0);
 		    		addressView = (TextView) findViewById(R.id.address_edit_address_text);
 		    		addressView.setText(addressStreetValue);
@@ -127,7 +127,7 @@ public class AddressEdit extends Activity
 						if (AddressManager.addAddress(addressName, addressValue))
 						{
 							Toast.makeText(getApplicationContext(), "Endereço salvo", Toast.LENGTH_SHORT).show();
-							startActivity(new Intent(getApplicationContext(),Addresses.class));
+							startActivity(new Intent(getApplicationContext(),_4_Addresses.class));
 							finish();
 						}
 						else
@@ -143,7 +143,7 @@ public class AddressEdit extends Activity
 							if (AddressManager.addAddress(addressName, addressValue))
 							{
 								Toast.makeText(getApplicationContext(), "Endereço salvo", Toast.LENGTH_SHORT).show();
-								startActivity(new Intent(getApplicationContext(),Addresses.class));
+								startActivity(new Intent(getApplicationContext(),_4_Addresses.class));
 								finish();
 							}
 							else
@@ -176,7 +176,7 @@ public class AddressEdit extends Activity
 						if (AddressManager.removeAddress(savedAddressName))
 						{
 							Toast.makeText(getApplicationContext(), "Endereço deletado", Toast.LENGTH_SHORT).show();
-							startActivity(new Intent(getApplicationContext(),Addresses.class));
+							startActivity(new Intent(getApplicationContext(),_4_Addresses.class));
 							finish();
 						}
 						else
@@ -201,7 +201,7 @@ public class AddressEdit extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				startActivity(new Intent(getApplicationContext(),Addresses.class));
+				startActivity(new Intent(getApplicationContext(),_4_Addresses.class));
 				finish();
 			}
 		});
@@ -225,7 +225,7 @@ public class AddressEdit extends Activity
 	    	editText.setText(addressValue);
 	    }
 	    
-		Dialog dialog = new AlertDialog.Builder(AddressEdit.this)
+		Dialog dialog = new AlertDialog.Builder(_41_AddressEdit.this)
 	        //.setIconAttribute(android.R.attr.alertDialogIcon)
 	        .setTitle(getResources().getString(R.string.address_edit_address_new))
 	        .setView(textEntryView)
@@ -236,7 +236,7 @@ public class AddressEdit extends Activity
 	                addressValueTemp = editText.getText().toString().trim();
 	                try 
 	                {
-	                	ArrayList<String> ret = (ArrayList<String>) GPSManager.getLocation(addressValueTemp, AddressEdit.this);
+	                	ArrayList<String> ret = (ArrayList<String>) GPSManager.getLocation(addressValueTemp, _41_AddressEdit.this);
 	                	addressStreetValue = ret.get(0);
 	                	addressView = (TextView) findViewById(R.id.address_edit_address_text);
 	                	addressView.setText(addressStreetValue);

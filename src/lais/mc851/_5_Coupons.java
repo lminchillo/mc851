@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Coupons extends Activity {
+public class _5_Coupons extends Activity {
 	private ListView couponListView = null;
 	private ArrayList<String> couponList = null;
 	private MyArrayAdapter adapter = null;
@@ -102,7 +102,7 @@ public class Coupons extends Activity {
 				@Override
 				public void onClick(View v) {
 					Intent intent = new Intent(getApplicationContext(),
-							CouponView.class);
+							_51_CouponView.class);
 					intent.putExtra("couponName", couponName);
 					intent.putExtra("couponDescription", couponDescription);
 					startActivity(intent);

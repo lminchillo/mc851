@@ -31,7 +31,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="lais.mc851.Splashscreen"
+            android:name="lais.mc851._0_Splashscreen"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,51 +40,51 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="lais.mc851.StartScreen"
+            android:name="lais.mc851._1_StartScreen"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="lais.mc851.Settings"
+            android:name="lais.mc851._6_Settings"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="lais.mc851.Addresses"
+            android:name="lais.mc851._4_Addresses"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="lais.mc851.AddressEdit"
+            android:name="lais.mc851._41_AddressEdit"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="lais.mc851.Coupons"
+            android:name="lais.mc851._5_Coupons"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="lais.mc851.CouponView"
+            android:name="lais.mc851._51_CouponView"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="lais.mc851.Route"
+            android:name="lais.mc851._23_Route"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="lais.mc851.RouteStart"
+            android:name="lais.mc851._2_RouteStart"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="lais.mc851.RouteNew"
+            android:name="lais.mc851._21_RouteNew"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="lais.mc851.RouteSaved"
+            android:name="lais.mc851._22_RouteSaved"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="lais.mc851.Routes"
+            android:name="lais.mc851._3_Routes"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="lais.mc851.RouteEdit"
+            android:name="lais.mc851._31_RouteEdit"
             android:screenOrientation="portrait" >
         </activity>
 

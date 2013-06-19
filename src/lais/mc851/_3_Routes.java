@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Routes extends Activity
+public class _3_Routes extends Activity
 {
 	private final static String TAG = "Routes";
 	
@@ -81,7 +81,7 @@ public class Routes extends Activity
 			public void onClick(View v) 
 			{
 				Log.d(TAG, "Clicked on New Route button");
-				Intent intent = new Intent(getApplicationContext(), RouteEdit.class);
+				Intent intent = new Intent(getApplicationContext(), _31_RouteEdit.class);
 				intent.putExtra("routeName", "");
 				intent.putExtra("routeSourceValue", "");
 				intent.putExtra("routeDestValue", "");
@@ -117,7 +117,7 @@ public class Routes extends Activity
 				@Override
 				public void onClick(View v)
 				{
-					Intent intent = new Intent(getApplicationContext(), RouteEdit.class);
+					Intent intent = new Intent(getApplicationContext(), _31_RouteEdit.class);
 					String aux = routeList.get(position), routeName;
 					StringTokenizer st = new StringTokenizer(aux, "\n");
 
