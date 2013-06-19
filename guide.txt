@@ -58,13 +58,13 @@ Tela que mostra detalhes de uma rota. Pode haver a opção de editar a rota ou n
 
     ---
 
-* Coupons ( -> Celso)
+* Coupons (Pronto)
 
 Tela que mostra uma lista com todos os cupons salvos. Ao clicar em um item, leva a CuponView com esse item aberto.
 
     Criado: sim
-    Push: restrito
-    Layout: não
+    Push: livre
+    Layout: livre
 
     ---
 
@@ -88,13 +88,13 @@ Serviço para update de cupons. Chama a função updateDatabase() - ou similar -
 
     ---
 
-* CouponView ( -> Celso)
+* CouponView (Pronto)
 
 Tela que mostra detalhes de um cupom salvo.
 
-    Criado: não
-    Push: restrito
-    Layout: não
+    Criado: sim
+    Push: livre
+    Layout: livre
 
     ---
 
