@@ -3,10 +3,14 @@
     <issue id="CommitPrefEdits">
         <ignore path="src/lais/mc851/Splashscreen.java" />
     </issue>
-    <issue id="ContentDescription">
+    <issue id="ContentDescription" severity="ignore">
         <ignore path="res/layout/activity_splashscreen.xml" />
     </issue>
+    <issue id="IconLocation" severity="ignore" />
     <issue id="MissingTranslation" severity="ignore" />
+    <issue id="PxUsage">
+        <ignore path="res\layout\activity_start_screen.xml" />
+    </issue>
     <issue id="SelectableText">
         <ignore path="res\layout\listview_item_simple.xml" />
     </issue>
