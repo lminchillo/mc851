@@ -1,6 +1,5 @@
 package lais.mc851;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import android.app.Activity;
@@ -110,7 +109,7 @@ public class _31_RouteEdit extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				ArrayList<String> list = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(_31_RouteEdit.this), _31_RouteEdit.this);
+				ArrayList<String> list = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation());
 				routeSourceStreetValue = list.get(0);
 				routeViewSource = (TextView) findViewById(R.id.route_edit_text_view_address_source);
 				routeViewSource.setText(routeSourceStreetValue);
@@ -123,7 +122,7 @@ public class _31_RouteEdit extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				ArrayList<String> list = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(_31_RouteEdit.this), _31_RouteEdit.this);
+				ArrayList<String> list = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation());
 				routeDestStreetValue = list.get(0);
 				routeViewDest = (TextView) findViewById(R.id.route_edit_text_view_address_destination);
 				routeViewDest.setText(routeDestStreetValue);
@@ -161,7 +160,7 @@ public class _31_RouteEdit extends Activity
 			            public void onClick(DialogInterface dialog, int whichButton)
 			            {
 			                routeSourceValueTemp = editText.getText().toString().trim();
-			                GPSManager.getLocation(routeSourceValueTemp, _31_RouteEdit.this);
+			                GPSManager.getLocation(routeSourceValueTemp);
 			            }
 			        })
 			        .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()
@@ -208,7 +207,7 @@ public class _31_RouteEdit extends Activity
 			            {
 			                routeDestValueTemp = editText.getText().toString().trim();
 			                
-			                GPSManager.getLocation(routeDestValueTemp, _31_RouteEdit.this);
+			                GPSManager.getLocation(routeDestValueTemp);
 			            }
 			        })
 			        .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()

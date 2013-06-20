@@ -70,7 +70,7 @@ public class CouponManager
 			{
 	    		String[] aux = n.attr("item").toString().split("@");
 	    		
-	    		if (aux[0] == name)
+	    		if (aux[0].equals(name))
 	    		{
 	    			for (String s : aux)
 	    			{
@@ -80,8 +80,6 @@ public class CouponManager
 	    			return coupon;
 	    		}
 	    	}
-			
-			return coupon;
 		}
 		catch (Exception e)
 		{

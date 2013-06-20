@@ -1,6 +1,5 @@
 package lais.mc851;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import android.app.Activity;
@@ -88,7 +87,7 @@ public class _41_AddressEdit extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				ArrayList<String> ret = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(_41_AddressEdit.this), _41_AddressEdit.this);
+				ArrayList<String> ret = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation());
 				addressStreetValue = ret.get(0);
 	    		addressView = (TextView) findViewById(R.id.address_edit_address_text);
 	    		addressView.setText(addressStreetValue);
@@ -228,7 +227,7 @@ public class _41_AddressEdit extends Activity
 	            {
 	                addressValueTemp = editText.getText().toString().trim();
 
-                	ArrayList<String> ret = (ArrayList<String>) GPSManager.getLocation(addressValueTemp, _41_AddressEdit.this);
+                	ArrayList<String> ret = (ArrayList<String>) GPSManager.getLocation(addressValueTemp);
                 	addressStreetValue = ret.get(0);
                 	addressView = (TextView) findViewById(R.id.address_edit_address_text);
                 	addressView.setText(addressStreetValue);
