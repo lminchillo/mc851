@@ -3,7 +3,6 @@ package lais.mc851;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
@@ -12,11 +11,18 @@ import android.location.LocationManager;
 
 public class GPSManager
 {
-	public static List<String> getLocation(String address, Context ac)
+	private static Context context = null;
+	
+	public GPSManager(Context ctx)
+	{
+		context = ctx;
+	}
+	
+	public static List<String> getLocation(String address)
     {
     	try
     	{
-    		Geocoder g = new Geocoder(ac);
+    		Geocoder g = new Geocoder(context);
         	List<Address> a = g.getFromLocationName(address, 1);
         	List<String> ret = new ArrayList<String>(2);
         	
@@ -45,9 +51,9 @@ public class GPSManager
     	}
     }
 	
-	public static Location getLastBestLocation(Activity a)
+	public static Location getLastBestLocation()
     {
-        LocationManager mLocationManager = (LocationManager) a.getSystemService(Context.LOCATION_SERVICE);
+        LocationManager mLocationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
                 
 		Location locationGPS = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         Location locationNet = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
@@ -75,11 +81,11 @@ public class GPSManager
         }
     }
 	
-	public static List<String> getAddress(Location l, Context ac)
+	public static List<String> getAddress(Location l)
     {
     	try
     	{
-    		Geocoder g = new Geocoder(ac);
+    		Geocoder g = new Geocoder(context);
         	Address a = g.getFromLocation(l.getLatitude(), l.getLongitude(), 1).get(0);
         	
         	String value = "";
