@@ -86,7 +86,7 @@ public class _3_Routes extends Activity
 			}
 			
 			String route = routeList.get(position);
-			route = route.substring(0, route.indexOf("\n", route.indexOf("\n") + 1));
+			route = route.substring(0, route.indexOf("\n"));
 			
 			TextView tv = (TextView) convertView.findViewById(R.id.listview_item_simple_text);
 			tv.setText(" \n"+route+"\n ");
