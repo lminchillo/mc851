@@ -13,20 +13,16 @@
         android:text="@string/route_edit_title"
         android:textColor="#ffffff"
         android:textSize="24sp" />
-
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="5dp"
-        android:layout_weight="1" >
-
+        
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="0dp"
+            android:orientation="vertical"
+	        android:layout_marginBottom="5dp"
+	        android:layout_marginLeft="15dp"
+	        android:layout_marginRight="15dp"
+	        android:layout_marginTop="5dp"
+	        android:layout_weight="1" >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -58,37 +54,6 @@
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal" >
-
-                <Button
-                    android:id="@+id/route_edit_button_gps_source"
-                    style="@style/ButtonStyleNavy"
-                    android:layout_width="70dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="2dp"
-                    android:text="@string/gps" />
-
-                <Button
-                    android:id="@+id/route_edit_button_type_source"
-                    style="@style/ButtonStyleNavy"
-                    android:layout_width="70dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="2dp"
-                    android:text="@string/type" />
-
-                <Button
-                    android:id="@+id/route_edit_button_saved_source"
-                    style="@style/ButtonStyleNavy"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="2dp"
-                    android:text="@string/route_edit_saved_addr" />
-            </LinearLayout>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -103,39 +68,7 @@
                 android:text="@string/none"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal" >
-
-                <Button
-                    android:id="@+id/route_edit_button_gps_destination"
-                    style="@style/ButtonStyleNavy"
-                    android:layout_width="70dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="2dp"
-                    android:text="@string/gps" />
-
-                <Button
-                    android:id="@+id/route_edit_button_type_destination"
-                    style="@style/ButtonStyleNavy"
-                    android:layout_width="70dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="2dp"
-                    android:text="@string/type" />
-
-                <Button
-                    android:id="@+id/route_edit_button_saved_destination"
-                    style="@style/ButtonStyleNavy"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="2dp"
-                    android:text="@string/route_edit_saved_addr" />
-            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
 
     <LinearLayout
         android:layout_width="fill_parent"

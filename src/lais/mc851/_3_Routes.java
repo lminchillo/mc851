@@ -104,6 +104,7 @@ public class _3_Routes extends Activity
 					intent.putExtra("routeName", routeName);
 					intent.putExtra("routeSourceValue", routeName+"\n"+st.nextToken()+"\n"+st.nextToken());
 					intent.putExtra("routeDestValue", routeName+"\n"+st.nextToken()+"\n"+st.nextToken());
+					intent.putExtra("routeValue", routeList.get(position));
 					startActivity(intent);
 					finish();
 				}
