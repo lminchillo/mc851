@@ -22,13 +22,6 @@ public class _3_Routes extends Activity
 	private MyArrayAdapter adapter = null;
 	
 	@Override
-	protected void onResume()
-	{
-		initializeListView();
-		super.onResume();
-	}
-	
-	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
@@ -53,18 +46,9 @@ public class _3_Routes extends Activity
 		else
 		{
 			noRoutes.setVisibility(View.INVISIBLE);
-			initializeListView();
-		}
-	}
-	
-	private void initializeListView()
-	{
-		if (adapter == null)
-		{
 			adapter = new MyArrayAdapter(getApplicationContext(), R.layout.listview_item_simple, routeList);
 			routeListView.setAdapter(adapter);
 		}
-		adapter.notifyDataSetChanged();
 	}
 	
 	class MyArrayAdapter extends ArrayAdapter<String>
