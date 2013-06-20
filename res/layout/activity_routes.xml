@@ -18,35 +18,24 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
 
-        <Button
-            android:id="@+id/routes_button_new_route"
-            style="@style/ButtonStyleNavy"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="5dp"
-            android:text="@string/routes_new_route" />
-
         <ListView
             android:id="@+id/routes_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/routes_button_new_route"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
         <TextView
-            android:id="@+id/routes_text_view_no_saved_routes"
+            android:id="@+id/routes_no_saved_routes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:text="@string/routes_no_routes"
-            android:textColor="#ffffff"
-            android:visibility="invisible" />
+            android:gravity="center"
+            android:text="@string/routes_no_routes" />
+        
     </RelativeLayout>
 
 </LinearLayout>

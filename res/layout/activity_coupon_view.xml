@@ -36,10 +36,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:gravity="left"
+            android:gravity="center"
             android:singleLine="false"
-            android:text="Aufduabsdfu ausdhfiuasdf biausdbfahgauie auehrgauieh uiaerhgauiehg auehgaui hgaeurgh aehrg auehgaoerhgauerhg aiehguiagr iuasdbfiab iausdbf iausbf aisudbf asdf"
-            android:textColor="#ffffff"
             android:textSize="14sp" />
 
         <ImageView

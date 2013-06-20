@@ -7,21 +7,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class _3_Routes extends Activity
 {
-	private final static String TAG = "Routes";
-	
-	private Button buttonNewRoute;
 	private ListView routeListView = null;
 	private ArrayList<String> routeList = null;
 	private MyArrayAdapter adapter = null;
@@ -40,7 +35,6 @@ public class _3_Routes extends Activity
 		setContentView(R.layout.activity_routes);
 		
 		initialize();
-		initializeButtons();
 	}
 	
 	private void initialize()
@@ -50,7 +44,7 @@ public class _3_Routes extends Activity
 			routeListView = (ListView) findViewById(R.id.routes_listview);
 		}
 		
-		TextView noRoutes = (TextView) findViewById(R.id.routes_text_view_no_saved_routes);
+		TextView noRoutes = (TextView) findViewById(R.id.routes_no_saved_routes);
 		routeList = RouteManager.getRouteList();
 		if (routeList ==  null || routeList.size() == 0)
 		{
@@ -73,24 +67,6 @@ public class _3_Routes extends Activity
 		adapter.notifyDataSetChanged();
 	}
 	
-	private void initializeButtons()
-	{
-		buttonNewRoute = (Button) findViewById(R.id.routes_button_new_route);
-		buttonNewRoute.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				Log.d(TAG, "Clicked on New Route button");
-				Intent intent = new Intent(getApplicationContext(), _31_RouteEdit.class);
-				intent.putExtra("routeName", "");
-				intent.putExtra("routeSourceValue", "");
-				intent.putExtra("routeDestValue", "");
-				startActivity(intent);
-				finish();
-			}
-		});
-	}
-	
 	class MyArrayAdapter extends ArrayAdapter<String>
 	{
 		LayoutInflater inflater;
@@ -104,7 +80,10 @@ public class _3_Routes extends Activity
 		@Override
 		public View getView (final int position, View convertView, ViewGroup parent) 
 		{
-			convertView = inflater.inflate(R.layout.listview_item_simple, null);
+			if (convertView == null)
+			{
+				convertView = inflater.inflate(R.layout.listview_item_simple, null);
+			}
 			
 			String route = routeList.get(position);
 			route = route.substring(0, route.indexOf("\n", route.indexOf("\n") + 1));

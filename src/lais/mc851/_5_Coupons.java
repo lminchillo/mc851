@@ -84,7 +84,7 @@ public class _5_Coupons extends Activity {
 			System.out.println("Posicao: " + position);
 			String coupon = couponList.get(position);
 			System.out.println("coupon: " + coupon);
-			String s[] = coupon.split("\\|");
+			String s[] = coupon.split("\n");
 			final String couponName = s[0];
 			final String couponDescription = s[1];
 

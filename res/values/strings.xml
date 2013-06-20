@@ -44,7 +44,7 @@
     
     <!-- Routes strings -->
     <string name="routes_title">Rotas Salvas</string>
-    <string name="routes_no_routes">Não há rotas salvas!\nPara salvar uma rota, selecione Qual Busão? no menu inicial</string>
+    <string name="routes_no_routes">Não há rotas salvas!\nPara salvar uma rota, selecione\n"Qual Busão?" no menu inicial</string>
 
     <!-- Route Edit strings -->
     <string name="route_edit_title">Rotas Salvas</string>
