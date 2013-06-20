@@ -14,13 +14,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class _5_Coupons extends Activity {
+public class _5_Coupons extends Activity
+{
 	private ListView couponListView = null;
 	private ArrayList<String> couponList = null;
 	private MyArrayAdapter adapter = null;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_coupons);
 
@@ -28,21 +30,18 @@ public class _5_Coupons extends Activity {
 	}
 
 	@Override
-	protected void onResume() {
+	protected void onResume()
+	{
 		initializeListView();
 		super.onResume();
 	}
 
-	private void initialize() {
-		if (couponListView == null) {
-			couponListView = (ListView) findViewById(R.id.coupons_listview);
-		}
+	private void initialize()
+	{
+		couponListView = (ListView) findViewById(R.id.coupons_listview);
 
 		TextView noCoupons = (TextView) findViewById(R.id.coupons_text_view_no_coupons);
 
-		// TODO: descomentar isso para adicionar cupons hardcoded
-//		CouponManager.addCoupon("Coxinha", "Coxinha|Desconto de 15% na compra de Coxinha!");
-//		CouponManager.addCoupon("Espinafre", "Espinafre|Desconto de 90% na compra de Espinafre, mas não vale para os dias primos do mês, nem para os dias em que o presidente Barack Obama aparece na televisão do México");
 		ArrayList<String> coupons = CouponManager.getCouponList();
 		couponList = new ArrayList<String>();
 		for(String s : coupons)
@@ -50,16 +49,21 @@ public class _5_Coupons extends Activity {
 			couponList.add(s);
 		}
 		
-		if (couponList == null || couponList.size() == 0) {
+		if (couponList == null || couponList.size() == 0)
+		{
 			noCoupons.setVisibility(View.VISIBLE);
-		} else {
+		}
+		else
+		{
 			noCoupons.setVisibility(View.INVISIBLE);
 			initializeListView();
 		}
 	}
 
-	private void initializeListView() {
-		if (adapter == null) {
+	private void initializeListView()
+	{
+		if (adapter == null)
+		{
 			adapter = new MyArrayAdapter(getApplicationContext(),
 					R.layout.listview_item_simple, couponList);
 			couponListView.setAdapter(adapter);
@@ -67,42 +71,44 @@ public class _5_Coupons extends Activity {
 		adapter.notifyDataSetChanged();
 	}
 
-	private class MyArrayAdapter extends ArrayAdapter<String> {
+	private class MyArrayAdapter extends ArrayAdapter<String>
+	{
 		LayoutInflater inflater;
 
-		public MyArrayAdapter(Context ctx, int resourceId,
-				ArrayList<String> objects) {
+		public MyArrayAdapter(Context ctx, int resourceId, ArrayList<String> objects)
+		{
 			super(ctx, resourceId, objects);
 			inflater = LayoutInflater.from(getApplicationContext());
 		}
 
 		@Override
-		public View getView(final int position, View convertView,
-				ViewGroup parent) {
-			convertView = inflater.inflate(R.layout.listview_item_simple, null);
-
-			System.out.println("Posicao: " + position);
-			String coupon = couponList.get(position);
-			System.out.println("coupon: " + coupon);
-			String s[] = coupon.split("\n");
-			final String couponName = s[0];
-			final String couponDescription = s[1];
-
-			// limitando o tamanho ao apresentar na listview
-			String auxDescription = couponDescription;
-			if(auxDescription.length() > 40)
+		public View getView(final int position, View convertView, ViewGroup parent)
+		{
+			if (convertView == null)
 			{
-				auxDescription = auxDescription.substring(0, 37) + "...";
+				convertView = inflater.inflate(R.layout.listview_item_simple, null);
 			}
-			TextView tv = (TextView) convertView
-					.findViewById(R.id.listview_item_simple_text);
-			tv.setText("\n" + couponName + "\n" + auxDescription + "\n");
-
-			convertView.setOnClickListener(new OnClickListener() {
+			
+			String coupon[] = couponList.get(position).split("\n");
+			final String couponName = coupon[0];
+			final String couponDescription = coupon[1];
+			
+			TextView tv = (TextView) convertView.findViewById(R.id.listview_item_simple_text);
+			if (couponDescription.length()>50)
+			{
+				tv.setText(" \n" + couponName + "\n" + couponDescription.substring(0, 47) + "..." + "\n ");
+			}
+			else
+			{
+				tv.setText(" \n" + couponName + "\n" + couponDescription + "\n ");
+			}
+			
+			convertView.setOnClickListener(new OnClickListener()
+			{
 				@Override
-				public void onClick(View v) {
-					Intent intent = new Intent(getApplicationContext(),
-							_51_CouponView.class);
+				public void onClick(View v)
+				{
+					Intent intent = new Intent(getApplicationContext(), _51_CouponView.class);
 					intent.putExtra("couponName", couponName);
 					intent.putExtra("couponDescription", couponDescription);
 					startActivity(intent);

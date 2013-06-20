@@ -136,9 +136,9 @@ public class CouponManager
 		for (int i=1; (!aux.equals("end") && !aux.equals(couponName)); i++)
 		{
 			aux = pref.getString("savedCoupon"+i, "end");
-			if (!aux.equals("end") && aux.contains("|"))
+			if (!aux.equals("end") && aux.contains("\n"))
 			{
-				aux = aux.substring(0, aux.indexOf("|"));
+				aux = aux.substring(0, aux.indexOf("\n"));
 			}
 			if (aux.equals(couponName))
 			{
