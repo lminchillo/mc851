@@ -88,18 +88,11 @@ public class _41_AddressEdit extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				try 
-				{
-					ArrayList<String> ret = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(_41_AddressEdit.this), _41_AddressEdit.this);
-					addressStreetValue = ret.get(0);
-		    		addressView = (TextView) findViewById(R.id.address_edit_address_text);
-		    		addressView.setText(addressStreetValue);
-		    		addressLatLng = ret.get(1);
-				}
-				catch(IOException e)
-				{
-					e.printStackTrace();	
-				}
+				ArrayList<String> ret = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(_41_AddressEdit.this), _41_AddressEdit.this);
+				addressStreetValue = ret.get(0);
+	    		addressView = (TextView) findViewById(R.id.address_edit_address_text);
+	    		addressView.setText(addressStreetValue);
+	    		addressLatLng = ret.get(1);
 				
 				System.out.println("Location: "+addressStreetValue);
 			}
@@ -234,18 +227,12 @@ public class _41_AddressEdit extends Activity
 	            public void onClick(DialogInterface dialog, int whichButton)
 	            {
 	                addressValueTemp = editText.getText().toString().trim();
-	                try 
-	                {
-	                	ArrayList<String> ret = (ArrayList<String>) GPSManager.getLocation(addressValueTemp, _41_AddressEdit.this);
-	                	addressStreetValue = ret.get(0);
-	                	addressView = (TextView) findViewById(R.id.address_edit_address_text);
-	                	addressView.setText(addressStreetValue);
-	                	addressLatLng = ret.get(1);
-	                }
-	                catch(IOException e)
-	                {
-	                	e.printStackTrace();
-	                }
+
+                	ArrayList<String> ret = (ArrayList<String>) GPSManager.getLocation(addressValueTemp, _41_AddressEdit.this);
+                	addressStreetValue = ret.get(0);
+                	addressView = (TextView) findViewById(R.id.address_edit_address_text);
+                	addressView.setText(addressStreetValue);
+                	addressLatLng = ret.get(1);
 	            }
 	        })
 	        .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()

@@ -110,19 +110,12 @@ public class _31_RouteEdit extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				try {
-					ArrayList<String> list = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(_31_RouteEdit.this), _31_RouteEdit.this);
-					routeSourceStreetValue = list.get(0);
-					routeViewSource = (TextView) findViewById(R.id.route_edit_text_view_address_source);
-					routeViewSource.setText(routeSourceStreetValue);
-					routeSourceLatLng = list.get(1);
-					Log.d(TAG, "Location: " + routeSourceStreetValue);
-			
-				}
-				catch(IOException e) 
-				{
-					e.printStackTrace();
-				}
+				ArrayList<String> list = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(_31_RouteEdit.this), _31_RouteEdit.this);
+				routeSourceStreetValue = list.get(0);
+				routeViewSource = (TextView) findViewById(R.id.route_edit_text_view_address_source);
+				routeViewSource.setText(routeSourceStreetValue);
+				routeSourceLatLng = list.get(1);
+				Log.d(TAG, "Location: " + routeSourceStreetValue);
 			}
 		});
 		
@@ -130,19 +123,12 @@ public class _31_RouteEdit extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				try {
-					ArrayList<String> list = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(_31_RouteEdit.this), _31_RouteEdit.this);
-					routeDestStreetValue = list.get(0);
-					routeViewDest = (TextView) findViewById(R.id.route_edit_text_view_address_destination);
-					routeViewDest.setText(routeDestStreetValue);
-					routeDestLatLng = list.get(1);
-					Log.d(TAG, "Location: " + routeDestStreetValue);
-			
-				}
-				catch(IOException e) 
-				{
-					e.printStackTrace();
-				}
+				ArrayList<String> list = (ArrayList<String>) GPSManager.getAddress(GPSManager.getLastBestLocation(_31_RouteEdit.this), _31_RouteEdit.this);
+				routeDestStreetValue = list.get(0);
+				routeViewDest = (TextView) findViewById(R.id.route_edit_text_view_address_destination);
+				routeViewDest.setText(routeDestStreetValue);
+				routeDestLatLng = list.get(1);
+				Log.d(TAG, "Location: " + routeDestStreetValue);
 			}
 		});
 		
@@ -175,15 +161,7 @@ public class _31_RouteEdit extends Activity
 			            public void onClick(DialogInterface dialog, int whichButton)
 			            {
 			                routeSourceValueTemp = editText.getText().toString().trim();
-			                
-			                try 
-			                {
-			                	GPSManager.getLocation(routeSourceValueTemp, _31_RouteEdit.this);
-			                }
-			                catch(IOException e) 
-			                {
-			                	e.printStackTrace();
-			                }
+			                GPSManager.getLocation(routeSourceValueTemp, _31_RouteEdit.this);
 			            }
 			        })
 			        .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()
@@ -230,14 +208,7 @@ public class _31_RouteEdit extends Activity
 			            {
 			                routeDestValueTemp = editText.getText().toString().trim();
 			                
-			                try 
-			                {
-			                	GPSManager.getLocation(routeDestValueTemp, _31_RouteEdit.this);
-			                }
-			                catch(IOException e) 
-			                {
-			                	e.printStackTrace();
-			                }
+			                GPSManager.getLocation(routeDestValueTemp, _31_RouteEdit.this);
 			            }
 			        })
 			        .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()
