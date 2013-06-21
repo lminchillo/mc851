@@ -23,8 +23,6 @@ import android.widget.TextView;
 
 public class _21_RouteNew extends Activity
 {
-	private final static String TAG = "RouteNew";
-	
 	private LinearLayout layoutSave;
 	
 	private CheckBox checkBoxSave;
@@ -59,10 +57,10 @@ public class _21_RouteNew extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_route_new);
 		
-		initializeWidgets();
+		initializeButtons();
 	}
 	
-	private void initializeWidgets()
+	private void initializeButtons()
 	{
 		listSavedAddresses = new ArrayList<String>();
 		listSavedAddresses = AddressManager.getAddressList();
@@ -118,8 +116,6 @@ public class _21_RouteNew extends Activity
 				addressSourceStreetValue = list.get(0);
 				textViewAddressSource.setText(addressSourceStreetValue);
 				addressSourceLatLng = list.get(1);
-				Log.d(TAG, "Source Address: " + addressSourceStreetValue);
-				Log.d(TAG, "Source LatLng: " + addressSourceLatLng);
 			}
 		});
 		
@@ -150,17 +146,16 @@ public class _21_RouteNew extends Activity
 				
 				Dialog dialog = new AlertDialog.Builder(_21_RouteNew.this)			        
 		        .setTitle(getResources().getString(R.string.take_bus_new_route_saved_addr))
-		        .setItems(addresses, new DialogInterface.OnClickListener() {
+		        .setItems(addresses, new DialogInterface.OnClickListener()
+		        {
 					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						Log.d(TAG, "index: " + which);
+					public void onClick(DialogInterface dialog, int which)
+					{
 						String addr = listSavedAddresses.get(which);
 						String[] tok = addr.split("\n");
 						addressDestStreetValue = tok[1];
 						addressDestLatLng = tok[2];
 	                	textViewAddressDestination.setText(addressDestStreetValue);
-	    				Log.d(TAG, "Dest Address: " + addressDestStreetValue);
-	    				Log.d(TAG, "Dest LatLng: " + addressDestLatLng);
 					}
 				})
 		        .create();
@@ -170,7 +165,7 @@ public class _21_RouteNew extends Activity
 		});
 		
 		buttonSavedAddressSource = (Button) findViewById(R.id.take_bus_new_route_button_saved_source);
-		if(listSavedAddresses.isEmpty())
+		if (listSavedAddresses.isEmpty())
 		{
 			buttonSavedAddressSource.setEnabled(false);
 			buttonSavedAddressSource.setVisibility(View.GONE);
@@ -196,17 +191,16 @@ public class _21_RouteNew extends Activity
 				
 				Dialog dialog = new AlertDialog.Builder(_21_RouteNew.this)			        
 		        .setTitle(getResources().getString(R.string.take_bus_new_route_saved_addr))
-		        .setItems(addresses, new DialogInterface.OnClickListener() {
+		        .setItems(addresses, new DialogInterface.OnClickListener()
+		        {
 					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						Log.d(TAG, "index: " + which);
+					public void onClick(DialogInterface dialog, int which)
+					{
 						String addr = listSavedAddresses.get(which);
 						String[] tok = addr.split("\n");
 						addressSourceStreetValue = tok[1];
 						addressSourceLatLng = tok[2];
 	                	textViewAddressSource.setText(addressSourceStreetValue);
-	    				Log.d(TAG, "Source Address: " + addressSourceStreetValue);
-	    				Log.d(TAG, "Source LatLng: " + addressSourceLatLng);
 					}
 				})
 		        .create();
@@ -247,8 +241,6 @@ public class _21_RouteNew extends Activity
 		                	addressDestStreetValue = ret.get(0);
 		                	addressDestLatLng = ret.get(1);
 		                	textViewAddressDestination.setText(addressDestStreetValue);
-		    				Log.d(TAG, "Dest Address: " + addressDestStreetValue);
-		    				Log.d(TAG, "Dest LatLng: " + addressDestLatLng);
 			            }
 			        })
 			        .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()
@@ -296,8 +288,6 @@ public class _21_RouteNew extends Activity
 		                	addressSourceStreetValue = ret.get(0);
 		                	addressSourceLatLng = ret.get(1);
 		                	textViewAddressSource.setText(addressSourceStreetValue);
-		    				Log.d(TAG, "Source Address: " + addressSourceStreetValue);
-		    				Log.d(TAG, "Source LatLng: " + addressSourceLatLng);
 			            }
 			        })
 			        .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener()
@@ -316,50 +306,47 @@ public class _21_RouteNew extends Activity
 	
 	private void actionConfirm()
 	{
-		Log.d(TAG, "checking route values...");
-		
 		if(addressSourceStreetValue == null || addressSourceStreetValue.isEmpty())
 		{
-			Log.d(TAG, "no source address!");
 			Toast.makeText(getApplicationContext(), "Por favor, preencha o endereço de origem", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		
 		if(addressDestStreetValue == null || addressDestStreetValue.isEmpty())
 		{
-			Log.d(TAG, "no destination address!");
 			Toast.makeText(getApplicationContext(), "Por favor, preencha o endereço de destino", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		
 		if(checkBoxSave.isChecked())
 		{
-			Log.d(TAG, "saving new route...");
-			
 			String newRouteName = editTextRouteName.getText().toString();
 			if(newRouteName.isEmpty())
 			{
-				Log.d(TAG, "no route name!");
 				Toast.makeText(getApplicationContext(), "Por favor, preencha o nome para a nova rota", Toast.LENGTH_SHORT).show();
 				return;
 			}
 			
-			Log.d(TAG, "new route name: " + newRouteName);
-			
 			String routeSaveValue = newRouteName+"\n"+addressSourceStreetValue+"\n"+addressSourceLatLng+"\n"+addressDestStreetValue+"\n"+addressDestLatLng;
 			if(!RouteManager.addRoute(newRouteName, routeSaveValue))
 			{
-				Log.w(TAG, "error saving route!");
 				Toast.makeText(getApplicationContext(), "Erro - o nome da nova rota pode já ter sido usado!", Toast.LENGTH_SHORT).show();
 				return;
 			}
 			
-			Log.d(TAG, "saved new route!");
 			Toast.makeText(getApplicationContext(), "Nova rota salva com sucesso!", Toast.LENGTH_SHORT).show();
 		}
 		
-		Log.d(TAG, "everything ok! proceeding to Activity Route...");
-		startActivity(new Intent(getApplicationContext(), _23_Route.class));
+		//TODO
+		//Substituir "" pelo valor correspondente!
+
+		System.out.println("sourceAddress: "+"");
+		System.out.println("sourceLatLng: "+"");
+		System.out.println("destinationAddress: "+"");
+		System.out.println("destinationLatLng: "+"");
+		
+		
+		//startActivity(new Intent(getApplicationContext(), _23_Route.class));
 	}
 	
 }

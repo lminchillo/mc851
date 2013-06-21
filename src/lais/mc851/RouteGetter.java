@@ -15,11 +15,11 @@ public class RouteGetter
 		
 	}
 	
-	public static String[] getData(String[] origin, String[] destination)
+	public static String getData(String[] origin, String[] destination)
 	{
-		String[] data = new String[2];
-		String busInfo="", initializeInfo="";
+		String initializeInfo="";
 		
+		// Primeira parte
 		String url = setFirstUrl(origin, destination);
 		String[][] connectionAux = connectToFirstUrl(url);
 		if (connectionAux[0][1].length()<1 || connectionAux[1][1].length()<1)
@@ -27,29 +27,45 @@ public class RouteGetter
 			System.out.println("Primeira conexao - tentando novamente");
 			connectionAux = connectToFirstUrl(url);
 		}
+		if (connectionAux[0][1].length()<1 || connectionAux[1][1].length()<1)
+		{
+			System.out.println("Primeira conexao - erro");
+			return null;
+		}
+		
 		origin[0] = connectionAux[0][1];
 		origin[2] = connectionAux[0][2];
 		destination[0] = connectionAux[1][1];
 		destination[2] = connectionAux[1][2];
+		
+		//Segunda parte
 		url = setSecondUrl(connectionAux[0][0], connectionAux[1][0], origin, destination);
-		String[] aux = connectToSecondUrl(url);
-		if (aux[0].length()<1 || aux[1].length()<1)
+		String aux = connectToSecondUrl(url);
+		if (aux.length()<1)
 		{
 			System.out.println("Segunda conexao - tentando novamente");
 			aux = connectToSecondUrl(url);
 		}
-		url = aux[1];
-		busInfo = aux[0];
+		if (aux.length()<1)
+		{
+			System.out.println("Segunda conexao - erro");
+			return null;
+		}
+		url = aux;
+		
+		//Terceira parte
 		initializeInfo = connectToThirdUrl(url);
 		if (initializeInfo.length()<1)
 		{
 			System.out.println("Terceira conexao - tentando novamente");
 			initializeInfo = connectToThirdUrl(url);
 		}
-		data[0] = busInfo;
-		data[1] = initializeInfo;
-		System.out.println(initializeInfo);
-		return data;
+		if (initializeInfo.length()<1)
+		{
+			System.out.println("Terceira conexao - tentando novamente");
+			return null;
+		}
+		return initializeInfo;
 	}
 	
 	private static String setFirstUrl(String[] origin, String[] destination)
@@ -174,9 +190,9 @@ public class RouteGetter
 		return res;
 	}
 	
-	private static String[] connectToSecondUrl(final String url)
+	private static String connectToSecondUrl(final String url)
 	{
-		String[] data = {"",""};
+		String data = "";
 		
 		try
 		{
@@ -202,25 +218,6 @@ public class RouteGetter
 			
 			Document doc = task.get(5000, TimeUnit.MILLISECONDS);
 			
-			Element e = doc.getElementById("listLabel");
-			for (Element e2:e.getElementsByTag("div"))
-			{
-				if (e2.className().equals("bgBranco pd5") || e2.className().equals("pd5"))
-				{
-					String aux = e2.getElementsByTag("label").first().getElementsByTag("strong").first().text().trim();
-					aux += (e2.getElementsByTag("label").first().getElementsByTag("a").first().text().trim());
-					if (aux.contains("REF.:")) aux = aux.substring(0, aux.indexOf("REF.:"));
-					if (aux.contains("ALTURA")) aux = aux.replace("ALTURA","");
-					while (aux.contains((char)160+"")) aux = aux.replace((char)160+""," ");
-					while (aux.contains("\t")) aux = aux.replace("\t"," ");
-					while (aux.contains("  ")) aux = aux.replace("  "," ");
-					
-					data[0] += "\n" + aux;
-				}
-			}
-			
-			data[0] = data[0].substring(1);
-			
 			if (doc.html().contains("$(\"#mapFrame\").attr(\"src\", "))
 			{
 				String link = doc.html().substring(doc.html().indexOf("$(\"#mapFrame\").attr(\"src\", ")).split("\n")[0];
@@ -232,7 +229,7 @@ public class RouteGetter
 				link = link.replace(" ", "%20");
 				link = "http://www.emdec.com.br/ABusInf/" + link;
 
-				data[1] = link;
+				data = link;
 			}
 			else
 			{
