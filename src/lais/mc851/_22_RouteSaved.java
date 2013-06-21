@@ -25,6 +25,13 @@ public class _22_RouteSaved extends Activity
 	private Button buttonCancel;
 	
 	@Override
+	public void onBackPressed()
+	{
+		startActivity(new Intent(getApplicationContext(),_2_RouteStart.class));
+		finish();
+	}
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
@@ -106,6 +113,7 @@ public class _22_RouteSaved extends Activity
 					Intent intent = new Intent(getApplicationContext(), _23_Route.class);
 					intent.putExtra("route", routeList.get(position));
 					startActivity(intent);
+					finish();
 				}
 			});
 			

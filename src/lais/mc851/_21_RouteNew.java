@@ -51,6 +51,13 @@ public class _21_RouteNew extends Activity
 	private ArrayList<String> listSavedAddresses;
 	
 	@Override
+	public void onBackPressed()
+	{
+		startActivity(new Intent(getApplicationContext(),_2_RouteStart.class));
+		finish();
+	}
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -397,6 +404,7 @@ public class _21_RouteNew extends Activity
 		Intent intent = new Intent(getApplicationContext(), _23_Route.class);
 		intent.putExtra("route", routeValue);
 		startActivity(intent);
+		finish();
 	}
 	
 }
