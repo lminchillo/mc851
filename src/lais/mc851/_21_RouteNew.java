@@ -8,18 +8,17 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class _21_RouteNew extends Activity
 {
@@ -318,6 +317,65 @@ public class _21_RouteNew extends Activity
 			return;
 		}
 		
+		System.out.println("sourceAddress: "+ addressSourceStreetValue);
+		System.out.println("sourceLatLng: "+ addressSourceLatLng);
+		System.out.println("destinationAddress: "+ addressDestStreetValue);
+		System.out.println("destinationLatLng: "+ addressDestLatLng);
+		
+		String[] origin = new String[3];
+		String[] destination = new String [3];
+		String aux = "";
+		
+		if (addressSourceStreetValue.contains(",")) aux = addressSourceStreetValue.substring(0,addressSourceStreetValue.indexOf(","));
+		else aux = addressSourceStreetValue;
+		origin[0] = aux;
+		
+		if (addressSourceStreetValue.contains(","))
+		{
+			aux = addressSourceStreetValue.substring(addressSourceStreetValue.indexOf(",")+2);
+			if (aux.contains(" - "))
+			{
+				aux = aux.substring(0,aux.indexOf(" - "));
+			}
+			if (aux.contains("-"))
+			{
+				int aux1 = Integer.parseInt(aux.substring(0,aux.indexOf("-")));
+				int aux2 = Integer.parseInt(aux.substring(aux.indexOf("-")+1));
+				aux1 = (aux1+aux2)/2;
+				aux = ""+aux1;
+			}
+		}
+		else aux = "";
+		origin[1] = aux;
+		origin[2] = "";
+		
+		if (addressDestStreetValue.contains(",")) aux = addressDestStreetValue.substring(0,addressDestStreetValue.indexOf(","));
+		else aux = addressDestStreetValue;
+		destination[0] = aux;
+		
+		if (addressDestStreetValue.contains(","))
+		{
+			aux = addressDestStreetValue.substring(addressDestStreetValue.indexOf(",")+2);
+			if (aux.contains(" - "))
+			{
+				aux = aux.substring(0,aux.indexOf(" - "));
+				
+			}
+			if (aux.contains("-"))
+			{
+				int aux1 = Integer.parseInt(aux.substring(0,aux.indexOf("-")));
+				int aux2 = Integer.parseInt(aux.substring(aux.indexOf("-")+1));
+				aux1 = (aux1+aux2)/2;
+				aux = ""+aux1;
+			}
+		}
+		else aux = "";
+		destination[1] = aux;
+		destination[2] = "";
+		
+		String initialize = RouteGetter.getData(origin, destination);
+		String routeValue = "name"+"\n"+addressSourceStreetValue+"\n"+addressSourceLatLng+"\n"+addressDestStreetValue+"\n"+addressDestLatLng+"\n"+initialize;
+		
 		if(checkBoxSave.isChecked())
 		{
 			String newRouteName = editTextRouteName.getText().toString();
@@ -327,27 +385,18 @@ public class _21_RouteNew extends Activity
 				return;
 			}
 			
-			// TODO: aqui eh onde esta salvando a rota.
-			String routeSaveValue = newRouteName+"\n"+addressSourceStreetValue+"\n"+addressSourceLatLng+"\n"+addressDestStreetValue+"\n"+addressDestLatLng;
+			String routeSaveValue = routeValue.replaceFirst("name", newRouteName);
 			if(!RouteManager.addRoute(newRouteName, routeSaveValue))
 			{
 				Toast.makeText(getApplicationContext(), "Erro - o nome da nova rota pode já ter sido usado!", Toast.LENGTH_SHORT).show();
 				return;
 			}
-			
 			Toast.makeText(getApplicationContext(), "Nova rota salva com sucesso!", Toast.LENGTH_SHORT).show();
 		}
 		
-		//TODO
-		//Substituir "" pelo valor correspondente!
-
-		System.out.println("sourceAddress: "+ addressSourceStreetValue);
-		System.out.println("sourceLatLng: "+ addressSourceLatLng);
-		System.out.println("destinationAddress: "+ addressDestStreetValue);
-		System.out.println("destinationLatLng: "+ addressDestLatLng);
-		
-		
-		//startActivity(new Intent(getApplicationContext(), _23_Route.class));
+		Intent intent = new Intent(getApplicationContext(), _23_Route.class);
+		intent.putExtra("route", routeValue);
+		startActivity(intent);
 	}
 	
 }

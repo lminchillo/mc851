@@ -9,13 +9,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -116,12 +115,15 @@ public class _23_Route extends Activity implements OnInfoWindowClickListener
 	private LatLng getMapInicialLatLng()
 	{
 		float aux1=0,aux2=0;
-		String aux = initialize.split("\n")[3];
-		if (aux.contains("LatLng("))
+		if (initialize.split("\n").length>2)
 		{
-			aux = aux.substring(aux.indexOf("LatLng(")+7);
-			aux1 = Float.parseFloat(aux.substring(0,aux.indexOf(",")));
-			aux2 = Float.parseFloat(aux.substring(aux.indexOf(",")+1,aux.indexOf(");")));
+			String aux = initialize.split("\n")[3];
+			if (aux.contains("LatLng("))
+			{
+				aux = aux.substring(aux.indexOf("LatLng(")+7);
+				aux1 = Float.parseFloat(aux.substring(0,aux.indexOf(",")));
+				aux2 = Float.parseFloat(aux.substring(aux.indexOf(",")+1,aux.indexOf(");")));
+			}
 		}
 		if (aux1==0 || aux2==0)
 		{
@@ -134,19 +136,19 @@ public class _23_Route extends Activity implements OnInfoWindowClickListener
 	private float getMapInicialZoom()
 	{
 		float zoom = 14;
-		String aux = initialize.split("\n")[4];
-		if (aux.contains("zoom:"))
+		if (initialize.split("\n").length>4)
 		{
-			aux = aux.substring(aux.indexOf("zoom:")+6);
-			aux = aux.substring(0,aux.indexOf(","));
-			zoom = Float.parseFloat(aux);
-			zoom = zoom * 7/6;
-			return zoom;
+			String aux = initialize.split("\n")[4];
+			if (aux.contains("zoom:"))
+			{
+				aux = aux.substring(aux.indexOf("zoom:")+6);
+				aux = aux.substring(0,aux.indexOf(","));
+				zoom = Float.parseFloat(aux);
+				zoom = zoom * 7/6;
+				return zoom;
+			}
 		}
-		else
-		{
-			return 14;
-		}
+		return 14;
 	}
 	
 	private void parseInitialize()
@@ -258,31 +260,61 @@ public class _23_Route extends Activity implements OnInfoWindowClickListener
 	
 	private void fakeInitialize()
 	{
+		System.out.println("Fake Initializing");
+		//Line
 		PolylineOptions fakeLine = new PolylineOptions();
 		fakeLine.color(Color.parseColor("#88FF0000"));
 		fakeLine.width(6);
+		fakeLine.add(sourceLatLng);
+		fakeLine.add(destLatLng);
 		map.addPolyline(fakeLine);
+		
+		//Source
+		BitmapDescriptor srcMarkerImage = BitmapDescriptorFactory.fromResource(R.drawable.point_a);
+		LatLng srcLatLng = new LatLng(sourceLatLng.latitude-0.00003, sourceLatLng.longitude-0.00003);
+		MarkerOptions srcMarker = new MarkerOptions().position(srcLatLng).icon(srcMarkerImage);
+		String srcTitle = "Partida";
+		String srcSnippet = sourceAddress;
+		srcMarker.title(srcTitle);
+		srcMarker.snippet(srcSnippet);
+		map.addMarker(srcMarker);
+		
+		//Dest
+		BitmapDescriptor destMarkerImage = BitmapDescriptorFactory.fromResource(R.drawable.point_b);
+		MarkerOptions destMarker = new MarkerOptions().position(destLatLng).icon(destMarkerImage);
+		String destTitle = "Destino";
+		String destSnippet = destAddress;
+		destMarker.title(destTitle);
+		destMarker.snippet(destSnippet);
+		map.addMarker(destMarker);
+		
+		//Bus
+		BitmapDescriptor busMarkerImage = BitmapDescriptorFactory.fromResource(R.drawable.icon_bus);
+		LatLng busLatLng = new LatLng(sourceLatLng.latitude+0.00003, sourceLatLng.longitude+0.00003);
+		MarkerOptions busMarker = new MarkerOptions().position(busLatLng).icon(busMarkerImage);
+		busMarker.title("Linha:");
+		busMarker.snippet("Número e descrição da linha aqui");
+		map.addMarker(busMarker);
 	}
 
 	private void addCoupons()
 	{
-		System.out.println("Pegando cupons");
 		ArrayList<ArrayList<String>> coupons = CouponManager.getActiveCoupons();
 		for (int i=0; i<coupons.size(); i++)
 		{
-			//System.out.println(coupons.get(i).get(0));
 			String latlngaux = coupons.get(i).get(2);
 			LatLng latlng = new LatLng(Double.parseDouble(latlngaux.substring(0, latlngaux.indexOf(","))),Double.parseDouble(latlngaux.substring(latlngaux.indexOf(",")+1)));
-			
-			System.out.println(coupons.get(i).get(0)+", dist: "+distance(latlng, destLatLng));
-			
-			BitmapDescriptor markerImage = BitmapDescriptorFactory.fromResource(R.drawable.icon_coupon); 
-			MarkerOptions aux = new MarkerOptions();
-			aux.position(latlng);
-			aux.snippet(coupons.get(i).get(1));
-			aux.title(coupons.get(i).get(0));
-			aux.icon(markerImage);
-			map.addMarker(aux);
+						
+			if (distance(latlng, destLatLng)<0.01)
+			{
+				BitmapDescriptor markerImage = BitmapDescriptorFactory.fromResource(R.drawable.icon_coupon); 
+				MarkerOptions aux = new MarkerOptions();
+				aux.position(latlng);
+				aux.snippet(coupons.get(i).get(1));
+				aux.title(coupons.get(i).get(0));
+				aux.icon(markerImage);
+				map.addMarker(aux);
+			}
 		}
 	}
 	
@@ -301,16 +333,18 @@ public class _23_Route extends Activity implements OnInfoWindowClickListener
 	@Override
 	public void onInfoWindowClick(Marker marker)
 	{
-		System.out.println("Clicou - info");
 		String title = marker.getTitle();
-		String coupon = marker.getSnippet();
-		if (CouponManager.addCoupon(title,title+"\n"+coupon))
+		if (!title.contains("Linha:") && !title.contains("Desembarque:") && !title.contains("Partida") && !title.contains("Destino"))
 		{
-			Toast.makeText(getApplicationContext(), "Cupom salvo com sucesso", Toast.LENGTH_SHORT).show();
-		}
-		else
-		{
-			Toast.makeText(getApplicationContext(), "Erro ao adicionar o cupom - pode já ter sido salvo", Toast.LENGTH_SHORT).show();
+			String coupon = marker.getSnippet();
+			if (CouponManager.addCoupon(title,title+"\n"+coupon))
+			{
+				Toast.makeText(getApplicationContext(), "Cupom salvo com sucesso", Toast.LENGTH_SHORT).show();
+			}
+			else
+			{
+				Toast.makeText(getApplicationContext(), "Erro ao adicionar o cupom - pode já ter sido salvo", Toast.LENGTH_SHORT).show();
+			}
 		}
 	}
 }
