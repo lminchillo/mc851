@@ -30,6 +30,7 @@ public class _2_RouteStart extends Activity
 			public void onClick(View v) 
 			{
 				startActivity(new Intent(getApplicationContext(), _21_RouteNew.class));
+				finish();
 			}
 		});
 		
@@ -40,6 +41,7 @@ public class _2_RouteStart extends Activity
 			public void onClick(View v) 
 			{
 				startActivity(new Intent(getApplicationContext(), _22_RouteSaved.class));
+				finish();
 			}
 		});
 	}
