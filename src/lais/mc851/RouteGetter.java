@@ -30,7 +30,7 @@ public class RouteGetter
 		if (connectionAux[0][1].length()<1 || connectionAux[1][1].length()<1)
 		{
 			System.out.println("Primeira conexao - erro");
-			return null;
+			return "";
 		}
 		
 		origin[0] = connectionAux[0][1];
@@ -49,7 +49,7 @@ public class RouteGetter
 		if (aux.length()<1)
 		{
 			System.out.println("Segunda conexao - erro");
-			return null;
+			return "";
 		}
 		url = aux;
 		
@@ -63,7 +63,7 @@ public class RouteGetter
 		if (initializeInfo.length()<1)
 		{
 			System.out.println("Terceira conexao - tentando novamente");
-			return null;
+			return "";
 		}
 		return initializeInfo;
 	}
@@ -94,9 +94,7 @@ public class RouteGetter
 	
 	private static String[][] connectToFirstUrl(final String url)
 	{
-		String[][] data = new String[2][];
-		data[0] = new String[3];
-		data[1] = new String[3];
+		String[][] data = {{"","",""},{"","",""}};
 		
 		try
 		{
