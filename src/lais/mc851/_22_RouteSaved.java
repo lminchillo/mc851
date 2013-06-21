@@ -105,23 +105,20 @@ public class _22_RouteSaved extends Activity
 			{
 				@Override
 				public void onClick(View v)
-				{
-					String routeValue = routeList.get(position);
+				{					
+					String[] routeValue = routeList.get(position).split("\n");
+					String routeName = routeValue[0];
+					String addressSource = routeValue[1];
+					String latLngSource = routeValue[2];
+					String addressDest = routeValue[3];
+					String latLngDest = routeValue[4];
 					
-					String[] tok = routeValue.split("\n");
-					String routeName = tok[0];
-					String addressSource = tok[1];
-					String latLngSource = tok[2];
-					String addressDest = tok[3];
-					String latLngDest = tok[4];
-					
-					String functionInitialize = null;
-					if(tok.length > 5)
+					String initialize = "";
+					if(routeValue.length > 5)
 					{
-						functionInitialize = "";
-						for(int i = 5; i < tok.length; i++)
+						for(int i=5; i<routeValue.length; i++)
 						{
-							functionInitialize += tok[i] + "\n";
+							initialize += routeValue[i] + "\n";
 						}
 					}
 					
@@ -130,10 +127,11 @@ public class _22_RouteSaved extends Activity
 					Log.d(TAG, "latLngSource: " + latLngSource);
 					Log.d(TAG, "addressDest: " + addressDest);
 					Log.d(TAG, "latLngDest: " + latLngDest);
-					Log.d(TAG, "functionInitialize: " + functionInitialize);
+					Log.d(TAG, "functionInitialize: " + initialize);
 					
 					// TODO: passar estes atributos para a Activity Route (?)
 					Intent intent = new Intent(getApplicationContext(), _23_Route.class);
+					intent.putExtra("route", routeList.get(position));
 					startActivity(intent);
 				}
 			});
