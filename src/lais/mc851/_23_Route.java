@@ -3,8 +3,12 @@ package lais.mc851;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -32,10 +36,28 @@ public class _23_Route extends Activity implements OnInfoWindowClickListener
 	LatLng destLatLng = null;
 	
 	@Override
-	public void onResume()
+	public void onBackPressed()
 	{
-		super.onResume();
-		checkMap();
+		Dialog dialog = new AlertDialog.Builder(_23_Route.this)
+        .setTitle(getResources().getString(R.string.route_quit))
+        .setCancelable(false)
+        .setPositiveButton("Sim", new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                finish();
+            }
+        })
+        .setNegativeButton("Não", new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+            	
+            }
+        })
+        .create();
+	
+		dialog.show();
 	}
 	
 	@Override

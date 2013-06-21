@@ -144,7 +144,7 @@ public class _21_RouteNew extends Activity
 				}
 				
 				Dialog dialog = new AlertDialog.Builder(_21_RouteNew.this)			        
-		        .setTitle(getResources().getString(R.string.take_bus_new_route_saved_addr))
+		        .setTitle(getResources().getString(R.string.route_new_saved_addr))
 		        .setItems(addresses, new DialogInterface.OnClickListener()
 		        {
 					@Override
@@ -189,7 +189,7 @@ public class _21_RouteNew extends Activity
 				}
 				
 				Dialog dialog = new AlertDialog.Builder(_21_RouteNew.this)			        
-		        .setTitle(getResources().getString(R.string.take_bus_new_route_saved_addr))
+		        .setTitle(getResources().getString(R.string.route_new_saved_addr))
 		        .setItems(addresses, new DialogInterface.OnClickListener()
 		        {
 					@Override

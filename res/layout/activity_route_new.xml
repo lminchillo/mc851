@@ -12,7 +12,7 @@
         android:layout_height="60dp"
         android:background="@color/top_bar"
         android:gravity="center"
-        android:text="@string/take_bus_title"
+        android:text="@string/route_start_title"
         android:textColor="#ffffff"
         android:textSize="24sp" />
 
@@ -34,14 +34,14 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="@string/take_bus_new_route_title"
+                android:text="@string/route_new_title"
                 android:textColor="#ffffff"
                 android:textSize="24sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/take_bus_new_route_source"
+                android:text="@string/route_new_source"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
 
@@ -80,14 +80,14 @@
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:layout_margin="2dp"
-                    android:text="@string/take_bus_new_route_saved_addr" />
+                    android:text="@string/route_new_saved_addr" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="@string/take_bus_new_route_destination"
+                android:text="@string/route_new_destination"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
 
@@ -118,14 +118,14 @@
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:layout_margin="2dp"
-                    android:text="@string/take_bus_new_route_saved_addr" />
+                    android:text="@string/route_new_saved_addr" />
             </LinearLayout>
 
             <CheckBox
                 android:id="@+id/take_bus_new_route_checkbox_save_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/take_bus_new_route_save"
+                android:text="@string/route_new_save"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
 
@@ -138,7 +138,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/take_bus_new_route_name_route"
+                    android:text="@string/route_new_name_route"
                     android:textColor="#ffffff"
                     android:textSize="20sp" />
 
@@ -147,7 +147,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
-                    android:hint="@string/take_bus_new_route_name" />
+                    android:hint="@string/route_new_route_name" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

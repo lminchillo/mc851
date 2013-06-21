@@ -38,7 +38,7 @@
     <string name="coupons_title">Meus Cupons</string>
     <string name="coupons_no_coupons">Você ainda não possui cupons!</string>
 
-    <!-- Coupon Details strings -->
+    <!-- CouponView strings -->
     <string name="coupon_details_title">Meus Cupons</string>
     <string name="coupon_details_delete">Deletar Cupom</string>
     
@@ -46,32 +46,32 @@
     <string name="routes_title">Rotas Salvas</string>
     <string name="routes_no_routes">Não há rotas salvas!\nPara salvar uma rota, selecione\n"Qual Busão?" no menu inicial</string>
 
-    <!-- Route Edit strings -->
+    <!-- RouteEdit strings -->
     <string name="route_edit_title">Rotas Salvas</string>
     <string name="route_edit_name">Nome:</string>
     <string name="route_edit_name_new">Digite o nome&#8230;</string>
     <string name="route_edit_address_source">Endereço de Origem:</string>
     <string name="route_edit_address_destination">Endereço de Destino:</string>
-    <string name="route_edit_address_new">Digite o endereço</string>
     <string name="route_edit_saved_addr">End. Salvo</string>
     
-    <!-- Take Bus strings -->
-    <string name="take_bus_title">Pegar Ônibus!</string>
-    <string name="take_bus_new_route">Nova Rota</string>
-    <string name="take_bus_saved_route">Usar Rota Salva</string>
+    <!-- RouteStart strings -->
+    <string name="route_start_title">Pegar Ônibus!</string>
+    <string name="route_start_new_route">Nova Rota</string>
+    <string name="route_start_saved_route">Usar Rota Salva</string>
 
-    <!-- Take Bus New Route strings -->
-    <string name="take_bus_new_route_title">Nova Rota</string>
-    <string name="take_bus_new_route_source">Origem:</string>
-    <string name="take_bus_new_route_destination">Destino:</string>
-    <string name="take_bus_new_route_save">Salvar Rota?</string>
-    <string name="take_bus_new_route_saved_addr">End. Salvo</string>
-    <string name="take_bus_new_route_name_route">Nome para a Rota:</string>
-    <string name="take_bus_new_route_name">Digite o nome&#8230;</string>
+    <!-- RouteNew strings -->
+    <string name="route_new_title">Nova Rota</string>
+    <string name="route_new_source">Origem:</string>
+    <string name="route_new_destination">Destino:</string>
+    <string name="route_new_save">Salvar Rota?</string>
+    <string name="route_new_saved_addr">End. Salvo</string>
+    <string name="route_new_name_route">Nome para a Rota:</string>
+    <string name="route_new_route_name">Digite o nome&#8230;</string>
     
-    <!-- Take Bus Saved Route strings -->
-    <string name="take_bus_saved_route_title">Escolher Rota Salva</string>
+    <!-- RouteSaved strings -->
+    <string name="route_saved_title">Escolher Rota Salva</string>
     
-    <!--  -->
+    <!-- Route strings -->
+    <string name="route_quit">Deseja sair?</string>
 
 </resources>
