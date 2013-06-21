@@ -327,6 +327,7 @@ public class _21_RouteNew extends Activity
 				return;
 			}
 			
+			// TODO: aqui eh onde esta salvando a rota.
 			String routeSaveValue = newRouteName+"\n"+addressSourceStreetValue+"\n"+addressSourceLatLng+"\n"+addressDestStreetValue+"\n"+addressDestLatLng;
 			if(!RouteManager.addRoute(newRouteName, routeSaveValue))
 			{
@@ -340,10 +341,10 @@ public class _21_RouteNew extends Activity
 		//TODO
 		//Substituir "" pelo valor correspondente!
 
-		System.out.println("sourceAddress: "+"");
-		System.out.println("sourceLatLng: "+"");
-		System.out.println("destinationAddress: "+"");
-		System.out.println("destinationLatLng: "+"");
+		System.out.println("sourceAddress: "+ addressSourceStreetValue);
+		System.out.println("sourceLatLng: "+ addressSourceLatLng);
+		System.out.println("destinationAddress: "+ addressDestStreetValue);
+		System.out.println("destinationLatLng: "+ addressDestLatLng);
 		
 		
 		//startActivity(new Intent(getApplicationContext(), _23_Route.class));
