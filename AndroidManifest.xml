@@ -65,8 +65,7 @@
         </activity>
         <activity
             android:name="lais.mc851._23_Route"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppBaseTheme" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="lais.mc851._2_RouteStart"
